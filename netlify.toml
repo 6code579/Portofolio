@@ -3,7 +3,7 @@
   publish = "dist"
   
   # Commande de build
-  command = "npm run build"
+  command = "npm install && npm run build"
 
 # Redirections pour le SPA React
 [[redirects]]
@@ -40,14 +40,17 @@
 [context.production.environment]
   NODE_ENV = "production"
   REACT_APP_ENV = "production"
+  NPM_FLAGS = "--production=false"
 
 [context.deploy-preview.environment]
   NODE_ENV = "production"
   REACT_APP_ENV = "preview"
+  NPM_FLAGS = "--production=false"
 
 [context.branch-deploy.environment]
   NODE_ENV = "production"
   REACT_APP_ENV = "branch"
+  NPM_FLAGS = "--production=false"
 
 # Configuration des fonctions (optionnel)
 # [functions]
