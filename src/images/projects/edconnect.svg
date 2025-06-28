@@ -1,0 +1,87 @@
+<svg width="400" height="300" viewBox="0 0 400 300" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <!-- Background -->
+  <rect width="400" height="300" fill="#3b82f6"/>
+  
+  <!-- Main content area -->
+  <rect x="40" y="40" width="320" height="220" rx="20" fill="white" stroke="#1d4ed8" stroke-width="2"/>
+  
+  <!-- Header with school building -->
+  <rect x="60" y="60" width="280" height="50" rx="8" fill="#3b82f6"/>
+  <text x="200" y="85" text-anchor="middle" fill="white" font-family="Arial, sans-serif" font-size="16" font-weight="bold">ED.CONNECT</text>
+  <text x="200" y="100" text-anchor="middle" fill="white" font-family="Arial, sans-serif" font-size="10">Site Éducatif Interactif</text>
+  
+  <!-- School building icon -->
+  <rect x="320" y="65" width="15" height="15" rx="2" fill="white"/>
+  <rect x="322" y="67" width="11" height="8" fill="#3b82f6"/>
+  <rect x="324" y="69" width="2" height="2" fill="white"/>
+  <rect x="328" y="69" width="2" height="2" fill="white"/>
+  <rect x="332" y="69" width="2" height="2" fill="white"/>
+  
+  <!-- Content sections -->
+  <rect x="80" y="130" width="120" height="100" rx="8" fill="#dbeafe"/>
+  
+  <!-- Students/Users section -->
+  <text x="140" y="145" text-anchor="middle" fill="#1e40af" font-family="Arial, sans-serif" font-size="12" font-weight="bold">Étudiants</text>
+  
+  <!-- Student icons -->
+  <circle cx="95" cy="160" r="8" fill="#3b82f6"/>
+  <circle cx="115" cy="160" r="8" fill="#3b82f6"/>
+  <circle cx="135" cy="160" r="8" fill="#3b82f6"/>
+  <circle cx="155" cy="160" r="8" fill="#3b82f6"/>
+  <circle cx="175" cy="160" r="8" fill="#3b82f6"/>
+  
+  <!-- Student details -->
+  <rect x="90" y="175" width="90" height="15" rx="4" fill="white"/>
+  <text x="135" y="185" text-anchor="middle" fill="#1e40af" font-family="Arial, sans-serif" font-size="10">500+ Étudiants</text>
+  
+  <rect x="90" y="195" width="90" height="15" rx="4" fill="white"/>
+  <text x="135" y="205" text-anchor="middle" fill="#1e40af" font-family="Arial, sans-serif" font-size="10">Classes Interactives</text>
+  
+  <!-- Features section -->
+  <rect x="220" y="130" width="120" height="100" rx="8" fill="#f0f9ff"/>
+  
+  <text x="280" y="145" text-anchor="middle" fill="#0c4a6e" font-family="Arial, sans-serif" font-size="12" font-weight="bold">Fonctionnalités</text>
+  
+  <!-- Feature icons -->
+  <rect x="230" y="155" width="20" height="20" rx="4" fill="#0ea5e9"/>
+  <text x="240" y="168" text-anchor="middle" fill="white" font-family="Arial, sans-serif" font-size="12" font-weight="bold">C</text>
+  
+  <rect x="260" y="155" width="20" height="20" rx="4" fill="#0ea5e9"/>
+  <text x="270" y="168" text-anchor="middle" fill="white" font-family="Arial, sans-serif" font-size="12" font-weight="bold">P</text>
+  
+  <rect x="290" y="155" width="20" height="20" rx="4" fill="#0ea5e9"/>
+  <text x="300" y="168" text-anchor="middle" fill="white" font-family="Arial, sans-serif" font-size="12" font-weight="bold">G</text>
+  
+  <rect x="320" y="155" width="20" height="20" rx="4" fill="#0ea5e9"/>
+  <text x="330" y="168" text-anchor="middle" fill="white" font-family="Arial, sans-serif" font-size="12" font-weight="bold">F</text>
+  
+  <!-- Feature labels -->
+  <text x="240" y="185" text-anchor="middle" fill="#0c4a6e" font-family="Arial, sans-serif" font-size="8">Cours</text>
+  <text x="270" y="185" text-anchor="middle" fill="#0c4a6e" font-family="Arial, sans-serif" font-size="8">Profs</text>
+  <text x="300" y="185" text-anchor="middle" fill="#0c4a6e" font-family="Arial, sans-serif" font-size="8">Grades</text>
+  <text x="330" y="185" text-anchor="middle" fill="#0c4a6e" font-family="Arial, sans-serif" font-size="8">Forum</text>
+  
+  <!-- Interactive elements -->
+  <rect x="230" y="195" width="100" height="15" rx="4" fill="white"/>
+  <text x="280" y="205" text-anchor="middle" fill="#0c4a6e" font-family="Arial, sans-serif" font-size="10">Interface Moderne</text>
+  
+  <rect x="230" y="215" width="100" height="15" rx="4" fill="white"/>
+  <text x="280" y="225" text-anchor="middle" fill="#0c4a6e" font-family="Arial, sans-serif" font-size="10">Responsive Design</text>
+  
+  <!-- Bottom info -->
+  <rect x="80" y="240" width="260" height="20" rx="4" fill="#f1f5f9"/>
+  <text x="210" y="253" text-anchor="middle" fill="#64748b" font-family="Arial, sans-serif" font-size="12">Site éducatif moderne pour établissement scolaire</text>
+  
+  <!-- Technology badges -->
+  <rect x="80" y="270" width="60" height="15" rx="8" fill="#3b82f6"/>
+  <text x="110" y="280" text-anchor="middle" fill="white" font-family="Arial, sans-serif" font-size="8" font-weight="bold">HTML5</text>
+  
+  <rect x="150" y="270" width="50" height="15" rx="8" fill="#06b6d4"/>
+  <text x="175" y="280" text-anchor="middle" fill="white" font-family="Arial, sans-serif" font-size="8" font-weight="bold">CSS3</text>
+  
+  <rect x="210" y="270" width="70" height="15" rx="8" fill="#f59e0b"/>
+  <text x="245" y="280" text-anchor="middle" fill="white" font-family="Arial, sans-serif" font-size="8" font-weight="bold">JavaScript</text>
+  
+  <rect x="290" y="270" width="50" height="15" rx="8" fill="#8b5cf6"/>
+  <text x="315" y="280" text-anchor="middle" fill="white" font-family="Arial, sans-serif" font-size="8" font-weight="bold">PHP</text>
+</svg> 

@@ -1,45 +1,94 @@
 import React from 'react';
 import { ArrowRight, Github, ExternalLink } from 'lucide-react';
+import { motion } from 'framer-motion';
 import ProjectCard from './ProjectCard';
+import edusco from '../images/projects/edusco.svg';
+import ecommerce from '../images/projects/ecommerce.svg';
+import apiRest from '../images/projects/api-rest.svg';
 
 const FeaturedProjects: React.FC = () => {
   const projects = [
     {
       id: 1,
-      title: 'Edusco',
-      description: 'Plateforme éducative moderne développée avec Django, offrant une expérience d\'apprentissage interactive et intuitive.',
-      image: 'images/student.png',
-      technologies: ['Django', 'Python', 'SQLite', 'Bootstrap', 'JavaScript'],
-      githubUrl: 'https://github.com',
-      liveUrl: 'https://example.com',
-      featured: true
+      title: 'Edusco - Plateforme Éducative',
+      description: 'Plateforme d\'apprentissage en ligne développée avec Django, permettant aux étudiants de suivre des cours, passer des évaluations et suivre leurs progrès. Interface intuitive avec système de gestion des utilisateurs.',
+      image: edusco,
+      technologies: ['Django', 'Python', 'SQLite', 'Bootstrap', 'JavaScript', 'Chart.js','Jwt'],
+      githubUrl: 'https://github.com/francisco-mouanda/edusco-platform',
+      liveUrl: 'https://edusco-demo.herokuapp.com',
+      featured: true,
+      date: 'Avril 2025'
     },
     {
       id: 2,
       title: 'E-commerce Laravel',
-      description: 'Solution e-commerce complète avec gestion des commandes, paiements sécurisés et interface d\'administration.',
-      image: 'images/student.png',
-      technologies: ['Laravel', 'PHP', 'MySQL', 'Vue.js', 'Stripe'],
-      githubUrl: 'https://github.com',
-      liveUrl: 'https://example.com',
-      featured: true
+      description: 'Boutique en ligne complète avec catalogue de produits, panier d\'achat, système de paiement Stripe et interface d\'administration. Gestion des commandes et des utilisateurs.',
+      image: ecommerce,
+      technologies: ['Laravel', 'PHP', 'MySQL', 'Vue.js', 'Stripe', 'Tailwind CSS'],
+      githubUrl: 'https://github.com/francisco-mouanda/laravel-ecommerce',
+      liveUrl: 'https://ecommerce-demo.vercel.app',
+      featured: true,
+      date: 'Decembre 2024'
     },
     {
       id: 3,
       title: 'API REST Python',
-      description: 'API robuste pour application mobile avec authentification JWT, documentation Swagger et tests automatisés.',
-      image: 'images/student.png',
-      technologies: ['FastAPI', 'Python', 'MongoDB', 'JWT', 'Docker'],
-      githubUrl: 'https://github.com',
-      liveUrl: 'https://example.com',
-      featured: true
+      description: 'API robuste pour application mobile avec authentification JWT, documentation Swagger, tests automatisés et déploiement Docker. Endpoints pour gestion d\'utilisateurs et de données.',
+      image: apiRest,
+      technologies: ['FastAPI', 'Python', 'MongoDB', 'JWT', 'Docker', 'PostgreSQL'],
+      githubUrl: 'https://github.com/francisco-mouanda/fastapi-mobile-api',
+      liveUrl: 'https://api-docs.swagger.io',
+      featured: true,
+      date: 'Janvier 2025'
     }
   ];
 
+  // Animation variants
+  const containerVariants = {
+    hidden: { opacity: 0 },
+    visible: {
+      opacity: 1,
+      transition: {
+        staggerChildren: 0.2,
+        delayChildren: 0.1
+      }
+    }
+  };
+
+  const itemVariants = {
+    hidden: { y: 30, opacity: 0 },
+    visible: {
+      y: 0,
+      opacity: 1,
+      transition: {
+        duration: 0.6,
+        ease: "easeOut"
+      }
+    }
+  };
+
+  const cardVariants = {
+    hidden: { y: 50, opacity: 0 },
+    visible: {
+      y: 0,
+      opacity: 1,
+      transition: {
+        duration: 0.8,
+        ease: "easeOut"
+      }
+    }
+  };
+
   return (
     <section id="featured-projects" className="py-20 bg-white">
-      <div className="container mx-auto px-6">
-        <div className="text-center mb-16">
+      <motion.div
+        variants={containerVariants}
+        initial="hidden"
+        whileInView="visible"
+        viewport={{ once: true, amount: 0.3 }}
+        className="container mx-auto px-6"
+      >
+        <motion.div variants={itemVariants} className="text-center mb-16">
           <h2 className="text-4xl md:text-5xl font-bold text-slate-800 mb-6">
             Projets <span className="text-blue-800">Récents</span>
           </h2>
@@ -47,15 +96,18 @@ const FeaturedProjects: React.FC = () => {
             Découvrez une sélection de mes derniers projets, alliant innovation technique 
             et design moderne pour créer des expériences utilisateur exceptionnelles.
           </p>
-        </div>
+        </motion.div>
 
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 mb-12">
+        <motion.div 
+          variants={cardVariants}
+          className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 mb-12"
+        >
           {projects.map((project) => (
             <ProjectCard key={project.id} project={project} />
           ))}
-        </div>
+        </motion.div>
 
-        <div className="text-center">
+        <motion.div variants={itemVariants} className="text-center">
           <a 
             href="/projects" 
             className="inline-flex items-center space-x-3 px-8 py-4 bg-blue-800 hover:bg-blue-700 text-white font-semibold rounded-lg shadow-lg hover:shadow-xl transform hover:-translate-y-1 transition-all duration-200"
@@ -63,8 +115,8 @@ const FeaturedProjects: React.FC = () => {
             <span>Voir tous les projets</span>
             <ArrowRight className="w-5 h-5" />
           </a>
-        </div>
-      </div>
+        </motion.div>
+      </motion.div>
     </section>
   );
 };

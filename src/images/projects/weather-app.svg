@@ -1,0 +1,61 @@
+<svg width="400" height="300" viewBox="0 0 400 300" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <!-- Background gradient -->
+  <defs>
+    <linearGradient id="bgGradient" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#0ea5e9;stop-opacity:1" />
+      <stop offset="100%" style="stop-color:#0284c7;stop-opacity:1" />
+    </linearGradient>
+    <linearGradient id="cardGradient" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#ffffff;stop-opacity:0.9" />
+      <stop offset="100%" style="stop-color:#f8fafc;stop-opacity:0.9" />
+    </linearGradient>
+  </defs>
+  
+  <!-- Background -->
+  <rect width="400" height="300" fill="url(#bgGradient)"/>
+  
+  <!-- Decorative elements -->
+  <circle cx="50" cy="50" r="15" fill="white" opacity="0.1"/>
+  <circle cx="350" cy="80" r="20" fill="white" opacity="0.1"/>
+  <circle cx="320" cy="250" r="18" fill="white" opacity="0.1"/>
+  
+  <!-- Main content area -->
+  <rect x="40" y="40" width="320" height="220" rx="20" fill="url(#cardGradient)" stroke="white" stroke-width="2"/>
+  
+  <!-- Header -->
+  <rect x="60" y="60" width="280" height="40" rx="8" fill="#0ea5e9"/>
+  <text x="200" y="85" text-anchor="middle" fill="white" font-family="Arial, sans-serif" font-size="16" font-weight="bold">WEATHER APP</text>
+  
+  <!-- Current weather -->
+  <rect x="80" y="120" width="120" height="80" rx="8" fill="#dbeafe"/>
+  <circle cx="140" cy="150" r="20" fill="#fbbf24"/>
+  <text x="140" y="190" text-anchor="middle" fill="#1e40af" font-family="Arial, sans-serif" font-size="16" font-weight="bold">22°C</text>
+  <text x="140" y="200" text-anchor="middle" fill="#64748b" font-family="Arial, sans-serif" font-size="10">Ensoleillé</text>
+  
+  <!-- Forecast -->
+  <rect x="220" y="120" width="140" height="80" rx="8" fill="#f3f4f6"/>
+  <rect x="230" y="130" width="25" height="40" rx="4" fill="#e0e7ff"/>
+  <text x="242" y="150" text-anchor="middle" fill="#3730a3" font-family="Arial, sans-serif" font-size="8">Lun</text>
+  <text x="242" y="165" text-anchor="middle" fill="#3730a3" font-family="Arial, sans-serif" font-size="10" font-weight="bold">18°</text>
+  
+  <rect x="265" y="130" width="25" height="40" rx="4" fill="#fef3c7"/>
+  <text x="277" y="150" text-anchor="middle" fill="#92400e" font-family="Arial, sans-serif" font-size="8">Mar</text>
+  <text x="277" y="165" text-anchor="middle" fill="#92400e" font-family="Arial, sans-serif" font-size="10" font-weight="bold">20°</text>
+  
+  <rect x="300" y="130" width="25" height="40" rx="4" fill="#dbeafe"/>
+  <text x="312" y="150" text-anchor="middle" fill="#1e40af" font-family="Arial, sans-serif" font-size="8">Mer</text>
+  <text x="312" y="165" text-anchor="middle" fill="#1e40af" font-family="Arial, sans-serif" font-size="10" font-weight="bold">19°</text>
+  
+  <rect x="335" y="130" width="15" height="40" rx="4" fill="#fef3c7"/>
+  <text x="342" y="150" text-anchor="middle" fill="#92400e" font-family="Arial, sans-serif" font-size="8">Jeu</text>
+  <text x="342" y="165" text-anchor="middle" fill="#92400e" font-family="Arial, sans-serif" font-size="10" font-weight="bold">21°</text>
+  
+  <!-- Location and details -->
+  <rect x="80" y="210" width="280" height="40" rx="6" fill="#f1f5f9"/>
+  <text x="90" y="225" fill="#374151" font-family="Arial, sans-serif" font-size="10" font-weight="bold">📍 Paris, France</text>
+  <text x="90" y="240" fill="#64748b" font-family="Arial, sans-serif" font-size="9">Humidité: 65% | Vent: 12 km/h</text>
+  
+  <!-- Bottom info -->
+  <rect x="80" y="260" width="240" height="20" rx="4" fill="#f1f5f9"/>
+  <text x="200" y="275" text-anchor="middle" fill="#64748b" font-family="Arial, sans-serif" font-size="12">Application météo avec API OpenWeatherMap</text>
+</svg> 

@@ -1,0 +1,65 @@
+<svg width="400" height="300" viewBox="0 0 400 300" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <!-- Background gradient -->
+  <defs>
+    <linearGradient id="bgGradient" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#f59e0b;stop-opacity:1" />
+      <stop offset="100%" style="stop-color:#d97706;stop-opacity:1" />
+    </linearGradient>
+    <linearGradient id="cardGradient" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#ffffff;stop-opacity:0.9" />
+      <stop offset="100%" style="stop-color:#f8fafc;stop-opacity:0.9" />
+    </linearGradient>
+  </defs>
+  
+  <!-- Background -->
+  <rect width="400" height="300" fill="url(#bgGradient)"/>
+  
+  <!-- Decorative elements -->
+  <circle cx="60" cy="60" r="25" fill="white" opacity="0.1"/>
+  <circle cx="340" cy="70" r="18" fill="white" opacity="0.1"/>
+  <circle cx="310" cy="240" r="22" fill="white" opacity="0.1"/>
+  
+  <!-- Main content area -->
+  <rect x="40" y="40" width="320" height="220" rx="20" fill="url(#cardGradient)" stroke="white" stroke-width="2"/>
+  
+  <!-- Header -->
+  <rect x="60" y="60" width="280" height="40" rx="8" fill="#f59e0b"/>
+  <text x="200" y="85" text-anchor="middle" fill="white" font-family="Arial, sans-serif" font-size="16" font-weight="bold">E-COMMERCE</text>
+  
+  <!-- Shopping cart -->
+  <rect x="80" y="120" width="80" height="60" rx="8" fill="#f3f4f6"/>
+  <rect x="90" y="130" width="60" height="40" rx="4" fill="#e5e7eb"/>
+  <circle cx="100" cy="170" r="6" fill="#374151"/>
+  <circle cx="140" cy="170" r="6" fill="#374151"/>
+  <rect x="85" y="125" width="70" height="8" rx="4" fill="#f59e0b"/>
+  <rect x="85" y="138" width="50" height="6" rx="3" fill="#f59e0b"/>
+  <rect x="85" y="148" width="60" height="6" rx="3" fill="#f59e0b"/>
+  <rect x="85" y="158" width="40" height="6" rx="3" fill="#f59e0b"/>
+  
+  <!-- Product cards -->
+  <rect x="180" y="120" width="60" height="80" rx="6" fill="#fef3c7"/>
+  <rect x="185" y="125" width="50" height="30" rx="3" fill="#fbbf24"/>
+  <rect x="185" y="160" width="50" height="4" rx="2" fill="#374151"/>
+  <rect x="185" y="168" width="30" height="4" rx="2" fill="#6b7280"/>
+  <rect x="185" y="176" width="40" height="4" rx="2" fill="#10b981"/>
+  
+  <rect x="250" y="120" width="60" height="80" rx="6" fill="#dbeafe"/>
+  <rect x="255" y="125" width="50" height="30" rx="3" fill="#3b82f6"/>
+  <rect x="255" y="160" width="50" height="4" rx="2" fill="#374151"/>
+  <rect x="255" y="168" width="35" height="4" rx="2" fill="#6b7280"/>
+  <rect x="255" y="176" width="45" height="4" rx="2" fill="#10b981"/>
+  
+  <!-- Payment icons -->
+  <rect x="80" y="200" width="230" height="40" rx="6" fill="#f3f4f6"/>
+  <circle cx="100" cy="220" r="8" fill="#1f2937"/>
+  <rect x="115" y="215" width="20" height="10" rx="2" fill="#1f2937"/>
+  <rect x="145" y="215" width="20" height="10" rx="2" fill="#1f2937"/>
+  <rect x="175" y="215" width="20" height="10" rx="2" fill="#1f2937"/>
+  <rect x="205" y="215" width="20" height="10" rx="2" fill="#1f2937"/>
+  <rect x="235" y="215" width="20" height="10" rx="2" fill="#1f2937"/>
+  <rect x="265" y="215" width="20" height="10" rx="2" fill="#1f2937"/>
+  
+  <!-- Bottom info -->
+  <rect x="80" y="250" width="240" height="20" rx="4" fill="#f1f5f9"/>
+  <text x="200" y="265" text-anchor="middle" fill="#64748b" font-family="Arial, sans-serif" font-size="12">Solution e-commerce complète</text>
+</svg> 

@@ -1,0 +1,70 @@
+<svg width="400" height="300" viewBox="0 0 400 300" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <!-- Background gradient -->
+  <defs>
+    <linearGradient id="bgGradient" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#8b5cf6;stop-opacity:1" />
+      <stop offset="100%" style="stop-color:#7c3aed;stop-opacity:1" />
+    </linearGradient>
+    <linearGradient id="cardGradient" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#ffffff;stop-opacity:0.9" />
+      <stop offset="100%" style="stop-color:#f8fafc;stop-opacity:0.9" />
+    </linearGradient>
+  </defs>
+  
+  <!-- Background -->
+  <rect width="400" height="300" fill="url(#bgGradient)"/>
+  
+  <!-- Decorative elements -->
+  <circle cx="50" cy="50" r="18" fill="white" opacity="0.1"/>
+  <circle cx="350" cy="80" r="22" fill="white" opacity="0.1"/>
+  <circle cx="320" cy="250" r="16" fill="white" opacity="0.1"/>
+  
+  <!-- Main content area -->
+  <rect x="40" y="40" width="320" height="220" rx="20" fill="url(#cardGradient)" stroke="white" stroke-width="2"/>
+  
+  <!-- Header -->
+  <rect x="60" y="60" width="280" height="40" rx="8" fill="#8b5cf6"/>
+  <text x="200" y="85" text-anchor="middle" fill="white" font-family="Arial, sans-serif" font-size="16" font-weight="bold">PORTFOLIO</text>
+  
+  <!-- Browser window -->
+  <rect x="80" y="120" width="240" height="140" rx="8" fill="#f3f4f6"/>
+  <rect x="80" y="120" width="240" height="25" rx="8" fill="#e5e7eb"/>
+  
+  <!-- Browser controls -->
+  <circle cx="95" cy="132" r="4" fill="#ef4444"/>
+  <circle cx="105" cy="132" r="4" fill="#f59e0b"/>
+  <circle cx="115" cy="132" r="4" fill="#10b981"/>
+  
+  <!-- Navigation -->
+  <rect x="130" y="125" width="80" height="15" rx="4" fill="#d1d5db"/>
+  <text x="170" y="135" text-anchor="middle" fill="#374151" font-family="Arial, sans-serif" font-size="10">francisco.dev</text>
+  
+  <!-- Content sections -->
+  <rect x="90" y="155" width="60" height="40" rx="4" fill="#8b5cf6"/>
+  <text x="120" y="175" text-anchor="middle" fill="white" font-family="Arial, sans-serif" font-size="10" font-weight="bold">À PROPOS</text>
+  
+  <rect x="160" y="155" width="60" height="40" rx="4" fill="#3b82f6"/>
+  <text x="190" y="175" text-anchor="middle" fill="white" font-family="Arial, sans-serif" font-size="10" font-weight="bold">PROJETS</text>
+  
+  <rect x="230" y="155" width="60" height="40" rx="4" fill="#10b981"/>
+  <text x="260" y="175" text-anchor="middle" fill="white" font-family="Arial, sans-serif" font-size="10" font-weight="bold">CONTACT</text>
+  
+  <!-- Profile section -->
+  <rect x="90" y="205" width="80" height="40" rx="4" fill="#fef3c7"/>
+  <circle cx="130" cy="225" r="12" fill="#f59e0b"/>
+  <text x="130" y="230" text-anchor="middle" fill="white" font-family="Arial, sans-serif" font-size="12" font-weight="bold">FM</text>
+  
+  <!-- Skills section -->
+  <rect x="180" y="205" width="110" height="40" rx="4" fill="#dbeafe"/>
+  <rect x="190" y="215" width="20" height="8" rx="2" fill="#3b82f6"/>
+  <rect x="215" y="215" width="20" height="8" rx="2" fill="#3b82f6"/>
+  <rect x="240" y="215" width="20" height="8" rx="2" fill="#3b82f6"/>
+  <rect x="265" y="215" width="20" height="8" rx="2" fill="#3b82f6"/>
+  <rect x="190" y="227" width="20" height="8" rx="2" fill="#3b82f6"/>
+  <rect x="215" y="227" width="20" height="8" rx="2" fill="#3b82f6"/>
+  <rect x="240" y="227" width="20" height="8" rx="2" fill="#3b82f6"/>
+  
+  <!-- Bottom info -->
+  <rect x="80" y="270" width="240" height="20" rx="4" fill="#f1f5f9"/>
+  <text x="200" y="285" text-anchor="middle" fill="#64748b" font-family="Arial, sans-serif" font-size="12">Portfolio moderne et responsive</text>
+</svg> 
