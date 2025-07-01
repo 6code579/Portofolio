@@ -91,8 +91,8 @@ const Contact: React.FC = () => {
         <input type="email" name="email" />
         <input type="text" name="subject" />
         <textarea name="message"></textarea>
-        {/* Champ honeypot pour Netlify */}
         <input type="text" name="bot-field" />
+        <input type="hidden" name="redirect" value="/success" />
       </form>
       {/* Animated Background Elements */}
       <div className="absolute inset-0 overflow-hidden">
@@ -471,6 +471,7 @@ const Contact: React.FC = () => {
               >
                 {/* Champs cachés requis pour Netlify Forms */}
                 <input type="hidden" name="form-name" value="contact" />
+                <input type="hidden" name="redirect" value="/success" />
                 {/* Champ honeypot visible pour Netlify Forms */}
                 <div style={{ display: 'none' }}>
                   <label>Ne pas remplir ce champ : <input name="bot-field" /></label>
