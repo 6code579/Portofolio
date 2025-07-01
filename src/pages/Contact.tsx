@@ -17,33 +17,20 @@ const Contact: React.FC = () => {
     e.preventDefault();
     setIsSubmitting(true);
     setSubmitStatus('idle');
-
     try {
-   
-      // Envoi via fetch pour une meilleure UX
-      const response = await fetch('/', {
+      const response = await fetch('https://formspree.io/f/xjkrldwl', {
         method: 'POST',
-        headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
-        body: new URLSearchParams({
-          'form-name': 'contact',
-          ...formData
-        }).toString()
+        headers: { 'Accept': 'application/json' },
+        body: new FormData(e.target as HTMLFormElement)
       });
-
       if (response.ok) {
         setSubmitStatus('success');
         setFormData({ name: '', email: '', subject: '', message: '' });
-        
-        // La redirection a été supprimée pour améliorer l'expérience utilisateur.
-        // Le message de succès est déjà affiché dans le composant.
-        setTimeout(() => {
-          setSubmitStatus('idle');
-        }, 5000); // Cache le message de succès après 5 secondes
+        setTimeout(() => setSubmitStatus('idle'), 5000);
       } else {
-        throw new Error('Erreur lors de l\'envoi');
+        setSubmitStatus('error');
       }
-    } catch (error) {
-      console.error('Erreur lors de l\'envoi:', error);
+    } catch {
       setSubmitStatus('error');
     } finally {
       setIsSubmitting(false);
