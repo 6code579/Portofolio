@@ -12,6 +12,7 @@ interface Project {
   liveUrl?: string;
   featured?: boolean;
   date?: string;
+  bgColor?: string;
 }
 
 interface ProjectCardProps {
@@ -36,13 +37,13 @@ const ProjectCard: React.FC<ProjectCardProps> = ({ project, index = 0 }) => {
       className="bg-white dark:bg-slate-800 rounded-2xl shadow-lg hover:shadow-xl transition-all duration-300 overflow-hidden group h-full flex flex-col"
     >
       {/* Image */}
-      <div className="relative overflow-hidden h-40 sm:h-44">
+      <div className={`relative overflow-hidden h-40 sm:h-44 ${project.bgColor || 'bg-white'}`}>
         <motion.img 
           whileHover={{ scale: 1.05 }}
           transition={{ duration: 0.4 }}
           src={project.image} 
           alt={project.title}
-          className="w-full h-full object-cover"
+          className="w-full h-full object-contain"
         />
         
         {/* Gradient Overlay */}

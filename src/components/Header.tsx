@@ -169,7 +169,7 @@ const Header: React.FC = () => {
               animate={{ opacity: 1, height: 'auto' }}
               exit={{ opacity: 0, height: 0 }}
               transition={{ duration: 0.3 }}
-              className="md:hidden mt-4 py-4 border-t border-slate-200 dark:border-slate-700"
+              className="md:hidden mt-4 py-4 border-t border-slate-200 dark:border-slate-700 bg-white/95 dark:bg-slate-900/95 backdrop-blur-lg shadow-xl rounded-2xl"
             >
               <div className="flex flex-col space-y-3">
                 {navItems.map((item, index) => (
