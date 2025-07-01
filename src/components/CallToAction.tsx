@@ -1,7 +1,7 @@
 import React from 'react';
 import { ArrowRight, MessageCircle, Download } from 'lucide-react';
 import { motion } from 'framer-motion';
-import Cv from '/assets/monCv.pdf';
+
 
 const CallToAction: React.FC = () => {
   // Animation variants
@@ -79,7 +79,7 @@ const CallToAction: React.FC = () => {
             </a>
             
             <a
-              href={Cv}
+              href="/assets/monCv.pdf" 
               download
               className="inline-flex items-center space-x-3 px-8 py-4 border-2 border-white text-white hover:bg-white hover:text-blue-800 font-semibold rounded-lg transition-all duration-200"
             >
