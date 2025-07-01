@@ -34,10 +34,11 @@ const Contact: React.FC = () => {
         setSubmitStatus('success');
         setFormData({ name: '', email: '', subject: '', message: '' });
         
-        // Redirection vers la page de succès après 2 secondes
+        // La redirection a été supprimée pour améliorer l'expérience utilisateur.
+        // Le message de succès est déjà affiché dans le composant.
         setTimeout(() => {
-          window.location.href = '/success.html';
-        }, 2000);
+          setSubmitStatus('idle');
+        }, 5000); // Cache le message de succès après 5 secondes
       } else {
         throw new Error('Erreur lors de l\'envoi');
       }
