@@ -19,10 +19,7 @@ const Contact: React.FC = () => {
     setSubmitStatus('idle');
 
     try {
-      // Netlify Forms gère automatiquement l'envoi
-      // Le formulaire sera traité par Netlify lors du déploiement
-      const form = e.target as HTMLFormElement;
-      
+   
       // Envoi via fetch pour une meilleure UX
       const response = await fetch('/', {
         method: 'POST',
@@ -87,6 +84,13 @@ const Contact: React.FC = () => {
 
   return (
     <div className="pt-20 min-h-screen bg-gradient-to-br from-slate-50 to-blue-50 dark:from-slate-900 dark:to-slate-800 relative overflow-hidden">
+      {/* Formulaire caché pour Netlify Forms */}
+      <form name="contact" data-netlify="true" hidden>
+        <input type="text" name="name" />
+        <input type="email" name="email" />
+        <input type="text" name="subject" />
+        <textarea name="message"></textarea>
+      </form>
       {/* Animated Background Elements */}
       <div className="absolute inset-0 overflow-hidden">
         {/* Particules flottantes */}

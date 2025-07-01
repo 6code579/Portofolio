@@ -1,12 +1,12 @@
 import React from 'react';
-import { Github, Linkedin, Twitter, Mail, MapPin, Phone } from 'lucide-react';
+import { Github, Linkedin, Facebook, Mail, MapPin, Phone } from 'lucide-react';
 import { motion } from 'framer-motion';
 
 const Footer: React.FC = () => {
   const socialLinks = [
     {
       name: 'GitHub',
-      url: 'https://github.com/francisco-mouanda',
+      url: 'https://github.com/6code579',
       icon: Github,
       color: 'hover:text-gray-400'
     },
@@ -17,9 +17,9 @@ const Footer: React.FC = () => {
       color: 'hover:text-blue-400'
     },
     {
-      name: 'Twitter',
-      url: 'https://twitter.com/francisco_mouanda',
-      icon: Twitter,
+      name: 'Facebook',
+      url: 'https://web.facebook.com/profile.php?id=61574184786834',
+      icon: Facebook,
       color: 'hover:text-blue-400'
     },
     {

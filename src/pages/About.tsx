@@ -43,7 +43,7 @@ const About: React.FC = () => {
       period: '2022 - 2023',
       title: 'Baccalauréat Professionnel',
       school: 'Lycée Professionnel L.W.S',
-      description: 'Formation en maintenance informatique et réseaux. Premiers contacts avec la programmation et les systèmes informatiques.'
+      description: 'Formation scientifique et technique axée sur les disciplines industrielles telles que les mathématiques, la physique appliquée, la mécanique et l’électrotechnique. Elle développe des compétences solides en analyse, en raisonnement logique et en résolution de problèmes techniques.'
     }
   ];
 

@@ -1,6 +1,7 @@
 import React from 'react';
 import { ArrowRight, MessageCircle, Download } from 'lucide-react';
 import { motion } from 'framer-motion';
+import Cv from '/assets/monCv.pdf';
 
 const CallToAction: React.FC = () => {
   // Animation variants
@@ -77,19 +78,23 @@ const CallToAction: React.FC = () => {
               <ArrowRight className="w-5 h-5" />
             </a>
             
-            <button className="inline-flex items-center space-x-3 px-8 py-4 border-2 border-white text-white hover:bg-white hover:text-blue-800 font-semibold rounded-lg transition-all duration-200">
+            <a
+              href={Cv}
+              download
+              className="inline-flex items-center space-x-3 px-8 py-4 border-2 border-white text-white hover:bg-white hover:text-blue-800 font-semibold rounded-lg transition-all duration-200"
+            >
               <Download className="w-5 h-5" />
               <span>Télécharger mon CV</span>
-            </button>
+            </a>
           </motion.div>
 
           <motion.div variants={itemVariants} className="grid grid-cols-1 md:grid-cols-3 gap-8 text-center">
             <div className="space-y-2">
-              <div className="text-3xl font-bold text-green-400">2+</div>
+              <div className="text-3xl font-bold text-green-400">3+</div>
               <div className="text-blue-100">Années d'expérience</div>
             </div>
             <div className="space-y-2">
-              <div className="text-3xl font-bold text-green-400">15+</div>
+              <div className="text-3xl font-bold text-green-400">20+</div>
               <div className="text-blue-100">Projets réalisés</div>
             </div>
             <div className="space-y-2">
