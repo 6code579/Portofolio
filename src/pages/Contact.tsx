@@ -85,12 +85,14 @@ const Contact: React.FC = () => {
 
   return (
     <div className="pt-20 min-h-screen bg-gradient-to-br from-slate-50 to-blue-50 dark:from-slate-900 dark:to-slate-800 relative overflow-hidden">
-      {/* Formulaire caché pour Netlify Forms */}
+      {/* Formulaire caché pour Netlify Forms (permet la détection même en SPA) */}
       <form name="contact" data-netlify="true" hidden>
         <input type="text" name="name" />
         <input type="email" name="email" />
         <input type="text" name="subject" />
         <textarea name="message"></textarea>
+        {/* Champ honeypot pour Netlify */}
+        <input type="text" name="bot-field" />
       </form>
       {/* Animated Background Elements */}
       <div className="absolute inset-0 overflow-hidden">
@@ -467,10 +469,11 @@ const Contact: React.FC = () => {
                 onSubmit={handleSubmit} 
                 className="space-y-4 sm:space-y-6"
               >
-                {/* Netlify Forms - Champs cachés requis */}
+                {/* Champs cachés requis pour Netlify Forms */}
                 <input type="hidden" name="form-name" value="contact" />
-                <div className="hidden">
-                  <input name="bot-field" />
+                {/* Champ honeypot visible pour Netlify Forms */}
+                <div style={{ display: 'none' }}>
+                  <label>Ne pas remplir ce champ : <input name="bot-field" /></label>
                 </div>
 
                 <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 sm:gap-6">
