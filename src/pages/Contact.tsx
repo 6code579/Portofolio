@@ -85,15 +85,6 @@ const Contact: React.FC = () => {
 
   return (
     <div className="pt-20 min-h-screen bg-gradient-to-br from-slate-50 to-blue-50 dark:from-slate-900 dark:to-slate-800 relative overflow-hidden">
-      {/* Formulaire caché pour Netlify Forms (permet la détection même en SPA) */}
-      <form name="contact" data-netlify="true" hidden>
-        <input type="text" name="name" />
-        <input type="email" name="email" />
-        <input type="text" name="subject" />
-        <textarea name="message"></textarea>
-        <input type="text" name="bot-field" />
-        <input type="hidden" name="redirect" value="/success" />
-      </form>
       {/* Animated Background Elements */}
       <div className="absolute inset-0 overflow-hidden">
         {/* Particules flottantes */}
@@ -462,26 +453,13 @@ const Contact: React.FC = () => {
               )}
 
               <form 
-                name="contact" 
-                method="POST" 
-                data-netlify="true" 
-                data-netlify-honeypot="bot-field"
-                onSubmit={handleSubmit} 
+                action="https://formspree.io/f/xjkrldwl"
+                method="POST"
+                onSubmit={handleSubmit}
                 className="space-y-4 sm:space-y-6"
               >
-                {/* Champs cachés requis pour Netlify Forms */}
-                <input type="hidden" name="form-name" value="contact" />
-                <input type="hidden" name="redirect" value="/success" />
-                {/* Champ honeypot visible pour Netlify Forms */}
-                <div style={{ display: 'none' }}>
-                  <label>Ne pas remplir ce champ : <input name="bot-field" /></label>
-                </div>
-
                 <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 sm:gap-6">
-                  <motion.div
-                    whileHover={{ scale: 1.02 }}
-                    whileFocus={{ scale: 1.02 }}
-                  >
+                  <motion.div whileHover={{ scale: 1.02 }} whileFocus={{ scale: 1.02 }}>
                     <label htmlFor="name" className="block text-sm font-medium text-slate-700 dark:text-slate-300 mb-2">
                       Nom complet *
                     </label>
@@ -496,11 +474,7 @@ const Contact: React.FC = () => {
                       placeholder="Votre nom"
                     />
                   </motion.div>
-
-                  <motion.div
-                    whileHover={{ scale: 1.02 }}
-                    whileFocus={{ scale: 1.02 }}
-                  >
+                  <motion.div whileHover={{ scale: 1.02 }} whileFocus={{ scale: 1.02 }}>
                     <label htmlFor="email" className="block text-sm font-medium text-slate-700 dark:text-slate-300 mb-2">
                       Email *
                     </label>
@@ -516,11 +490,7 @@ const Contact: React.FC = () => {
                     />
                   </motion.div>
                 </div>
-
-                <motion.div
-                  whileHover={{ scale: 1.01 }}
-                  whileFocus={{ scale: 1.01 }}
-                >
+                <motion.div whileHover={{ scale: 1.01 }} whileFocus={{ scale: 1.01 }}>
                   <label htmlFor="subject" className="block text-sm font-medium text-slate-700 dark:text-slate-300 mb-2">
                     Sujet *
                   </label>
@@ -535,11 +505,7 @@ const Contact: React.FC = () => {
                     placeholder="Objet de votre message"
                   />
                 </motion.div>
-
-                <motion.div
-                  whileHover={{ scale: 1.01 }}
-                  whileFocus={{ scale: 1.01 }}
-                >
+                <motion.div whileHover={{ scale: 1.01 }} whileFocus={{ scale: 1.01 }}>
                   <label htmlFor="message" className="block text-sm font-medium text-slate-700 dark:text-slate-300 mb-2">
                     Message *
                   </label>
@@ -554,7 +520,6 @@ const Contact: React.FC = () => {
                     placeholder="Décrivez votre projet ou votre demande en quelques mots..."
                   />
                 </motion.div>
-
                 <motion.button
                   whileHover={{ scale: 1.05, y: -2 }}
                   whileTap={{ scale: 0.95 }}
@@ -578,7 +543,6 @@ const Contact: React.FC = () => {
                     </>
                   )}
                 </motion.button>
-
                 <p className="text-xs sm:text-sm text-slate-500 dark:text-slate-400">
                   * Champs obligatoires. Je m'engage à répondre dans les 24h.
                 </p>
