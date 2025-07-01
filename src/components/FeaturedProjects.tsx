@@ -17,7 +17,8 @@ const FeaturedProjects: React.FC = () => {
       githubUrl: 'https://github.com/francisco-mouanda/edusco-platform',
       liveUrl: 'https://edusco-demo.herokuapp.com',
       featured: true,
-      date: 'Avril 2025'
+      date: 'Avril 2025',
+      bgColor: 'bg-indigo-100'
     },
     {
       id: 2,
@@ -28,7 +29,8 @@ const FeaturedProjects: React.FC = () => {
       githubUrl: 'https://github.com/francisco-mouanda/laravel-ecommerce',
       liveUrl: 'https://ecommerce-demo.vercel.app',
       featured: true,
-      date: 'Decembre 2024'
+      date: 'Decembre 2024',
+      bgColor: 'bg-amber-100'
     },
     {
       id: 3,
@@ -39,7 +41,8 @@ const FeaturedProjects: React.FC = () => {
       githubUrl: 'https://github.com/francisco-mouanda/fastapi-mobile-api',
       liveUrl: 'https://api-docs.swagger.io',
       featured: true,
-      date: 'Janvier 2025'
+      date: 'Janvier 2025',
+      bgColor: 'bg-emerald-100'
     }
   ];
 

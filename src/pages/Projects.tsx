@@ -55,7 +55,7 @@ const Projects: React.FC = () => {
       featured: true,
       category: 'Web App',
       date: 'Avril 2025',
-      bgColor: 'bg-blue-50'
+      bgColor: 'bg-indigo-100'
     },
     {
       id: 2,
@@ -68,7 +68,7 @@ const Projects: React.FC = () => {
       featured: true,
       category: 'E-commerce',
       date: 'Decembre 2024',
-      bgColor: 'bg-pink-50'
+      bgColor: 'bg-amber-100'
     },
     {
       id: 3,
@@ -81,7 +81,7 @@ const Projects: React.FC = () => {
       featured: true,
       category: 'API',
       date: 'Janvier 2025',
-      bgColor: 'bg-green-50'
+      bgColor: 'bg-emerald-100'
     },
     {
       id: 4,
@@ -93,7 +93,7 @@ const Projects: React.FC = () => {
       liveUrl: 'https://francisco-mouanda.dev',
       category: 'Frontend',
       date: 'Juin 2025',
-      bgColor: 'bg-cyan-50'
+      bgColor: 'bg-violet-100'
     },
     {
       id: 5,
@@ -105,7 +105,7 @@ const Projects: React.FC = () => {
       liveUrl: 'https://blog-demo.herokuapp.com',
       category: 'CMS',
       date: 'Août 2024',
-      bgColor: 'bg-yellow-50'
+      bgColor: 'bg-cyan-100'
     },
     {
       id: 6,
@@ -116,7 +116,7 @@ const Projects: React.FC = () => {
       githubUrl: 'https://github.com/francisco-mouanda/finance-tracker-app',
       category: 'Mobile',
       date: 'Septembre 2024',
-      bgColor: 'bg-emerald-50'
+      bgColor: 'bg-pink-100'
     },
     {
       id: 7,
@@ -128,7 +128,7 @@ const Projects: React.FC = () => {
       liveUrl: 'https://weather-app-demo.netlify.app',
       category: 'Web App',
       date: 'Fevrier 2025',
-      bgColor: 'bg-indigo-50'
+      bgColor: 'bg-sky-100'
     },
     {
       id: 8,
@@ -140,7 +140,7 @@ const Projects: React.FC = () => {
       liveUrl: 'https://task-manager-demo.netlify.app',
       category: 'Web App',
       date: 'Octobre 2024',
-      bgColor: 'bg-purple-50'
+      bgColor: 'bg-lime-100'
     },
     {
       id: 9,
@@ -152,7 +152,7 @@ const Projects: React.FC = () => {
       liveUrl: 'https://calculator-demo.netlify.app',
       category: 'Frontend',
       date: 'Juillet 2024',
-      bgColor: 'bg-orange-50'
+      bgColor: 'bg-indigo-100'
     },
     {
       id: 10,
@@ -164,7 +164,7 @@ const Projects: React.FC = () => {
       liveUrl: 'https://edconnect-demo.netlify.app',
       category: 'Web App',
       date: 'Mars 2025',
-      bgColor: 'bg-lime-50'
+      bgColor: 'bg-blue-100'
     }
   ];
 
