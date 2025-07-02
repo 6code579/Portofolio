@@ -1,6 +1,7 @@
 import React from 'react';
 import { ArrowRight, MessageCircle, Download } from 'lucide-react';
 import { motion } from 'framer-motion';
+import { Link } from 'react-router-dom';
 
 
 const CallToAction: React.FC = () => {
@@ -69,14 +70,14 @@ const CallToAction: React.FC = () => {
           </motion.p>
 
           <motion.div variants={buttonVariants} className="flex flex-col sm:flex-row gap-6 justify-center items-center mb-12">
-            <a 
-              href="/contact" 
+            <Link 
+              to="/contact" 
               className="inline-flex items-center space-x-3 px-8 py-4 bg-green-500 hover:bg-green-400 text-white font-semibold rounded-lg shadow-lg hover:shadow-xl transform hover:-translate-y-1 transition-all duration-200"
             >
               <MessageCircle className="w-5 h-5" />
               <span>Discutons de votre projet</span>
               <ArrowRight className="w-5 h-5" />
-            </a>
+            </Link>
             
             <a
               href="/monCv.pdf" 
