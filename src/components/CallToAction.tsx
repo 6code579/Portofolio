@@ -80,8 +80,8 @@ const CallToAction: React.FC = () => {
             </Link>
             
             <a
-              href="/monCv.pdf" 
-              download
+              href="/franciscocv.pdf" 
+            
               className="inline-flex items-center space-x-3 px-8 py-4 border-2 border-white text-white hover:bg-white hover:text-blue-800 font-semibold rounded-lg transition-all duration-200"
             >
               <Download className="w-5 h-5" />
