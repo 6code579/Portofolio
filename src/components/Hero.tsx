@@ -385,17 +385,17 @@ const Hero: React.FC = () => {
             variants={itemVariants}
             className="flex flex-col sm:flex-row gap-6 justify-center items-center mb-12"
           >
-            <motion.button
+            <motion.a
               whileHover={{ scale: 1.05, y: -2 }}
               whileTap={{ scale: 0.95 }}
+              href='/franciscocv.pdf'
+              download
               className="px-8 py-4 bg-gradient-to-r from-blue-600 to-purple-600 hover:from-blue-700 hover:to-purple-700 text-white font-semibold rounded-xl shadow-lg hover:shadow-xl transition-all duration-300 flex items-center space-x-2"
             >
-              <a href='public/franciscocv.pdf'  className="flex items-center space-x-2" download>
-                <Download className="w-5 h-5" />
-                <span>Télécharger mon CV</span>
-              </a>
-            </motion.button>
-            <a href="/franciscocv.pdf" download>Télécharger mon CV</a>
+              <Download className="w-5 h-5" />
+              <span>Télécharger mon CV</span>
+            </motion.a>
+          
 
             <motion.a
               whileHover={{ scale: 1.05, y: -2 }}
