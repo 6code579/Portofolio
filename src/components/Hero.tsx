@@ -2,6 +2,7 @@ import React from 'react';
 import { motion } from 'framer-motion';
 import { ArrowDown, Download, Github, Linkedin, Facebook, Sparkles } from 'lucide-react';
 import Portrait from '../images/portrait.png'
+import { Link } from 'react-router-dom';
 
 const Hero: React.FC = () => {
   const scrollToNext = () => {
@@ -402,7 +403,10 @@ const Hero: React.FC = () => {
               href="/contact" 
               className="px-8 py-4 border-2 border-blue-600 dark:border-blue-400 text-blue-600 dark:text-blue-400 hover:bg-blue-600 hover:text-white dark:hover:bg-blue-400 dark:hover:text-slate-900 font-semibold rounded-xl transition-all duration-300 flex items-center space-x-2"
             >
-              <span>Me contacter</span>
+              <Link   to="/contact" > <span>Me contacter</span></Link>
+             
+              
+              
             </motion.a>
           </motion.div>
 
