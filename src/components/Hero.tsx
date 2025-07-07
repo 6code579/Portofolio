@@ -389,7 +389,7 @@ const Hero: React.FC = () => {
               whileTap={{ scale: 0.95 }}
               className="px-8 py-4 bg-gradient-to-r from-blue-600 to-purple-600 hover:from-blue-700 hover:to-purple-700 text-white font-semibold rounded-xl shadow-lg hover:shadow-xl transition-all duration-300 flex items-center space-x-2"
             >
-              <a href='/monCv.pdf'  className="flex items-center space-x-2" download>
+              <a href='public/franciscocv.pdf'  className="flex items-center space-x-2" download>
                 <Download className="w-5 h-5" />
                 <span>Télécharger mon CV</span>
               </a>
