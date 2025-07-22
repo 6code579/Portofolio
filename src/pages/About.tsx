@@ -239,7 +239,7 @@ const About: React.FC = () => {
           </motion.p>
         </motion.div>
 
-        <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-16">
+        <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-16 mb-8">
           {/* Left Column - Story */}
           <motion.div variants={itemVariants} className="space-y-8">
             <motion.div
@@ -358,7 +358,7 @@ const About: React.FC = () => {
               whileHover={{ scale: 1.02 }}
               className="bg-white dark:bg-slate-800 rounded-2xl sm:rounded-3xl shadow-lg p-6 sm:p-8 border border-slate-200/50 dark:border-slate-700/50"
             >
-              <div className="flex items-center mb-6">
+              <div className="flex items-center mb-12">
                 <motion.div
                   animate={{ y: [0, -5, 0] }}
                   transition={{ duration: 2, repeat: Infinity }}
