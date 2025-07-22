@@ -79,7 +79,7 @@ const Hero: React.FC = () => {
           }}
           className="absolute top-10 left-10 w-20 h-20 bg-gradient-to-br from-blue-500/10 to-purple-500/10 dark:from-blue-400/10 dark:to-purple-400/10 rounded-full blur-sm"
         />
-        
+
         <motion.div
           animate={{
             x: [0, -50, 0],
@@ -94,7 +94,7 @@ const Hero: React.FC = () => {
           }}
           className="absolute top-40 right-20 w-16 h-16 bg-gradient-to-br from-green-500/10 to-blue-500/10 dark:from-green-400/10 dark:to-blue-400/10 rounded-full blur-sm"
         />
-        
+
         <motion.div
           animate={{
             x: [0, 80, 0],
@@ -331,9 +331,9 @@ const Hero: React.FC = () => {
                 className="absolute -inset-4 bg-gradient-to-r from-blue-600 via-purple-600 to-green-600 rounded-full opacity-20 blur-lg"
               />
               <div className="relative w-48 h-49 mt-4 rounded-full overflow-hidden border-4 border-white dark:border-slate-700 shadow-2xl bg-gradient-to-br from-blue-100 to-green-100 dark:from-slate-700 dark:to-slate-600">
-                <img 
-                  src= {Portrait}
-                  alt="Portrait professionnel" 
+                <img
+                  src={Portrait}
+                  alt="Portrait professionnel"
                   className="w-full h-full object-cover"
                 />
               </div>
@@ -354,7 +354,7 @@ const Hero: React.FC = () => {
           >
             Développeur
             <motion.span
-              animate={{ 
+              animate={{
                 backgroundPosition: ["0% 50%", "100% 50%", "0% 50%"]
               }}
               transition={{ duration: 3, repeat: Infinity }}
@@ -388,25 +388,25 @@ const Hero: React.FC = () => {
             <motion.a
               whileHover={{ scale: 1.05, y: -2 }}
               whileTap={{ scale: 0.95 }}
-              href='/Francisco.pdf'
+              href="/cv.pdf"  
               download
               className="px-8 py-4 bg-gradient-to-r from-blue-600 to-purple-600 hover:from-blue-700 hover:to-purple-700 text-white font-semibold rounded-xl shadow-lg hover:shadow-xl transition-all duration-300 flex items-center space-x-2"
             >
               <Download className="w-5 h-5" />
               <span>Télécharger mon CV</span>
             </motion.a>
-          
+
 
             <motion.a
               whileHover={{ scale: 1.05, y: -2 }}
               whileTap={{ scale: 0.95 }}
-            
+
               className="px-8 py-4 border-2 border-blue-600 dark:border-blue-400 text-blue-600 dark:text-blue-400 hover:bg-blue-600 hover:text-white dark:hover:bg-blue-400 dark:hover:text-slate-900 font-semibold rounded-xl transition-all duration-300 flex items-center space-x-2"
             >
-              <Link   to="/contact" > <span>Me contacter</span></Link>
-             
-              
-              
+              <Link to="/contact" > <span>Me contacter</span></Link>
+
+
+
             </motion.a>
           </motion.div>
 
@@ -425,7 +425,7 @@ const Hero: React.FC = () => {
                 whileHover={{ scale: 1.2, y: -5 }}
                 whileTap={{ scale: 0.9 }}
                 href={social.href}
-                target="_blank" 
+                target="_blank"
                 rel="noopener noreferrer"
                 className={`p-4 bg-white dark:bg-slate-800 rounded-2xl shadow-lg hover:shadow-xl transition-all duration-300 text-slate-600 dark:text-slate-300 ${social.color}`}
               >
