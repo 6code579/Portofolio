@@ -10,7 +10,7 @@ const Skills: React.FC = () => {
       color: 'text-blue-600',
       bgColor: 'bg-blue-50',
       borderColor: 'border-blue-200',
-      skills: ['HTML5', 'CSS3', 'JavaScript', 'React', 'TypeScript', 'Tailwind CSS', 'Bootstrap', 'Material UI']
+      skills: ['HTML5', 'CSS3', 'JavaScript', 'React','Next.Js', 'TypeScript', 'Tailwind CSS', 'Bootstrap', 'Material UI']
     },
     {
       title: 'Backend',
@@ -18,7 +18,7 @@ const Skills: React.FC = () => {
       color: 'text-green-600',
       bgColor: 'bg-green-50',
       borderColor: 'border-green-200',
-      skills: ['Python', 'Django', 'Laravel', 'PHP', 'FastAPI', 'Node.js', 'RESTful APIs']
+      skills: ['Python', 'Django', 'Laravel', 'PHP', 'FastAPI', 'RESTful APIs']
     },
     {
       title: 'Database',
@@ -26,7 +26,7 @@ const Skills: React.FC = () => {
       color: 'text-purple-600',
       bgColor: 'bg-purple-50',
       borderColor: 'border-purple-200',
-      skills: ['PostgreSQL', 'MySQL', 'MongoDB', 'SQLite', 'Redis', 'Firebase', 'Database Design']
+      skills: ['MySQL', 'MongoDB', 'SQLite', 'Firebase', 'Database Design']
     },
     {
       title: 'Tools & DevOps',
@@ -34,7 +34,7 @@ const Skills: React.FC = () => {
       color: 'text-orange-600',
       bgColor: 'bg-orange-50',
       borderColor: 'border-orange-200',
-      skills: ['Git', 'Docker', 'AWS', 'CI/CD', 'Nginx', 'Linux', 'VS Code']
+      skills: ['Git', 'Docker', 'Nginx', 'Linux', 'VS Code']
     }
   ];
 
@@ -198,8 +198,8 @@ const Skills: React.FC = () => {
               {[
                 { skill: 'Frontend', level: 85, color: 'bg-blue-500' },
                 { skill: 'Backend', level: 90, color: 'bg-green-500' },
-                { skill: 'Database', level: 80, color: 'bg-purple-500' },
-                { skill: 'DevOps', level: 75, color: 'bg-orange-500' }
+                { skill: 'Database', level: 70, color: 'bg-purple-500' },
+                { skill: 'DevOps', level: 60, color: 'bg-orange-500' }
               ].map((item, index) => (
                 <motion.div 
                   key={item.skill} 

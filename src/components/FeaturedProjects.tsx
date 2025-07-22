@@ -25,7 +25,7 @@ const FeaturedProjects: React.FC = () => {
       title: 'E-commerce Laravel',
       description: 'Boutique en ligne complète avec catalogue de produits, panier d\'achat, système de paiement Stripe et interface d\'administration. Gestion des commandes et des utilisateurs.',
       image: ecommerce,
-      technologies: ['Laravel', 'PHP', 'MySQL', 'Vue.js', 'Stripe', 'Tailwind CSS'],
+      technologies: ['Laravel', 'PHP', 'MySQL', 'Tailwind CSS'],
       githubUrl: 'https://github.com/francisco-mouanda/laravel-ecommerce',
       liveUrl: 'https://ecommerce-demo.vercel.app',
       featured: true,
@@ -40,7 +40,7 @@ const FeaturedProjects: React.FC = () => {
       technologies: ['FastAPI', 'Python', 'MongoDB', 'JWT', 'Docker', 'PostgreSQL'],
       githubUrl: 'https://github.com/francisco-mouanda/fastapi-mobile-api',
       liveUrl: 'https://api-docs.swagger.io',
-      featured: true,
+      featured: false,
       date: 'Janvier 2025',
       bgColor: 'bg-emerald-100'
     }
