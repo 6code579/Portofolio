@@ -1,6 +1,5 @@
 import React from 'react';
 import { motion } from 'framer-motion';
-import { Code, Loader } from 'lucide-react';
 
 const LoadingScreen: React.FC = () => {
   return (
@@ -10,44 +9,26 @@ const LoadingScreen: React.FC = () => {
       transition={{ duration: 0.5 }}
       className="fixed inset-0 z-50 flex items-center justify-center bg-white dark:bg-slate-900"
     >
-      <div className="text-center">
-        <motion.div
-          animate={{ 
-            rotate: 360,
-            scale: [1, 1.2, 1]
-          }}
-          transition={{ 
-            rotate: { duration: 2, repeat: Infinity, ease: "linear" },
-            scale: { duration: 1, repeat: Infinity, ease: "easeInOut" }
-          }}
-          className="w-20 h-20 mx-auto mb-6 p-4 bg-gradient-to-br from-blue-600 to-purple-600 rounded-2xl"
-        >
-          <Code className="w-full h-full text-white" />
-        </motion.div>
-        
+      <div className="flex flex-col items-center gap-6">
+        {/* Triple Spinner concentrique */}
+        <div className="relative w-24 h-24">
+          {/* Cercle externe */}
+          <div className="absolute inset-0 rounded-full border-4 border-transparent border-t-blue-700 animate-spin"></div>
+          {/* Cercle intermédiaire */}
+          <div className="absolute inset-2 rounded-full border-4 border-transparent border-t-purple-500 animate-spin-slow"></div>
+          {/* Cercle interne */}
+          <div className="absolute inset-4 rounded-full border-4 border-transparent border-t-pink-400 animate-spin-reverse-slower"></div>
+        </div>
+
+        {/* Texte animé */}
         <motion.h2
-          initial={{ opacity: 0, y: 20 }}
+          initial={{ opacity: 0, y: 10 }}
           animate={{ opacity: 1, y: 0 }}
-          transition={{ delay: 0.2 }}
-          className="text-2xl font-bold text-slate-800 dark:text-white mb-4"
+          transition={{ delay: 0.3 }}
+          className="text-xl font-semibold text-gray-800 dark:text-white"
         >
-          Chargement...
+          Chargement en cours...
         </motion.h2>
-        
-        <motion.div
-          initial={{ width: 0 }}
-          animate={{ width: "100%" }}
-          transition={{ duration: 1.5, ease: "easeInOut" }}
-          className="w-48 h-1 bg-gradient-to-r from-blue-600 to-purple-600 rounded-full mx-auto"
-        />
-        
-        <motion.div
-          animate={{ rotate: 360 }}
-          transition={{ duration: 1, repeat: Infinity, ease: "linear" }}
-          className="mt-4"
-        >
-          <Loader className="w-6 h-6 text-blue-600 mx-auto" />
-        </motion.div>
       </div>
     </motion.div>
   );
