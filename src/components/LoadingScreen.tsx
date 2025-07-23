@@ -20,15 +20,8 @@ const LoadingScreen: React.FC = () => {
           <div className="absolute inset-4 rounded-full border-4 border-transparent border-t-pink-400 animate-spin-reverse-slower"></div>
         </div>
 
-        {/* Texte animé */}
-        <motion.h2
-          initial={{ opacity: 0, y: 10 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ delay: 0.3 }}
-          className="text-xl font-semibold text-gray-800 dark:text-white"
-        >
-          Chargement en cours...
-        </motion.h2>
+      
+        
       </div>
     </motion.div>
   );
