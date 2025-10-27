@@ -360,7 +360,7 @@ const Hero: React.FC = () => {
               transition={{ duration: 3, repeat: Infinity }}
               className="block text-transparent bg-clip-text bg-gradient-to-r from-blue-600 via-purple-600 to-green-600 bg-300% mt-2"
             >
-              Web
+              Fullstack
             </motion.span>
           </motion.h1>
 

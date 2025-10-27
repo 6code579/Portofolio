@@ -46,13 +46,13 @@ const Header: React.FC = () => {
               whileTap={{ scale: 0.95 }}
               className="p-2 bg-gradient-to-br from-blue-600 to-purple-600 rounded-xl group-hover:shadow-lg transition-all duration-300"
             >
-              <Code className="w-6 h-6 text-white" />
+              <span className='text-white font-bold md:text-2xl '>Francisco</span>
             </motion.div>
             <motion.span
               whileHover={{ scale: 1.05 }}
-              className="text-xl font-bold bg-gradient-to-r from-blue-600 to-purple-600 bg-clip-text text-transparent"
+              className="md:text-2xl font-bold bg-gradient-to-r from-blue-600 to-purple-600 bg-clip-text text-transparent"
             >
-              Francisco Mouanda
+            Mouanda
             </motion.span>
           </Link>
 
