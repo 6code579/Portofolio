@@ -1,7 +1,7 @@
 import React from 'react';
 import { motion } from 'framer-motion';
 import { ArrowDown, Download, Github, Linkedin, Facebook, Sparkles } from 'lucide-react';
-import Portrait from '../images/portrait.png'
+import Portrait from '../images/profil.jpeg'
 import { Link } from 'react-router-dom';
 
 const Hero: React.FC = () => {
