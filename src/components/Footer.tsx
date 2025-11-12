@@ -1,6 +1,7 @@
 import React from 'react';
 import { Github, Linkedin, Facebook, Mail, MapPin, Phone } from 'lucide-react';
 import { motion } from 'framer-motion';
+import { Link } from 'react-router-dom';
 
 const Footer: React.FC = () => {
   const socialLinks = [
@@ -66,7 +67,21 @@ const Footer: React.FC = () => {
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
           {/* About */}
           <motion.div variants={itemVariants} className="space-y-4">
-            <h3 className="text-lg font-semibold">Francisco Mouanda</h3>
+            <Link to="/" className="flex items-center space-x-2 group">
+              <motion.div
+                whileHover={{ scale: 1.1, rotate: 5 }}
+                whileTap={{ scale: 0.95 }}
+                className="p-2 bg-gradient-to-br from-blue-600 to-purple-600 rounded-xl group-hover:shadow-lg transition-all duration-300"
+              >
+                <span className='text-white font-bold md:text-2xl '>Francisco</span>
+              </motion.div>
+              <motion.span
+                whileHover={{ scale: 1.05 }}
+                className="md:text-2xl font-bold bg-gradient-to-r from-blue-600 to-purple-600 bg-clip-text text-transparent"
+              >
+                Mouanda
+              </motion.span>
+            </Link>
             <p className="text-slate-400 leading-relaxed">
               Développeur web passionné par la création de solutions web modernes et performantes.
             </p>
@@ -130,7 +145,7 @@ const Footer: React.FC = () => {
           </motion.div>
         </div>
 
-        <motion.div 
+        <motion.div
           variants={itemVariants}
           className="border-t border-slate-800 mt-8 pt-8 text-center text-slate-400"
         >
