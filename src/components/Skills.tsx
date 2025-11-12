@@ -10,7 +10,7 @@ const Skills: React.FC = () => {
       color: 'text-blue-600',
       bgColor: 'bg-blue-50',
       borderColor: 'border-blue-200',
-      skills: ['HTML5', 'CSS3', 'JavaScript', 'React','Next.Js', 'TypeScript', 'Tailwind CSS', 'Bootstrap', 'Material UI']
+      skills: ['HTML5', 'CSS3', 'JavaScript', 'React', 'TypeScript', 'Tailwind CSS', 'Bootstrap', 'Material UI']
     },
     {
       title: 'Backend',
@@ -18,7 +18,7 @@ const Skills: React.FC = () => {
       color: 'text-green-600',
       bgColor: 'bg-green-50',
       borderColor: 'border-green-200',
-      skills: ['Python', 'Django', 'Laravel', 'PHP', 'FastAPI', 'RESTful APIs']
+      skills: ['Python', 'Django', 'NodeJS', 'Express', 'FastAPI', 'RESTful APIs']
     },
     {
       title: 'Database',
@@ -26,7 +26,7 @@ const Skills: React.FC = () => {
       color: 'text-purple-600',
       bgColor: 'bg-purple-50',
       borderColor: 'border-purple-200',
-      skills: ['MySQL', 'MongoDB', 'SQLite', 'Firebase', 'Database Design']
+      skills: ['MySQL', 'MongoDB', 'SQLite', 'Firebase']
     },
     {
       title: 'Tools & DevOps',
@@ -34,7 +34,7 @@ const Skills: React.FC = () => {
       color: 'text-orange-600',
       bgColor: 'bg-orange-50',
       borderColor: 'border-orange-200',
-      skills: ['Git', 'Docker', 'Nginx', 'Linux', 'VS Code']
+      skills: ['Git', 'Docker', 'Linux', 'VS Code']
     }
   ];
 
