@@ -94,11 +94,11 @@ const CallToAction: React.FC = () => {
               <div className="text-blue-100">Années d'expérience</div>
             </div>
             <div className="space-y-2">
-              <div className="text-3xl font-bold text-green-400">20+</div>
+              <div className="text-3xl font-bold text-green-400">30+</div>
               <div className="text-blue-100">Projets réalisés</div>
             </div>
             <div className="space-y-2">
-              <div className="text-3xl font-bold text-green-400">100%</div>
+              <div className="text-3xl font-bold text-green-400">99.99%</div>
               <div className="text-blue-100">Clients satisfaits</div>
             </div>
           </motion.div>

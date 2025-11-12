@@ -196,10 +196,10 @@ const Skills: React.FC = () => {
             
             <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
               {[
-                { skill: 'Frontend', level: 85, color: 'bg-blue-500' },
-                { skill: 'Backend', level: 90, color: 'bg-green-500' },
+                { skill: 'Frontend', level: 90, color: 'bg-blue-500' },
+                { skill: 'Backend', level: 80, color: 'bg-green-500' },
                 { skill: 'Database', level: 70, color: 'bg-purple-500' },
-                { skill: 'DevOps', level: 60, color: 'bg-orange-500' }
+                { skill: 'DevOps', level: 45, color: 'bg-orange-500' }
               ].map((item, index) => (
                 <motion.div 
                   key={item.skill} 
