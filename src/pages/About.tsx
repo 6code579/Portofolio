@@ -1,13 +1,13 @@
 import React from 'react';
 import { motion } from 'framer-motion';
 import { Code, Database, Globe, Smartphone, Zap, Shield, Users, Target, Award, Clock, Heart, Lightbulb } from 'lucide-react';
-import Portrait from '../images/portrait.png'
+
 
 const About: React.FC = () => {
   const experiences = [
     {
       period: 'Mai 2025 - Présent',
-      title: 'Développeur Web',
+      title: 'Développeur Full-stack Django | React',
       company: 'Freelance',
       description: 'Développement de sites web et applications pour des clients locaux. Création de portfolios, sites vitrines et applications web simples avec HTML, CSS, JavaScript et PHP.'
     },
@@ -27,13 +27,19 @@ const About: React.FC = () => {
 
   const education = [
     {
+      period: '2025 - 2026',
+      title: 'Bachelor Européen Développement App Mobile & appareils connectés',
+      school: 'EEMCI',
+      description: ''
+    },
+    {
       period: '2023 - 2025',
       title: 'BTS Développement Informatique',
       school: 'EEMCI',
       description: 'Formation en développement web et applications. Spécialisation en solutions d\'infrastructure, systèmes et réseaux. Projets pratiques en développement web.'
     },
     {
-      period: '2022 - Présent',
+      period: 'Après Bac',
       title: 'Développeur Web Autodidacte',
       school: 'Parcours personnel',
       description: `Auto-formation continue en développement web full-stack, en complément de la formation suivie à l'EEMCI. Approfondissement des technologies comme Laravel, Django, React, Tailwind CSS, GitHub et le web scraping (LinkedIn, Facebook). Réalisation de projets personnels et d'expérimentation, avec une forte autonomie dans l'apprentissage, la résolution de problèmes et l'adaptation aux nouvelles technologies.`

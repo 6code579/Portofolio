@@ -1,6 +1,6 @@
 import React from 'react';
 import { motion } from 'framer-motion';
-import { ArrowDown, Download, Github, Linkedin, Facebook, Sparkles } from 'lucide-react';
+import { ArrowDown, Download, Github, Linkedin, Sparkles, Instagram } from 'lucide-react';
 import Portrait from '../images/profil.jpeg'
 import { Link } from 'react-router-dom';
 
@@ -416,9 +416,9 @@ const Hero: React.FC = () => {
             className="flex justify-center space-x-6 mb-12"
           >
             {[
-              { icon: Github, href: "https://github.com/6code579", color: "hover:text-slate-800 dark:hover:text-white" },
+              { icon: Github, href: "https://github.com/LucaneTech", color: "hover:text-slate-800 dark:hover:text-white" },
               { icon: Linkedin, href: "https://www.linkedin.com/in/franciscomouanda579", color: "hover:text-blue-600" },
-              { icon: Facebook, href: "https://web.facebook.com/profile.php?id=61574184786834", color: "hover:text-blue-600" }
+              { icon: Instagram, href: "https://www.instagram.com/lucane.tech/", color: "hover:text-blue-600" }
             ].map((social, index) => (
               <motion.a
                 key={index}

@@ -1,13 +1,13 @@
 import React from 'react';
-import { Github, Linkedin, Facebook, Mail, MapPin, Phone } from 'lucide-react';
+import { Github, Linkedin, Mail, MapPin, Phone, Instagram } from 'lucide-react';
 import { motion } from 'framer-motion';
-import { Link } from 'react-router-dom';
+
 
 const Footer: React.FC = () => {
   const socialLinks = [
     {
       name: 'GitHub',
-      url: 'https://github.com/6code579',
+      url: 'https://github.com/LucaneTech',
       icon: Github,
       color: 'hover:text-gray-400'
     },
@@ -17,17 +17,23 @@ const Footer: React.FC = () => {
       icon: Linkedin,
       color: 'hover:text-blue-400'
     },
-    {
-      name: 'Facebook',
-      url: 'https://web.facebook.com/profile.php?id=61574184786834',
-      icon: Facebook,
-      color: 'hover:text-blue-400'
+    // {
+    //   name: 'Facebook',
+    //   url: 'https://web.facebook.com/profile.php?id=61574184786834',
+    //   icon: Facebook,
+    //   color: 'hover:text-blue-400'
+    // },
+     {
+      name: 'Instagram',
+      url: 'https://www.instagram.com/lucane.tech/',
+      icon: Instagram,
+      color: 'hover:text-red-400'
     },
     {
       name: 'Email',
-      url: 'mailto:profrancisco579@gmail.com',
+      url: 'mailto:francisco@lucane.tech',
       icon: Mail,
-      color: 'hover:text-red-400'
+      color: 'hover:text-indigo-400'
     }
   ];
 
@@ -64,28 +70,8 @@ const Footer: React.FC = () => {
         viewport={{ once: true, amount: 0.3 }}
         className="container mx-auto px-6"
       >
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
-          {/* About */}
-          <motion.div variants={itemVariants} className="space-y-4">
-            <Link to="/" className="flex items-center space-x-2 group">
-              <motion.div
-                whileHover={{ scale: 1.1, rotate: 5 }}
-                whileTap={{ scale: 0.95 }}
-                className="p-2 bg-gradient-to-br from-blue-600 to-purple-600 rounded-xl group-hover:shadow-lg transition-all duration-300"
-              >
-                <span className='text-white font-bold md:text-2xl '>Francisco</span>
-              </motion.div>
-              <motion.span
-                whileHover={{ scale: 1.05 }}
-                className="md:text-2xl font-bold bg-gradient-to-r from-blue-600 to-purple-600 bg-clip-text text-transparent"
-              >
-                Mouanda
-              </motion.span>
-            </Link>
-            <p className="text-slate-400 leading-relaxed">
-              Développeur web passionné par la création de solutions web modernes et performantes.
-            </p>
-          </motion.div>
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+         
 
           {/* Contact */}
           <motion.div variants={itemVariants} className="space-y-4">
@@ -93,7 +79,7 @@ const Footer: React.FC = () => {
             <div className="space-y-2">
               <div className="flex items-center space-x-2">
                 <Mail className="w-4 h-4 text-slate-400" />
-                <span className="text-slate-400">profrancisco579@gmail.com</span>
+                <span className="text-slate-400">francisco@lucane.tech</span>
               </div>
               <div className="flex items-center space-x-2">
                 <MapPin className="w-4 h-4 text-slate-400" />

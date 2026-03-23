@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { Link, useLocation } from 'react-router-dom';
 import { motion, AnimatePresence } from 'framer-motion';
-import { Menu, X, Code, Moon, Sun } from 'lucide-react';
+import { Menu, X, Moon, Sun } from 'lucide-react';
 import { useTheme } from '../contexts/ThemeContext';
 
 const Header: React.FC = () => {
@@ -44,9 +44,9 @@ const Header: React.FC = () => {
             <motion.div
               whileHover={{ scale: 1.1, rotate: 5 }}
               whileTap={{ scale: 0.95 }}
-              className="p-2 bg-gradient-to-br from-blue-600 to-purple-600 rounded-xl group-hover:shadow-lg transition-all duration-300"
+              className="p-2 group-hover:shadow-lg transition-all duration-300"
             >
-              <span className='text-white font-bold md:text-2xl '>Francisco</span>
+              <span className='text-slate-900 dark:text-white font-bold md:text-2xl '>Francisco</span>
             </motion.div>
             <motion.span
               whileHover={{ scale: 1.05 }}

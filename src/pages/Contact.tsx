@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { motion } from 'framer-motion';
-import { Mail, Phone, MapPin, Send, Github, Linkedin, Facebook, MessageCircle, CheckCircle, AlertCircle, Clock, Globe } from 'lucide-react';
+import { Mail, Phone, MapPin, Send, Github, Linkedin, MessageCircle, CheckCircle, AlertCircle, Clock, Globe, Instagram } from 'lucide-react';
 
 const Contact: React.FC = () => {
   const [formData, setFormData] = useState({
@@ -254,8 +254,8 @@ const Contact: React.FC = () => {
                   { 
                     icon: Mail, 
                     title: "Email", 
-                    value: "profrancisco579@gmail.com", 
-                    href: "mailto:profrancisco579@gmail.com", 
+                    value: "francisco@lucane.tech", 
+                    href: "mailto:francisco@lucane.tech", 
                     color: "blue",
                     description: "Réponse rapide garantie"
                   },
@@ -329,7 +329,7 @@ const Contact: React.FC = () => {
                   { 
                     icon: Github, 
                     name: "GitHub", 
-                    href: "https://github.com/6code579", 
+                    href: "https://github.com/LucaneTech", 
                     color: "slate",
                     description: "Mes projets open source"
                   },
@@ -341,10 +341,10 @@ const Contact: React.FC = () => {
                     description: "Profil professionnel"
                   },
                   { 
-                    icon: Facebook, 
-                    name: "Facebook", 
-                    href: "https://web.facebook.com/profile.php?id=61574184786834", 
-                    color: "green",
+                    icon: Instagram, 
+                    name: "Instagram", 
+                    href: "https://www.instagram.com/lucane.tech/", 
+                    color: "red",
                     description: "Contact personnel"
                   }
                 ].map((social, index) => (
