@@ -1,10 +1,12 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { motion } from 'framer-motion';
-import { ArrowDown, Download, Github, Linkedin, Sparkles, Instagram } from 'lucide-react';
+import { ArrowDown, Download, Github, Linkedin, Sparkles, Instagram, X } from 'lucide-react';
 import Portrait from '../images/profil.jpeg'
 import { Link } from 'react-router-dom';
 
 const Hero: React.FC = () => {
+  const [isCvModalOpen, setIsCvModalOpen] = useState(false);
+
   const scrollToNext = () => {
     const nextSection = document.getElementById('featured-projects');
     nextSection?.scrollIntoView({ behavior: 'smooth' });
@@ -385,16 +387,15 @@ const Hero: React.FC = () => {
             variants={itemVariants}
             className="flex flex-col sm:flex-row gap-6 justify-center items-center mb-12"
           >
-            <motion.a
+            <motion.button
               whileHover={{ scale: 1.05, y: -2 }}
               whileTap={{ scale: 0.95 }}
-              href="/cv.pdf"  
-              download
+              onClick={() => setIsCvModalOpen(true)}
               className="px-8 py-4 bg-blue-700 hover:bg-blue-900 text-white font-semibold rounded-xl shadow-lg hover:shadow-xl transition-all duration-300 flex items-center space-x-2"
             >
               <Download className="w-5 h-5" />
               <span>Télécharger mon CV</span>
-            </motion.a>
+            </motion.button>
 
 
             <motion.a
@@ -447,6 +448,62 @@ const Hero: React.FC = () => {
           </motion.button>
         </div>
       </motion.div>
+      {isCvModalOpen && (
+        <div className="fixed inset-0 z-50 flex items-center justify-center p-4">
+          <div
+            className="absolute inset-0 bg-black/50 backdrop-blur-sm"
+            onClick={() => setIsCvModalOpen(false)}
+          />
+          <motion.div
+            initial={{ opacity: 0, scale: 0.95 }}
+            animate={{ opacity: 1, scale: 1 }}
+            exit={{ opacity: 0, scale: 0.95 }}
+            transition={{ duration: 0.2, ease: 'easeOut' }}
+            className="relative bg-white dark:bg-slate-800 rounded-md border border-slate-200 dark:border-slate-700 shadow-xl p-6 w-full max-w-sm z-10"
+          >
+            <button
+              onClick={() => setIsCvModalOpen(false)}
+              className="absolute top-3 right-3 p-1 text-slate-400 hover:text-slate-600 dark:hover:text-slate-200 transition-colors"
+            >
+              <X className="w-5 h-5" />
+            </button>
+
+            <div className="flex items-center gap-3 mb-2">
+              <div className="p-2 bg-blue-700 rounded-md">
+                <Download className="w-5 h-5 text-white" />
+              </div>
+              <h3 className="text-lg font-bold text-slate-800 dark:text-white">
+                Mon CV
+              </h3>
+            </div>
+
+            <p className="text-slate-500 dark:text-slate-400 text-sm mb-6">
+              Quelle version souhaitez-vous télécharger ?
+            </p>
+
+            <div className="flex flex-col gap-3">
+              <a
+                href="/cv.pdf"
+                download
+                onClick={() => setIsCvModalOpen(false)}
+                className="flex items-center justify-center gap-2 px-4 py-3 bg-blue-700 hover:bg-blue-800 text-white font-semibold rounded-md transition-colors duration-150"
+              >
+                <Download className="w-4 h-4" />
+                Version Simple
+              </a>
+              <a
+                href="/Cv_details.pdf"
+                download
+                onClick={() => setIsCvModalOpen(false)}
+                className="flex items-center justify-center gap-2 px-4 py-3 border border-slate-200 dark:border-slate-600 text-slate-700 dark:text-slate-200 hover:bg-slate-50 dark:hover:bg-slate-700 font-semibold rounded-md transition-colors duration-150"
+              >
+                <Download className="w-4 h-4" />
+                Version Détaillée
+              </a>
+            </div>
+          </motion.div>
+        </div>
+      )}
     </section>
   );
 };

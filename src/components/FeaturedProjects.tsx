@@ -6,34 +6,24 @@ import ProjectCard from './ProjectCard';
 
 const FeaturedProjects: React.FC = () => {
   const projects = [
-     {
+     
+    {
       id: 1,
-      title: 'Agrobusiness',
-      description: "Site vitrine de KFK Agro Business, une entreprise spécialisée dans l'agriculture et l'élevage en République Démocratique du Congo. La plateforme présente les activités et les solutions de l'entreprise à destination des professionnels et entrepreneurs du secteur agroalimentaire congolais.",
-      image: '',
-      technologies: ['React', 'TypeScript', 'Tailwind CSS', 'Vite'],
-      githubUrl: 'https://github.com/LucaneTech/agrobusiness',
-      liveUrl: 'https://www.kfkagrobusiness.com/',
+      title: 'Lucane Filter',
+      description: "Application web de filtrage et gestion de contacts développée pour optimiser les opérations des équipes de call center. L'outil permet de trier, filtrer et organiser efficacement des listes de contacts grâce à une interface simple et sécurisée, avec système d'authentification intégré pour protéger l'accès aux données.",
+      image: '#',
+      technologies: ['Full Django', 'Docker', 'Celery', 'Pandas', 'Django-tailwind', 'Pillow'],
+      githubUrl: 'https://github.com/LucaneTech/contact_filter2026',
+      // liveUrl: 'https://contact-filter.up.railway.app/',
+      videoUrl: "https://res.cloudinary.com/dvjwcal8e/video/upload/v1779128287/Demo_contactFilter_lwlnyj.mp4",
       featured: false,
-      category: 'Frontend',
-      date: 'Mai 2026',
-      bgColor: '',
+      category: 'Web App',
+      date: 'Mars 2026',
+      bgColor: 'bg-white',
     },
+   
     {
       id: 2,
-      title: 'Panval',
-      description: "Site web de Panval Consilium International, un cabinet de conseil stratégique basé au Congo. La plateforme présente leurs services de conseil en stratégie d'entreprise, de formation professionnelle et d'accompagnement personnalisé (CEP), destinés aux organisations souhaitant renforcer leurs capacités.",
-      image: '',
-      technologies: ['React', 'TypeScript', 'Tailwind CSS', 'Daisyui', 'React-i18next', 'Vite', 'EmailJS'],
-      githubUrl: 'https://github.com/LucaneTech/Panval',
-      liveUrl: 'https://panvalconsiliuminter.com/',
-      featured: false,
-      category: 'Frontend',
-      date: 'Avril 2026',
-      bgColor: '',
-    },
-    {
-      id: 3,
       title: 'Hermon',
       description: "Site web de Hermon Eximia, une plateforme de conciergerie haut de gamme proposant une gamme complète de services premium sur mesure. L'entreprise s'adresse à une clientèle exigeante en quête d'accompagnement personnalisé, alliant excellence, discrétion et qualité de service dans plusieurs domaines d'expertise.",
       image: '',
@@ -43,6 +33,19 @@ const FeaturedProjects: React.FC = () => {
       featured: false,
       category: 'Frontend',
       date: 'Avril 2026',
+      bgColor: '',
+    },
+    {
+      id: 3,
+      title: 'Agrobusiness',
+      description: "Site vitrine de KFK Agro Business, une entreprise spécialisée dans l'agriculture et l'élevage en République Démocratique du Congo. La plateforme présente les activités et les solutions de l'entreprise à destination des professionnels et entrepreneurs du secteur agroalimentaire congolais.",
+      image: '',
+      technologies: ['React', 'TypeScript', 'Tailwind CSS', 'Vite'],
+      githubUrl: 'https://github.com/LucaneTech/agrobusiness',
+      liveUrl: 'https://www.kfkagrobusiness.com/',
+      featured: false,
+      category: 'Frontend',
+      date: 'Mai 2026',
       bgColor: '',
     },
   ];

@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { motion } from 'framer-motion';
-import { Github, ExternalLink, Calendar } from 'lucide-react';
+import { Github, ExternalLink, Calendar, Play, X } from 'lucide-react';
 
 interface Project {
   id: number;
@@ -10,6 +10,7 @@ interface Project {
   technologies: string[];
   githubUrl: string;
   liveUrl?: string;
+  videoUrl?: string;
   featured?: boolean;
   date?: string;
   bgColor?: string;
@@ -21,10 +22,21 @@ interface ProjectCardProps {
   index?: number;
 }
 
+function getVideoEmbed(url: string): { type: 'iframe' | 'video'; src: string } {
+  const ytMatch = url.match(/(?:youtube\.com\/watch\?v=|youtu\.be\/)([a-zA-Z0-9_-]+)/);
+  if (ytMatch) return { type: 'iframe', src: `https://www.youtube.com/embed/${ytMatch[1]}?autoplay=1` };
+  const vimeoMatch = url.match(/vimeo\.com\/(\d+)/);
+  if (vimeoMatch) return { type: 'iframe', src: `https://player.vimeo.com/video/${vimeoMatch[1]}?autoplay=1` };
+  return { type: 'video', src: url };
+}
+
 const ProjectCard: React.FC<ProjectCardProps> = ({ project, index = 0 }) => {
   const hasLiveUrl = !!project.liveUrl && project.liveUrl !== '#';
   const hasGithub = !!project.githubUrl && project.githubUrl !== '#';
+  const hasVideo = !!project.videoUrl;
   const [iframeLoading, setIframeLoading] = useState(true);
+  const [isVideoModalOpen, setIsVideoModalOpen] = useState(false);
+  const [videoLoading, setVideoLoading] = useState(true);
 
   return (
     <motion.div
@@ -60,6 +72,16 @@ const ProjectCard: React.FC<ProjectCardProps> = ({ project, index = 0 }) => {
             </div>
             <div className="absolute inset-0 z-10" />
           </>
+        ) : hasVideo ? (
+          <button
+            onClick={() => { setIsVideoModalOpen(true); setVideoLoading(true); }}
+            className="w-full h-full flex flex-col items-center justify-center gap-2 bg-slate-900 dark:bg-slate-950 hover:bg-slate-800 dark:hover:bg-slate-900 transition-colors duration-150 cursor-pointer group/play"
+          >
+            <div className="w-12 h-12 rounded-md bg-blue-600/50 group-hover/play:bg-blue-700 flex items-center justify-center transition-colors duration-150">
+              <Play className="w-6 h-6 text-white ml-0.5" fill="white" />
+            </div>
+            <span className="text-slate-300 text-xs font-medium">Voir la démo</span>
+          </button>
         ) : (
           <div className={`w-full h-full flex items-center justify-center ${project.bgColor || 'bg-slate-100 dark:bg-slate-700'}`}>
             <img
@@ -144,6 +166,53 @@ const ProjectCard: React.FC<ProjectCardProps> = ({ project, index = 0 }) => {
           </div>
         )}
       </div>
+      {isVideoModalOpen && hasVideo && (() => {
+        const embed = getVideoEmbed(project.videoUrl!);
+        return (
+          <div className="fixed inset-0 z-50 flex items-center justify-center p-4">
+            <div
+              className="absolute inset-0 bg-black/75 backdrop-blur-sm"
+              onClick={() => setIsVideoModalOpen(false)}
+            />
+            <div className="relative w-full max-w-3xl z-10">
+              <button
+                onClick={() => setIsVideoModalOpen(false)}
+                className="absolute -top-9 right-0 flex items-center gap-1.5 text-white/80 hover:text-white transition-colors text-sm font-medium"
+              >
+                <X className="w-5 h-5" />
+                Fermer
+              </button>
+              <div className="relative bg-black rounded-md overflow-hidden w-full aspect-video">
+                {videoLoading && (
+                  <div className="absolute inset-0 z-10 flex items-center justify-center bg-black">
+                    <div className="w-9 h-9 border-2 border-slate-600 border-t-blue-500 rounded-full animate-spin" />
+                  </div>
+                )}
+                {embed.type === 'video' ? (
+                  <video
+                    src={embed.src}
+                    controls
+                    autoPlay
+                    className="w-full h-full"
+                    onCanPlay={() => setVideoLoading(false)}
+                  />
+                ) : (
+                  <iframe
+                    src={embed.src}
+                    title={`Démo – ${project.title}`}
+                    allow="autoplay; fullscreen"
+                    className="w-full h-full border-0"
+                    onLoad={() => setVideoLoading(false)}
+                  />
+                )}
+              </div>
+              <p className="mt-2 text-center text-white/60 text-sm font-medium">
+                {project.title}
+              </p>
+            </div>
+          </div>
+        );
+      })()}
     </motion.div>
   );
 };
