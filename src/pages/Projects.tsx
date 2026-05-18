@@ -122,7 +122,7 @@ const Projects: React.FC = () => {
       technologies: ['Django', 'React TS', 'Tailwindcss','JwT', 'Axios'],
       githubUrl: 'https://github.com/LucaneTech/trip_management',
       // liveUrl: 'https://contact-filter.up.railway.app/',
-      videoUrl: "https://res.cloudinary.com/dvjwcal8e/video/upload/v1779128287/Demo_contactFilter_lwlnyj.mp4",
+      videoUrl: "https://res.cloudinary.com/dvjwcal8e/video/upload/v1779129908/Trip_app_zuwcpj.mp4",
       featured: false,
       category: 'Web App',
       date: 'Mai 2026',
