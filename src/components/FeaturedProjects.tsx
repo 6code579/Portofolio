@@ -1,52 +1,52 @@
 import React from 'react';
-import { ArrowRight, Github, ExternalLink } from 'lucide-react';
+import { ArrowRight } from 'lucide-react';
 import { motion } from 'framer-motion';
 import ProjectCard from './ProjectCard';
-import edusco from '../images/projects/edusco.svg';
-import ecommerce from '../images/projects/ecommerce.svg';
-import apiRest from '../images/projects/api-rest.svg';
+
 
 const FeaturedProjects: React.FC = () => {
   const projects = [
-    {
+     {
       id: 1,
-      title: 'Edusco - Plateforme Éducative',
-      description: 'Plateforme d\'apprentissage en ligne développée avec Django, permettant aux étudiants de suivre des cours, passer des évaluations et suivre leurs progrès. Interface intuitive avec système de gestion des utilisateurs.',
-      image: edusco,
-      technologies: ['Django', 'Python', 'SQLite', 'Bootstrap', 'JavaScript', 'Chart.js','Jwt'],
-      githubUrl: 'https://github.com/francisco-mouanda/edusco-platform',
-      liveUrl: 'https://edusco-demo.herokuapp.com',
-      featured: true,
-      date: 'Avril 2025',
-      bgColor: 'bg-indigo-100'
+      title: 'Agrobusiness',
+      description: "Site vitrine de KFK Agro Business, une entreprise spécialisée dans l'agriculture et l'élevage en République Démocratique du Congo. La plateforme présente les activités et les solutions de l'entreprise à destination des professionnels et entrepreneurs du secteur agroalimentaire congolais.",
+      image: '',
+      technologies: ['React', 'TypeScript', 'Tailwind CSS', 'Vite'],
+      githubUrl: 'https://github.com/LucaneTech/agrobusiness',
+      liveUrl: 'https://www.kfkagrobusiness.com/',
+      featured: false,
+      category: 'Frontend',
+      date: 'Mai 2026',
+      bgColor: '',
     },
     {
       id: 2,
-      title: 'E-commerce NodeJS, Express',
-      description: 'Boutique en ligne complète avec catalogue de produits, panier d\'achat, système de paiement Stripe et interface d\'administration. Gestion des commandes et des utilisateurs.',
-      image: ecommerce,
-      technologies: ['Node.js', 'Express', 'MongoDB', 'React', 'Tailwind CSS'],
-      githubUrl: 'https://github.com/francisco-mouanda/nodejs-ecommerce',
-      liveUrl: 'https://ecommerce-demo.vercel.app',
-      featured: true,
-      date: 'Decembre 2024',
-      bgColor: 'bg-amber-100'
+      title: 'Panval',
+      description: "Site web de Panval Consilium International, un cabinet de conseil stratégique basé au Congo. La plateforme présente leurs services de conseil en stratégie d'entreprise, de formation professionnelle et d'accompagnement personnalisé (CEP), destinés aux organisations souhaitant renforcer leurs capacités.",
+      image: '',
+      technologies: ['React', 'TypeScript', 'Tailwind CSS', 'Daisyui', 'React-i18next', 'Vite', 'EmailJS'],
+      githubUrl: 'https://github.com/LucaneTech/Panval',
+      liveUrl: 'https://panvalconsiliuminter.com/',
+      featured: false,
+      category: 'Frontend',
+      date: 'Avril 2026',
+      bgColor: '',
     },
     {
       id: 3,
-      title: 'API REST Python',
-      description: 'API robuste pour application mobile avec authentification JWT, documentation Swagger, tests automatisés et déploiement Docker. Endpoints pour gestion d\'utilisateurs et de données.',
-      image: apiRest,
-      technologies: ['FastAPI', 'Python', 'MongoDB', 'JWT', 'Docker', 'PostgreSQL'],
-      githubUrl: 'https://github.com/francisco-mouanda/fastapi-mobile-api',
-      liveUrl: 'https://api-docs.swagger.io',
+      title: 'Hermon',
+      description: "Site web de Hermon Eximia, une plateforme de conciergerie haut de gamme proposant une gamme complète de services premium sur mesure. L'entreprise s'adresse à une clientèle exigeante en quête d'accompagnement personnalisé, alliant excellence, discrétion et qualité de service dans plusieurs domaines d'expertise.",
+      image: '',
+      technologies: ['React', 'TypeScript', 'React-i18next', 'Tailwind CSS', 'Vite', 'EmailJS'],
+      githubUrl: 'https://github.com/LucaneTech/hermon',
+      liveUrl: 'https://hermon-eximia.com/',
       featured: false,
-      date: 'Janvier 2025',
-      bgColor: 'bg-emerald-100'
-    }
+      category: 'Frontend',
+      date: 'Avril 2026',
+      bgColor: '',
+    },
   ];
 
-  // Animation variants
   const containerVariants = {
     hidden: { opacity: 0 },
     visible: {
@@ -83,7 +83,7 @@ const FeaturedProjects: React.FC = () => {
   };
 
   return (
-    <section id="featured-projects" className="py-20 bg-white">
+    <section id="featured-projects" className="py-20 bg-white dark:bg-slate-900">
       <motion.div
         variants={containerVariants}
         initial="hidden"
@@ -92,16 +92,16 @@ const FeaturedProjects: React.FC = () => {
         className="container mx-auto px-6"
       >
         <motion.div variants={itemVariants} className="text-center mb-16">
-          <h2 className="text-4xl md:text-5xl font-bold text-slate-800 mb-6">
-            Projets <span className="text-blue-800">Récents</span>
+          <h2 className="text-4xl md:text-5xl font-bold text-slate-800 dark:text-white mb-6">
+            Projets <span className="text-blue-700 dark:text-blue-400">Récents</span>
           </h2>
-          <p className="text-xl text-slate-600 max-w-3xl mx-auto leading-relaxed">
-            Découvrez une sélection de mes derniers projets, alliant innovation technique 
+          <p className="text-xl text-slate-600 dark:text-slate-400 max-w-3xl mx-auto leading-relaxed">
+            Découvrez une sélection de mes derniers projets, alliant innovation technique
             et design moderne pour créer des expériences utilisateur exceptionnelles.
           </p>
         </motion.div>
 
-        <motion.div 
+        <motion.div
           variants={cardVariants}
           className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 mb-12"
         >
@@ -111,9 +111,9 @@ const FeaturedProjects: React.FC = () => {
         </motion.div>
 
         <motion.div variants={itemVariants} className="text-center">
-          <a 
-            href="/projects" 
-            className="inline-flex items-center space-x-3 px-8 py-4 bg-blue-800 hover:bg-blue-700 text-white font-semibold rounded-lg shadow-lg hover:shadow-xl transform hover:-translate-y-1 transition-all duration-200"
+          <a
+            href="/projects"
+            className="inline-flex items-center space-x-3 px-8 py-4 bg-blue-700 hover:bg-blue-800 text-white font-semibold rounded-md transition-colors duration-150"
           >
             <span>Voir tous les projets</span>
             <ArrowRight className="w-5 h-5" />

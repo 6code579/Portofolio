@@ -390,7 +390,7 @@ const Hero: React.FC = () => {
               whileTap={{ scale: 0.95 }}
               href="/cv.pdf"  
               download
-              className="px-8 py-4 bg-gradient-to-r from-blue-600 to-purple-600 hover:from-blue-700 hover:to-purple-700 text-white font-semibold rounded-xl shadow-lg hover:shadow-xl transition-all duration-300 flex items-center space-x-2"
+              className="px-8 py-4 bg-blue-700 hover:bg-blue-900 text-white font-semibold rounded-xl shadow-lg hover:shadow-xl transition-all duration-300 flex items-center space-x-2"
             >
               <Download className="w-5 h-5" />
               <span>Télécharger mon CV</span>
@@ -416,9 +416,9 @@ const Hero: React.FC = () => {
             className="flex justify-center space-x-6 mb-12"
           >
             {[
-              { icon: Github, href: "https://github.com/LucaneTech", color: "hover:text-slate-800 dark:hover:text-white" },
+              { icon: Github, href: "https://github.com/LucaneTech", color: "hover:text-slate-800 dark:hover:text-gray-400" },
               { icon: Linkedin, href: "https://www.linkedin.com/in/franciscomouanda579", color: "hover:text-blue-600" },
-              { icon: Instagram, href: "https://www.instagram.com/lucane.tech/", color: "hover:text-blue-600" }
+              { icon: Instagram, href: "https://www.instagram.com/lucane.tech/", color: "hover:text-red-600" }
             ].map((social, index) => (
               <motion.a
                 key={index}
@@ -427,9 +427,9 @@ const Hero: React.FC = () => {
                 href={social.href}
                 target="_blank"
                 rel="noopener noreferrer"
-                className={`p-4 bg-white dark:bg-slate-800 rounded-2xl shadow-lg hover:shadow-xl transition-all duration-300 text-slate-600 dark:text-slate-300 ${social.color}`}
+                className={`p-4 bg-white border border-gray-300 dark:border-slate-700/40 dark:bg-slate-800 rounded-2xl shadow-lg hover:shadow-xl transition-all duration-300 text-slate-600 dark:text-slate-300 `}
               >
-                <social.icon className="w-6 h-6" />
+                <social.icon className={`w-6 h-6 duration-300 ${social.color}`} />
               </motion.a>
             ))}
           </motion.div>

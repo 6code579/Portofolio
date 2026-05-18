@@ -32,8 +32,8 @@ const Header: React.FC = () => {
       animate={{ y: 0 }}
       transition={{ duration: 0.6, ease: "easeOut" }}
       className={`fixed top-0 left-0 right-0 z-50 transition-all duration-500 ${
-        isScrolled 
-          ? 'bg-white/95 dark:bg-slate-900/95 backdrop-blur-lg shadow-xl border-b border-slate-200/20 dark:border-slate-700/20' 
+        isScrolled
+          ? 'bg-white/95 dark:bg-slate-900/95 backdrop-blur-lg shadow-xl border-b border-slate-200/40 dark:border-slate-700/40'
           : 'bg-transparent'
       }`}
     >
@@ -46,13 +46,13 @@ const Header: React.FC = () => {
               whileTap={{ scale: 0.95 }}
               className="p-2 group-hover:shadow-lg transition-all duration-300"
             >
-              <span className='text-slate-900 dark:text-white font-bold md:text-2xl '>Francisco</span>
+              <span className="text-slate-900 dark:text-white font-bold md:text-2xl">Francisco</span>
             </motion.div>
             <motion.span
               whileHover={{ scale: 1.05 }}
-              className="md:text-2xl font-bold bg-gradient-to-r from-blue-600 to-purple-600 bg-clip-text text-transparent"
+              className="md:text-2xl font-bold text-blue-600 dark:text-blue-400"
             >
-            Mouanda
+              Mouanda
             </motion.span>
           </Link>
 
@@ -67,9 +67,9 @@ const Header: React.FC = () => {
               >
                 <Link
                   to={item.path}
-                  className={`relative py-2 px-4 text-sm font-medium transition-all duration-300 rounded-lg hover:bg-slate-100 dark:hover:bg-slate-800 ${
-                    location.pathname === item.path 
-                      ? 'text-blue-600 dark:text-blue-400' 
+                  className={`relative py-2 px-4 text-sm font-medium transition-all duration-300 rounded-md hover:bg-slate-100 dark:hover:bg-slate-800 ${
+                    location.pathname === item.path
+                      ? 'text-blue-600 dark:text-blue-400'
                       : 'text-slate-600 dark:text-slate-300 hover:text-blue-600 dark:hover:text-blue-400'
                   }`}
                 >
@@ -77,19 +77,19 @@ const Header: React.FC = () => {
                   {location.pathname === item.path && (
                     <motion.span
                       layoutId="activeTab"
-                      className="absolute bottom-0 left-0 right-0 h-0.5 bg-gradient-to-r from-blue-600 to-purple-600 rounded-full"
+                      className="absolute bottom-0 left-0 right-0 h-0.5 bg-blue-600 dark:bg-blue-400 rounded-sm"
                     />
                   )}
                 </Link>
               </motion.div>
             ))}
-            
+
             {/* Theme Toggle */}
             <motion.button
               whileHover={{ scale: 1.1 }}
               whileTap={{ scale: 0.95 }}
               onClick={toggleTheme}
-              className="p-2 rounded-lg bg-slate-100 dark:bg-slate-800 text-slate-600 dark:text-slate-300 hover:bg-slate-200 dark:hover:bg-slate-700 transition-all duration-300"
+              className="p-2 rounded-md bg-slate-100 dark:bg-slate-800 text-slate-600 dark:text-slate-300 hover:bg-slate-200 dark:hover:bg-slate-700 transition-all duration-300"
             >
               <AnimatePresence mode="wait">
                 {isDark ? (
@@ -123,11 +123,11 @@ const Header: React.FC = () => {
               whileHover={{ scale: 1.1 }}
               whileTap={{ scale: 0.95 }}
               onClick={toggleTheme}
-              className="p-2 rounded-lg bg-slate-100 dark:bg-slate-800 text-slate-600 dark:text-slate-300"
+              className="p-2 rounded-md bg-slate-100 dark:bg-slate-800 text-slate-600 dark:text-slate-300"
             >
               {isDark ? <Sun className="w-5 h-5" /> : <Moon className="w-5 h-5" />}
             </motion.button>
-            
+
             <motion.button
               whileHover={{ scale: 1.1 }}
               whileTap={{ scale: 0.95 }}
@@ -169,7 +169,7 @@ const Header: React.FC = () => {
               animate={{ opacity: 1, height: 'auto' }}
               exit={{ opacity: 0, height: 0 }}
               transition={{ duration: 0.3 }}
-              className="md:hidden mt-4 py-4 border-t border-slate-200 dark:border-slate-700 bg-white/95 dark:bg-slate-900/95 backdrop-blur-lg shadow-xl rounded-2xl"
+              className="md:hidden mt-4 py-4 border-t border-slate-200 dark:border-slate-700 bg-white/95 dark:bg-slate-900/95 backdrop-blur-lg shadow-xl rounded-md"
             >
               <div className="flex flex-col space-y-3">
                 {navItems.map((item, index) => (
@@ -182,9 +182,9 @@ const Header: React.FC = () => {
                     <Link
                       to={item.path}
                       onClick={() => setIsMenuOpen(false)}
-                      className={`block py-3 px-4 rounded-lg text-sm font-medium transition-all duration-300 ${
+                      className={`block py-3 px-4 rounded-md text-sm font-medium transition-all duration-300 ${
                         location.pathname === item.path
-                          ? 'bg-blue-50 dark:bg-blue-900/20 text-blue-600 dark:text-blue-400'
+                          ? 'bg-blue-50 dark:bg-blue-900/30 text-blue-600 dark:text-blue-400'
                           : 'text-slate-600 dark:text-slate-300 hover:text-blue-600 dark:hover:text-blue-400 hover:bg-slate-50 dark:hover:bg-slate-800'
                       }`}
                     >

@@ -1,19 +1,9 @@
 import React from 'react';
 import { motion } from 'framer-motion';
-import { ExternalLink, Github, Filter, Search } from 'lucide-react';
+import { Filter, Search } from 'lucide-react';
 import ProjectCard from '../components/ProjectCard';
-import edusco from '../images/projects/edusco.svg';
-import ecommerce from '../images/projects/ecommerce.svg';
-import apiRest from '../images/projects/api-rest.svg';
-import portfolio from '../images/projects/portfolio.svg';
-import blog from '../images/projects/blog.svg';
-import finances from '../images/projects/finances.svg';
-import weather from '../images/projects/weather-app.svg';
-import taskManager from '../images/projects/task-manager.svg';
-import calculator from '../images/projects/calculator.svg';
-import edconnect from '../images/projects/edconnect.svg';
-import oralise from '../images/projects/oralise.png';
-import eemci from  '../images/projects/eemci.png';
+
+
 const Projects: React.FC = () => {
   const [filter, setFilter] = React.useState('all');
   const [searchTerm, setSearchTerm] = React.useState('');
@@ -22,180 +12,158 @@ const Projects: React.FC = () => {
     hidden: { opacity: 0 },
     visible: {
       opacity: 1,
-      transition: {
-        delayChildren: 0.3,
-        staggerChildren: 0.2
-      }
+      transition: { delayChildren: 0.2, staggerChildren: 0.1 }
     }
   };
 
   const itemVariants = {
     hidden: { y: 20, opacity: 0 },
-    visible: {
-      y: 0,
-      opacity: 1,
-      transition: {
-        duration: 0.6,
-        ease: "easeOut"
-      }
-    }
+    visible: { y: 0, opacity: 1, transition: { duration: 0.5, ease: 'easeOut' } }
   };
-
-  // Particules animées
-  const particles = Array.from({ length: 12 }, (_, i) => i);
 
   const projects = [
     {
-      id: 1,
-      title: 'Edusco - Plateforme Éducative',
-      description: 'Plateforme d\'apprentissage en ligne développée avec Django, permettant aux étudiants de suivre des cours, passer des évaluations et suivre leurs progrès. Interface intuitive avec système de gestion des utilisateurs et tableau de bord analytique.',
-      image: edusco,
-      technologies: ['Django', 'Python', 'PostgreSQL', 'Bootstrap', 'JavaScript', 'Chart.js'],
-      githubUrl: 'https://github.com/6code579/Edusco',
-      liveUrl: '#',
-      featured: true,
-      category: 'Web App',
-      date: 'Avril 2025',
-      bgColor: 'bg-indigo-100'
-    },
-    {
       id: 2,
-      title: 'E-commerce NodeJs, Express',
-      description: 'Boutique en ligne complète avec catalogue de produits, panier d\'achat, système de paiement Stripe et interface d\'administration. Gestion des commandes, des utilisateurs et tableau de bord analytique.',
-      image: ecommerce,
-      technologies: ['Node.js', 'Express', 'MongoDB', 'React', 'Stripe', 'Tailwind CSS'],
-      githubUrl: 'https://github.com/6code579/myShop',
-      liveUrl: '#',
-      featured: true,
+      title: 'Lucane',
+      description: "Site vitrine de la startup Lucane, une agence tech proposant des services de développement web et de solutions numériques sur mesure. Le site présente l'équipe, les offres et la vision de l'entreprise dans un design moderne reflétant l'identité de la marque.",
+      image: '',
+      technologies: ['React', 'TypeScript', 'Tailwind CSS', 'Vite', 'Daisyui'],
+      githubUrl: 'https://github.com/LucaneTech/Lucane',
+      liveUrl: 'https://lucane.tech',
+      featured: false,
+      category: 'Frontend',
+      date: 'Octobre 2025',
+      bgColor: '',
+    },
+
+    {
+      id: 16,
+      title: 'Agrobusiness',
+      description: "Site vitrine de KFK Agro Business, une entreprise spécialisée dans l'agriculture et l'élevage en République Démocratique du Congo. La plateforme présente les activités et les solutions de l'entreprise à destination des professionnels et entrepreneurs du secteur agroalimentaire congolais.",
+      image: '',
+      technologies: ['React', 'TypeScript', 'Tailwind CSS', 'Vite'],
+      githubUrl: 'https://github.com/LucaneTech/agrobusiness',
+      liveUrl: 'https://www.kfkagrobusiness.com/',
+      featured: false,
+      category: 'Frontend',
+      date: 'Mai 2026',
+      bgColor: '',
+    },
+    {
+      id: 12,
+      title: 'Panval',
+      description: "Site web de Panval Consilium International, un cabinet de conseil stratégique basé au Congo. La plateforme présente leurs services de conseil en stratégie d'entreprise, de formation professionnelle et d'accompagnement personnalisé (CEP), destinés aux organisations souhaitant renforcer leurs capacités.",
+      image: '',
+      technologies: ['React', 'TypeScript', 'Tailwind CSS', 'Vite'],
+      githubUrl: 'https://github.com/LucaneTech/Panval',
+      liveUrl: 'https://panvalconsiliuminter.com/',
+      featured: false,
+      category: 'Frontend',
+      date: 'Avril 2026',
+      bgColor: '',
+    },
+    {
+      id: 15,
+      title: 'Active Rise',
+      description: "Site vitrine d'Active Rise, une agence de marketing stratégique accompagnant les entreprises dans leur développement et leur visibilité digitale. Le site met en avant les expertises, les offres de services et les réalisations de l'agence pour aider ses clients à accroître leur croissance commerciale.",
+      image: '',
+      technologies: ['React', 'TypeScript', 'Tailwind CSS', 'Vite'],
+      githubUrl: 'https://github.com/LucaneTech/Active_rise',
+      liveUrl: 'https://activerise.netlify.app',
+      featured: false,
+      category: 'Frontend',
+      date: 'Mai 2026',
+      bgColor: '',
+    },
+    {
+      id: 13,
+      title: 'Hermon',
+      description: "Site web de Hermon Eximia, une plateforme de conciergerie haut de gamme proposant une gamme complète de services premium sur mesure. L'entreprise s'adresse à une clientèle exigeante en quête d'accompagnement personnalisé, alliant excellence, discrétion et qualité de service dans plusieurs domaines d'expertise.",
+      image: '',
+      technologies: ['React', 'TypeScript', 'Tailwind CSS', 'Vite'],
+      githubUrl: 'https://github.com/LucaneTech/hermon',
+      liveUrl: 'https://hermon-eximia.com/',
+      featured: false,
+      category: 'Frontend',
+      date: 'Avril 2026',
+      bgColor: '',
+    },
+    {
+      id: 14,
+      title: 'Folio Francisco',
+      description: "Portfolio professionnel de Francisco Mouanda, développeur web full-stack spécialisé dans des technologies modernes telles que Django, Laravel, Python et JavaScript. Le site met en valeur ses projets, ses compétences techniques et son parcours, à destination d'entreprises à la recherche d'un développeur web expérimenté.",
+      image: '',
+      technologies: ['React', 'TypeScript', 'Tailwind CSS', 'Vite', 'Daisyui'],
+      githubUrl: 'https://github.com/LucaneTech/Portofolio',
+      liveUrl: 'https://francisco.lucane.tech/',
+      featured: false,
+      category: 'Frontend',
+      date: 'Avril 2025',
+      bgColor: '',
+    },
+    {
+      id: 17,
+      title: 'Oralise',
+      description: "Site web moderne de l'établissement scolaire Oralise, conçu pour présenter l'institution, ses programmes pédagogiques, son corps enseignant et ses actualités. La plateforme offre une interface claire et professionnelle facilitant la communication entre l'école, les élèves et les familles.",
+      image: '',
+      technologies: ['React', 'TypeScript', 'Tailwind CSS', 'Vite'],
+      githubUrl: 'https://github.com/LucaneTech/Oralise',
+      liveUrl: 'https://oralise.pro/',
+      featured: false,
+      category: 'Frontend',
+      date: 'Mai 2026',
+      bgColor: '',
+    },
+
+    {
+      id: 1,
+      title: 'Kone Shop',
+      description: "Landing page e-commerce de Kone Shop, une boutique en ligne proposant une expérience d'achat moderne et intuitive. Le site met en avant les produits phares et les offres de la boutique dans un design épuré et attractif, pensé pour maximiser l'engagement et les conversions.",
+      image: '',
+      technologies: ['React', 'TypeScript', 'Tailwind CSS', 'Vite'],
+      githubUrl: 'https://github.com/LucaneTech/Kone-Shop',
+      liveUrl: 'https://koneshop.online',
+      featured: false,
       category: 'E-commerce',
-      date: 'Decembre 2024',
-      bgColor: 'bg-amber-100'
-    },
-    {
-      id: 3,
-      title: 'API REST Python',
-      description: 'API robuste pour application mobile avec authentification JWT, documentation Swagger, tests automatisés et déploiement Docker. Endpoints pour gestion d\'utilisateurs et de données.',
-      image: apiRest,
-      technologies: ['FastAPI', 'Python', 'MongoDB', 'JWT', 'Docker', 'PostgreSQL'],
-      githubUrl: '#',
-      liveUrl: '#',
-      featured: true,
-      category: 'API',
-      date: 'Janvier 2025',
-      bgColor: 'bg-emerald-100'
-    },
-    {
-      id: 4,
-      title: 'Portfolio React',
-      description: 'Site portfolio moderne et responsive développé avec React et Tailwind CSS, intégrant animations fluides, optimisation SEO et design adaptatif. Présentation professionnelle de mes compétences et projets.',
-      image: portfolio,
-      technologies: ['React', 'TypeScript', 'Tailwind CSS', 'Vite', 'Framer Motion'],
-      githubUrl: 'https://github.com/6code579/Portofolio',
-      liveUrl: 'https://francisco.lucane.tech',
-      category: 'Frontend',
-      date: 'Juillet 2025',
-      bgColor: 'bg-violet-100'
-    },
-    {
-      id: 5,
-      title: 'Système de Blog CMS',
-      description: 'CMS personnalisé avec éditeur rich-text, gestion des médias, commentaires modérés et optimisation pour les moteurs de recherche. Interface d\'administration intuitive et système de catégories.',
-      image: blog,
-      technologies: ['Django', 'Python', 'PostgreSQL', 'Redis', 'Celery', 'CKEditor'],
-      githubUrl: '#',
-      liveUrl: '#',
-      category: 'CMS',
-      date: 'Août 2024',
-      bgColor: 'bg-cyan-100'
-    },
-    {
-      id: 6,
-      title: 'App Mobile Finances',
-      description: 'Application de gestion financière personnelle avec synchronisation cloud, graphiques interactifs et notifications intelligentes. Suivi des dépenses, budgets et objectifs financiers.',
-      image: finances,
-      technologies: ['React Native', 'Node.js', 'MongoDB', 'Express', 'Chart.js'],
-      githubUrl: '#',
-      category: 'Mobile',
-      date: 'Septembre 2024',
-      bgColor: 'bg-pink-100'
-    },
-    {
-      id: 7,
-      title: 'Application Météo',
-      description: 'Application météo moderne avec prévisions sur 7 jours, géolocalisation et interface intuitive. Intégration de l\'API OpenWeatherMap et design responsive.',
-      image: weather,
-      technologies: ['React', 'JavaScript', 'OpenWeatherMap API', 'CSS3', 'Geolocation'],
-      githubUrl: 'https://github.com/6code579/weatherApp',
-      liveUrl: '#',
-      category: 'Web App',
-      date: 'Fevrier 2025',
-      bgColor: 'bg-sky-100'
-    },
-    {
-      id: 8,
-      title: 'Gestionnaire de Tâches',
-      description: 'Application de gestion de tâches avec drag & drop, catégories, priorités et rappels. Interface moderne et fonctionnalités avancées de productivité.',
-      image: taskManager,
-      technologies: ['Vue.js', 'JavaScript', 'LocalStorage', 'CSS3', 'HTML5'],
-      githubUrl: '#',
-      liveUrl: '#',
-      category: 'Web App',
-      date: 'Octobre 2024',
-      bgColor: 'bg-lime-100'
-    },
-    {
-      id: 9,
-      title: 'Calculatrice Scientifique',
-      description: 'Calculatrice scientifique complète avec fonctions trigonométriques, logarithmes et conversions d\'unités. Interface moderne et calculs précis.',
-      image: calculator,
-      technologies: ['JavaScript', 'HTML5', 'CSS3', 'Math.js'],
-      githubUrl: '#',
-      liveUrl: '#',
-      category: 'Frontend',
-      date: 'Juillet 2024',
-      bgColor: 'bg-indigo-100'
-    },
-    {
-      id: 10,
-      title: 'EdConnect - Site Éducatif',
-      description: 'Site interactif et moderne d\'un établissement scolaire au Congo Brazzaville. Plateforme éducative complète avec gestion des étudiants, cours, professeurs et interface responsive.',
-      image: edconnect,
-      technologies: ['HTML5', 'CSS3', 'JavaScript', 'Bootstrap', 'PHP', 'MySQL'],
-      githubUrl: 'https://github.com/6code579/edConnect-React',
-      liveUrl: '#',
-      category: 'Web App',
-      date: 'Mars 2025',
-      bgColor: 'bg-blue-100'
+      date: 'Septembre 2025',
+      bgColor: '',
     },
     {
       id: 11,
-      title: "Oralise",
-      description: 'Site d\'un Centre de formation en ligne des langue étrangère',
-      image: oralise,
-      technologies: ['React', 'TypeScript', 'Tailwindcss', 'DaisyUI'],
-      githubUrl: 'https://github.com/6code579/Oralise',
-      liveUrl: 'https://oralise.pro',
-      category: 'Frontend',
-      date: 'Aout 2025',
-      bgColor: 'bg-sky-400'
+      title: 'Lucane Filter',
+      description: "Application web de filtrage et gestion de contacts développée pour optimiser les opérations des équipes de call center. L'outil permet de trier, filtrer et organiser efficacement des listes de contacts grâce à une interface simple et sécurisée, avec système d'authentification intégré pour protéger l'accès aux données.",
+      image: '',
+      technologies: ['HTML5', 'CSS3', 'JavaScript'],
+      githubUrl: 'https://github.com/LucaneTech/contact_filter2026',
+      liveUrl: 'https://contact-filter.up.railway.app/',
+      featured: false,
+      category: 'Web App',
+      date: 'Mars 2026',
+      bgColor: 'bg-white',
     },
-     {
-      id: 12,
-      title: "EEMCI",
-      description: 'Site d\'une Ecole Européenne de Management et de Commerce International',
-      image: eemci,
-      technologies: ['React', 'TypeScript', 'Tailwindcss', 'DaisyUI'],
-      githubUrl: 'https://github.com/6code579/Eemci-Project',
-      liveUrl: 'https://eemci.netlify.app/',
-      category: 'Backend',
-      date: 'Septembre 2025',
-      bgColor: 'bg-blue-400'
-    }
+
+    {
+      id: 10,
+      title: 'Eureka',
+      description: "Site vitrine d'Eureka & Co, une entreprise spécialisée dans les services de nettoyage et d'entretien. La plateforme présente les prestations proposées et les secteurs d'intervention dans un design moderne et professionnel, reflétant le sérieux et le savoir-faire de l'équipe.",
+      image: '',
+      technologies: ['React', 'TypeScript', 'Tailwind CSS', 'Vite'],
+      githubUrl: 'https://github.com/LucaneTech/Eureka',
+      liveUrl: 'https://eureka-co.net',
+      featured: false,
+      category: 'Frontend',
+      date: 'Février 2026',
+      bgColor: '',
+    },
+
+
+
   ];
 
   const filteredProjects = projects.filter(project => {
     const matchesFilter = filter === 'all' || project.category === filter;
-    const matchesSearch = project.title.toLowerCase().includes(searchTerm.toLowerCase()) ||
+    const matchesSearch =
+      project.title.toLowerCase().includes(searchTerm.toLowerCase()) ||
       project.description.toLowerCase().includes(searchTerm.toLowerCase());
     return matchesFilter && matchesSearch;
   });
@@ -203,199 +171,43 @@ const Projects: React.FC = () => {
   const categories = ['all', ...Array.from(new Set(projects.map(p => p.category)))];
 
   return (
-    <div className="pt-20 min-h-screen bg-gradient-to-br from-slate-50 to-blue-50 dark:from-slate-900 dark:to-slate-800 relative overflow-hidden">
-      {/* Animated Background Elements */}
-      <div className="absolute inset-0 overflow-hidden">
-        {/* Particules flottantes */}
-        {particles.map((particle) => (
-          <motion.div
-            key={particle}
-            className="absolute w-2 h-2 bg-blue-400/20 dark:bg-blue-300/20 rounded-full"
-            style={{
-              left: `${Math.random() * 100}%`,
-              top: `${Math.random() * 100}%`,
-            }}
-            animate={{
-              y: [0, -30, 0],
-              x: [0, Math.random() * 20 - 10, 0],
-              opacity: [0.2, 0.8, 0.2],
-              scale: [1, 1.5, 1],
-            }}
-            transition={{
-              duration: 3 + Math.random() * 2,
-              repeat: Infinity,
-              ease: "easeInOut",
-              delay: Math.random() * 2,
-            }}
-          />
-        ))}
-
-        {/* Formes géométriques animées */}
-        <motion.div
-          animate={{
-            x: [0, 100, 0],
-            y: [0, -100, 0],
-            rotate: [0, 180, 360],
-            scale: [1, 1.2, 1],
-          }}
-          transition={{
-            duration: 20,
-            repeat: Infinity,
-            ease: "linear"
-          }}
-          className="absolute top-20 left-20 w-16 h-16 bg-gradient-to-br from-blue-500/10 to-purple-500/10 dark:from-blue-400/10 dark:to-purple-400/10 rounded-full blur-sm"
-        />
-
-        <motion.div
-          animate={{
-            x: [0, -50, 0],
-            y: [0, 100, 0],
-            scale: [1, 1.5, 1],
-            rotate: [0, -180, -360],
-          }}
-          transition={{
-            duration: 15,
-            repeat: Infinity,
-            ease: "easeInOut"
-          }}
-          className="absolute top-60 right-20 w-12 h-12 bg-gradient-to-br from-green-500/10 to-blue-500/10 dark:from-green-400/10 dark:to-blue-400/10 rounded-full blur-sm"
-        />
-
-        {/* Lignes animées */}
-        <motion.div
-          animate={{
-            scaleX: [0, 1, 0],
-            opacity: [0, 0.3, 0],
-          }}
-          transition={{
-            duration: 4,
-            repeat: Infinity,
-            ease: "easeInOut",
-            delay: 1,
-          }}
-          className="absolute top-1/3 left-0 w-full h-px bg-gradient-to-r from-transparent via-blue-400/30 to-transparent"
-        />
-
-        {/* Ondes de fond */}
-        <motion.div
-          animate={{
-            scale: [1, 1.5, 1],
-            opacity: [0.1, 0.3, 0.1],
-          }}
-          transition={{
-            duration: 8,
-            repeat: Infinity,
-            ease: "easeInOut",
-          }}
-          className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 w-96 h-96 bg-gradient-to-r from-blue-400/10 to-purple-400/10 dark:from-blue-300/10 dark:to-purple-300/10 rounded-full blur-3xl"
-        />
-
-        {/* Formes géométriques flottantes */}
-        <motion.div
-          animate={{
-            y: [0, -20, 0],
-            rotate: [0, 360],
-            scale: [1, 1.1, 1],
-          }}
-          transition={{
-            duration: 6,
-            repeat: Infinity,
-            ease: "easeInOut",
-          }}
-          className="absolute top-40 right-10 w-8 h-8 border-2 border-blue-400/30 dark:border-blue-300/30 rounded-lg"
-        />
-
-        <motion.div
-          animate={{
-            y: [0, 20, 0],
-            rotate: [0, -360],
-            scale: [1, 0.9, 1],
-          }}
-          transition={{
-            duration: 7,
-            repeat: Infinity,
-            ease: "easeInOut",
-            delay: 1,
-          }}
-          className="absolute bottom-40 right-20 w-6 h-6 border-2 border-purple-400/30 dark:border-purple-300/30 rounded-full"
-        />
-
-        {/* Effet de parallaxe sur les étoiles */}
-        {Array.from({ length: 8 }, (_, i) => (
-          <motion.div
-            key={`star-${i}`}
-            className="absolute w-1 h-1 bg-white/60 dark:bg-blue-300/60 rounded-full"
-            style={{
-              left: `${Math.random() * 100}%`,
-              top: `${Math.random() * 100}%`,
-            }}
-            animate={{
-              y: [0, -10, 0],
-              opacity: [0.3, 1, 0.3],
-              scale: [1, 1.2, 1],
-            }}
-            transition={{
-              duration: 2 + Math.random() * 2,
-              repeat: Infinity,
-              ease: "easeInOut",
-              delay: Math.random() * 3,
-            }}
-          />
-        ))}
-      </div>
-
+    <div className="pt-20 min-h-screen bg-slate-50 dark:bg-slate-900">
       <motion.div
         variants={containerVariants}
         initial="hidden"
         animate="visible"
-        className="container mx-auto px-4 sm:px-6 py-12 sm:py-16 relative z-10"
+        className="container mx-auto px-4 sm:px-6 py-12 sm:py-16"
       >
         {/* Header */}
         <motion.div variants={itemVariants} className="text-center mb-12 sm:mb-16">
-          <motion.h1
-            initial={{ scale: 0.5 }}
-            animate={{ scale: 1 }}
-            transition={{ duration: 0.6, ease: "easeOut" }}
-            className="text-3xl sm:text-4xl md:text-5xl font-bold text-slate-800 dark:text-white mb-4 sm:mb-6"
-          >
-            Mes <span className="text-transparent bg-clip-text bg-gradient-to-r from-blue-600 to-purple-600">Projets</span>
-          </motion.h1>
-          <motion.p
-            variants={itemVariants}
-            className="text-lg sm:text-xl text-slate-600 dark:text-slate-300 max-w-3xl mx-auto leading-relaxed px-4"
-          >
+          <h1 className="text-3xl sm:text-4xl md:text-5xl font-bold text-slate-800 dark:text-white mb-4">
+            Mes <span className="text-blue-600 dark:text-blue-400">Projets</span>
+          </h1>
+          <p className="text-lg sm:text-xl text-slate-500 dark:text-slate-400 max-w-2xl mx-auto px-4">
             Découvrez une sélection de mes réalisations en développement web
-          </motion.p>
+          </p>
         </motion.div>
 
         {/* Filters and Search */}
         <motion.div variants={itemVariants} className="mb-8 sm:mb-12">
-          <div className="flex flex-col sm:flex-row gap-4 sm:gap-6 justify-center items-center">
-            {/* Search */}
-            <motion.div
-              whileHover={{ scale: 1.02 }}
-              className="relative w-full sm:w-80"
-            >
-              <Search className="absolute left-3 top-1/2 transform -translate-y-1/2 w-5 h-5 text-slate-400" />
+          <div className="flex flex-col sm:flex-row gap-3 sm:gap-4 justify-center items-center">
+            <div className="relative w-full sm:w-72">
+              <Search className="absolute left-3 top-1/2 -translate-y-1/2 w-4 h-4 text-slate-400" />
               <input
                 type="text"
                 placeholder="Rechercher un projet..."
                 value={searchTerm}
                 onChange={(e) => setSearchTerm(e.target.value)}
-                className="w-full pl-10 pr-4 py-3 border border-slate-200 dark:border-slate-600 rounded-xl focus:ring-2 focus:ring-blue-500 focus:border-transparent transition-all bg-white dark:bg-slate-700 text-slate-900 dark:text-white"
+                className="w-full pl-9 pr-4 py-2.5 border border-slate-200 dark:border-slate-600 rounded-md bg-white dark:bg-slate-800 text-slate-900 dark:text-white text-sm focus:ring-2 focus:ring-blue-500 focus:border-transparent transition-all outline-none"
               />
-            </motion.div>
+            </div>
 
-            {/* Category Filter */}
-            <motion.div
-              whileHover={{ scale: 1.02 }}
-              className="relative"
-            >
-              <Filter className="absolute left-3 top-1/2 transform -translate-y-1/2 w-5 h-5 text-slate-400" />
+            <div className="relative">
+              <Filter className="absolute left-3 top-1/2 -translate-y-1/2 w-4 h-4 text-slate-400" />
               <select
                 value={filter}
                 onChange={(e) => setFilter(e.target.value)}
-                className="pl-10 pr-8 py-3 border border-slate-200 dark:border-slate-600 rounded-xl focus:ring-2 focus:ring-blue-500 focus:border-transparent transition-all bg-white dark:bg-slate-700 text-slate-900 dark:text-white appearance-none cursor-pointer"
+                className="pl-9 pr-8 py-2.5 border border-slate-200 dark:border-slate-600 rounded-md bg-white dark:bg-slate-800 text-slate-900 dark:text-white text-sm focus:ring-2 focus:ring-blue-500 focus:border-transparent transition-all appearance-none cursor-pointer outline-none"
               >
                 {categories.map(category => (
                   <option key={category} value={category}>
@@ -403,36 +215,34 @@ const Projects: React.FC = () => {
                   </option>
                 ))}
               </select>
-            </motion.div>
+            </div>
           </div>
         </motion.div>
 
         {/* Projects Grid */}
         <motion.div
           variants={itemVariants}
-          className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 sm:gap-8"
+          className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-5 sm:gap-6"
         >
           {filteredProjects.map((project, index) => (
             <motion.div
               key={project.id}
-              initial={{ opacity: 0, y: 20 }}
+              initial={{ opacity: 0, y: 16 }}
               animate={{ opacity: 1, y: 0 }}
-              transition={{ delay: index * 0.1 }}
-              whileHover={{ y: -5 }}
+              transition={{ delay: index * 0.07 }}
             >
-              <ProjectCard project={project} />
+              <ProjectCard project={project} index={index} />
             </motion.div>
           ))}
         </motion.div>
 
-        {/* No Results */}
         {filteredProjects.length === 0 && (
           <motion.div
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
-            className="text-center py-12"
+            className="text-center py-16"
           >
-            <p className="text-slate-500 dark:text-slate-400 text-lg">
+            <p className="text-slate-500 dark:text-slate-400">
               Aucun projet trouvé avec ces critères.
             </p>
           </motion.div>
