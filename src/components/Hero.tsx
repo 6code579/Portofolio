@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import { motion } from 'framer-motion';
 import { ArrowDown, Download, Github, Linkedin, Sparkles, Instagram, X } from 'lucide-react';
-import Portrait from '../images/profil.jpeg'
+import Portrait from '../images/francisco.png';
 import { Link } from 'react-router-dom';
 
 const Hero: React.FC = () => {
@@ -332,7 +332,7 @@ const Hero: React.FC = () => {
                 transition={{ duration: 20, repeat: Infinity, ease: "linear" }}
                 className="absolute -inset-4 bg-gradient-to-r from-blue-600 via-purple-600 to-green-600 rounded-full opacity-20 blur-lg"
               />
-              <div className="relative w-48 h-49 mt-4 rounded-full overflow-hidden border-4 border-white dark:border-slate-700 shadow-2xl bg-gradient-to-br from-blue-100 to-green-100 dark:from-slate-700 dark:to-slate-600">
+              <div className="relative w-48 md:w-64 h-auto mt-4 rounded-full overflow-hidden border-4 border-white dark:border-slate-700 shadow-2xl bg-gradient-to-br from-blue-100 to-green-100 dark:from-slate-700 dark:to-slate-600">
                 <img
                   src={Portrait}
                   alt="Portrait professionnel"
