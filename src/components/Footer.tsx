@@ -31,7 +31,7 @@ const Footer: React.FC = () => {
     },
     {
       name: 'Email',
-      url: 'mailto:francisco@lucane.tech',
+      url: 'mailto:profrancisco579@gmail.com',
       icon: Mail,
       color: 'hover:text-indigo-400'
     }
@@ -79,11 +79,11 @@ const Footer: React.FC = () => {
             <div className="space-y-2">
               <div className="flex items-center space-x-2">
                 <Mail className="w-4 h-4 text-slate-400" />
-                <span className="text-slate-400">francisco@lucane.tech</span>
+                <span className="text-slate-400">profrancisco579@gmail.com</span>
               </div>
               <div className="flex items-center space-x-2">
                 <MapPin className="w-4 h-4 text-slate-400" />
-                <span className="text-slate-400">Meknès, Maroc</span>
+                <span className="text-slate-400">Maroc</span>
               </div>
               <div className="flex items-center space-x-2">
                 <Phone className="w-4 h-4 text-slate-400" />

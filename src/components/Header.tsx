@@ -38,23 +38,8 @@ const Header: React.FC = () => {
       }`}
     >
       <nav className="container mx-auto px-6 py-4">
-        <div className="flex items-center justify-between">
-          {/* Logo */}
-          <Link to="/" className="flex items-center space-x-2 group">
-            <motion.div
-              whileHover={{ scale: 1.1, rotate: 5 }}
-              whileTap={{ scale: 0.95 }}
-              className="p-2 group-hover:shadow-lg transition-all duration-300"
-            >
-              <span className="text-slate-900 dark:text-white font-bold md:text-2xl">Francisco</span>
-            </motion.div>
-            <motion.span
-              whileHover={{ scale: 1.05 }}
-              className="md:text-2xl font-bold text-blue-600 dark:text-blue-400"
-            >
-              Mouanda
-            </motion.span>
-          </Link>
+        <div className="flex items-center md:justify-center">
+         
 
           {/* Desktop Navigation */}
           <div className="hidden md:flex items-center space-x-8">
@@ -119,14 +104,7 @@ const Header: React.FC = () => {
 
           {/* Mobile Menu Button */}
           <div className="md:hidden flex items-center space-x-4">
-            <motion.button
-              whileHover={{ scale: 1.1 }}
-              whileTap={{ scale: 0.95 }}
-              onClick={toggleTheme}
-              className="p-2 rounded-md bg-slate-100 dark:bg-slate-800 text-slate-600 dark:text-slate-300"
-            >
-              {isDark ? <Sun className="w-5 h-5" /> : <Moon className="w-5 h-5" />}
-            </motion.button>
+            
 
             <motion.button
               whileHover={{ scale: 1.1 }}
@@ -157,6 +135,15 @@ const Header: React.FC = () => {
                   </motion.div>
                 )}
               </AnimatePresence>
+            </motion.button>
+
+            <motion.button
+              whileHover={{ scale: 1.1 }}
+              whileTap={{ scale: 0.95 }}
+              onClick={toggleTheme}
+              className="p-2 rounded-md bg-slate-100 dark:bg-slate-800 text-slate-600 dark:text-slate-300"
+            >
+              {isDark ? <Sun className="w-5 h-5" /> : <Moon className="w-5 h-5" />}
             </motion.button>
           </div>
         </div>
