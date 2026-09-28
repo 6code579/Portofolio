@@ -6,41 +6,47 @@ import { Code, Database, Globe, Smartphone, Zap, Shield, Users, Target, Award, C
 const About: React.FC = () => {
   const experiences = [
     {
-      period: 'Mai 2025 - Présent',
-      title: 'Développeur Full-stack Django | React',
+      period: 'Jan 2025 - Présent',
+      title: 'Développeur Full-stack Freelance',
       company: 'Freelance',
-      description: 'Développement de sites web et applications pour des clients locaux. Création de portfolios, sites vitrines et applications web simples avec HTML, CSS, JavaScript et PHP.'
+      description: "Développement de sites web et applications pour divers clients. Gestion complète du cycle de vie des projets, de la conception à la mise en production. Utilisation de technologies modernes telles que React, Django, Laravel et Tailwind CSS pour créer des solutions performantes et adaptées aux besoins des clients."
+    },
+      {
+      period: 'Juillet 2026 - Septembre 2026',
+      title: 'Développeur Frontend & E-commerce : Stagiaire',
+      company: 'BLAZE & Co',
+      description: "Conception de pages dans Figma puis intégration en code sur plusieurs boutiques Shopify.Amélioration de l’UX et des parcours d’achat dans une logique CRO.Contribution aux opérations e-commerce avec Klaviyo, Microsoft Clarity et Intelligems. "
     },
     {
-      period: 'Mars 2025 - Mai 2025',
+      period: 'Avril 2025 - Juillet 2025',
       title: 'Stage Développeur Web',
       company: 'WebConsulting',
-      description: 'Stage de 2 mois en développement web. Participation au développement frontend, intégration de maquettes et maintenance de sites existants. Utilisation de Bootstrap et JavaScript.'
+      description: "Développement en équipe d’une plateforme de réservation intégrant l’authentification JWT, un dashboard administratif et paiement. Conception et intégration d’APIs REST sécurisées avec Django. Participation à l’architecture technique, aux tests et à l’amélioration continue des fonctionnalités. "
     },
     {
-      period: 'Avril 2024- Mai 2024',
+      period: 'Avril 2024- Juillet 2024',
       title: 'Développeur Web – Stagiaire',
       company: "L'Atélier",
-      description: 'Réalisation de projets web dans le cadre de ma formation BTS. Développement d\'applications avec PHP/MySQL, création d\'APIs REST et projets frontend avec React.'
+      description: 'Réalisation de projets web dans le cadre de ma formation BTS. Développement d\'applications avec Python/Django, création d\'APIs REST et projets frontend avec React.'
     }
   ];
 
   const education = [
     {
       period: '2025 - 2026',
-      title: 'Bachelor Européen Développement App Mobile & appareils connectés',
+      title: 'Bachelor : Développement Web et Applications Mobiles',
       school: 'EEMCI',
-      description: ''
+      description: 'Établissement supérieur privé spécialisé dans les métiers du numérique. Formation approfondie en développement web et mobile, incluant la maîtrise des frameworks modernes, la gestion de bases de données et le déploiement d’applications.'
     },
     {
       period: '2023 - 2025',
-      title: 'BTS Développement Informatique',
+      title: 'BTS : Développement Web et Applications Mobiles',
       school: 'EEMCI',
       description: 'Formation en développement web et applications. Spécialisation en solutions d\'infrastructure, systèmes et réseaux. Projets pratiques en développement web.'
     },
     {
       period: 'Après Bac',
-      title: 'Développeur Web Autodidacte',
+      title: 'Formation Autodidacte',
       school: 'Parcours personnel',
       description: `Auto-formation continue en développement web full-stack, en complément de la formation suivie à l'EEMCI. Approfondissement des technologies comme Laravel, Django, React, Tailwind CSS, GitHub et le web scraping (LinkedIn, Facebook). Réalisation de projets personnels et d'expérimentation, avec une forte autonomie dans l'apprentissage, la résolution de problèmes et l'adaptation aux nouvelles technologies.`
     },

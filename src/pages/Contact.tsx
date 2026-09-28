@@ -193,8 +193,8 @@ const Contact: React.FC = () => {
                   {
                     icon: Mail,
                     title: "Email",
-                    value: "francisco@lucane.tech",
-                    href: "mailto:francisco@lucane.tech",
+                    value: "profrancisco579@gmail.com",
+                    href: "mailto:profrancisco579@gmail.com",
                     color: "blue",
                     description: "Réponse rapide garantie"
                   },
