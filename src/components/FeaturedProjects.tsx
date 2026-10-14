@@ -9,16 +9,15 @@ const FeaturedProjects: React.FC = () => {
      
     {
       id: 1,
-      title: 'Lucane Filter',
-      description: "Application web de filtrage et gestion de contacts développée pour optimiser les opérations des équipes de call center. L'outil permet de trier, filtrer et organiser efficacement des listes de contacts grâce à une interface simple et sécurisée, avec système d'authentification intégré pour protéger l'accès aux données.",
+      title: 'Lucane Tech',
+      description: "Site vitrine de la startup Lucane, une agence tech proposant des services de développement web et de solutions numériques sur mesure. Le site présente l'équipe, les offres et la vision de l'entreprise dans un design moderne reflétant l'identité de la marque.",
       image: '#',
-      technologies: ['Full Django', 'Docker', 'Celery', 'Pandas', 'Django-tailwind', 'Pillow'],
-      githubUrl: 'https://github.com/LucaneTech/contact_filter2026',
-      // liveUrl: 'https://contact-filter.up.railway.app/',
-      videoUrl: "https://res.cloudinary.com/dvjwcal8e/video/upload/v1779128287/Demo_contactFilter_lwlnyj.mp4",
+      technologies: ['React', 'TypeScript', 'Tailwind CSS', 'Vite', 'Daisyui'],
+      githubUrl: 'https://github.com/LucaneTech/Lucane',
+      liveUrl: 'https://lucanetech.netlify.app',
       featured: false,
-      category: 'Web App',
-      date: 'Mars 2026',
+      category: 'Frontend',
+      date: 'Octobre 2025',
       bgColor: 'bg-white',
     },
    

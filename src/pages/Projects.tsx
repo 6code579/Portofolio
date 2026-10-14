@@ -29,7 +29,7 @@ const Projects: React.FC = () => {
       image: '',
       technologies: ['React', 'TypeScript', 'Tailwind CSS', 'Vite', 'Daisyui'],
       githubUrl: 'https://github.com/LucaneTech/Lucane',
-      liveUrl: 'https://lucane.tech',
+      liveUrl: 'https://lucanetech.netlify.app',
       featured: false,
       category: 'Frontend',
       date: 'Octobre 2025',
@@ -95,7 +95,7 @@ const Projects: React.FC = () => {
       image: '',
       technologies: ['React', 'TypeScript', 'Tailwind CSS', 'Vite', 'Daisyui'],
       githubUrl: 'https://github.com/LucaneTech/Portofolio',
-      liveUrl: 'https://francisco.lucane.tech/',
+      liveUrl: 'https://franciscomouanda.netlify.app/',
       featured: false,
       category: 'Frontend',
       date: 'Avril 2025',
@@ -108,7 +108,7 @@ const Projects: React.FC = () => {
       image: '',
       technologies: ['React', 'TypeScript', 'Tailwind CSS', 'Vite'],
       githubUrl: 'https://github.com/LucaneTech/Oralise',
-      liveUrl: 'https://oralise.pro/',
+      liveUrl: 'https://oralise.netlify.app/',
       featured: false,
       category: 'Frontend',
       date: 'Mai 2026',
@@ -135,7 +135,7 @@ const Projects: React.FC = () => {
       image: '',
       technologies: ['React', 'TypeScript', 'Tailwind CSS', 'Vite'],
       githubUrl: 'https://github.com/LucaneTech/Kone-Shop',
-      liveUrl: 'https://koneshop.online',
+      liveUrl: 'https://koneshop.netlify.app',
       featured: false,
       category: 'E-commerce',
       date: 'Septembre 2025',
@@ -154,22 +154,7 @@ const Projects: React.FC = () => {
       category: 'Web App',
       date: 'Mars 2026',
       bgColor: 'bg-white',
-    },
-
-    {
-      id: 10,
-      title: 'Eureka',
-      description: "Site vitrine d'Eureka & Co, une entreprise spécialisée dans les services de nettoyage et d'entretien. La plateforme présente les prestations proposées et les secteurs d'intervention dans un design moderne et professionnel, reflétant le sérieux et le savoir-faire de l'équipe.",
-      image: '',
-      technologies: ['React', 'TypeScript', 'Tailwind CSS', 'Vite'],
-      githubUrl: 'https://github.com/LucaneTech/Eureka',
-      liveUrl: 'https://eureka-co.net',
-      featured: false,
-      category: 'Frontend',
-      date: 'Février 2026',
-      bgColor: '',
-    },
-
+    }
 
 
   ];

@@ -10,7 +10,7 @@ const Skills: React.FC = () => {
       color: 'text-blue-600 dark:text-blue-400',
       bgColor: 'bg-blue-50 dark:bg-blue-900/20',
       borderColor: 'border-blue-200 dark:border-blue-800',
-      skills: ['HTML5', 'CSS3', 'JavaScript', 'React', 'TypeScript', 'Tailwind CSS', 'Bootstrap', 'Material UI']
+      skills: ['HTML5', 'CSS3', 'JavaScript', 'React.js', 'React Native', 'TypeScript', 'Next.js', 'Tailwind CSS', 'Bootstrap', 'Material UI']
     },
     {
       title: 'Backend',
@@ -18,7 +18,7 @@ const Skills: React.FC = () => {
       color: 'text-green-600 dark:text-green-400',
       bgColor: 'bg-green-50 dark:bg-green-900/20',
       borderColor: 'border-green-200 dark:border-green-800',
-      skills: ['Python', 'Django', 'NodeJS', 'Express', 'FastAPI', 'RESTful APIs']
+      skills: ['Python', 'Django', 'NodeJS', 'Express', 'FastAPI', 'RESTful APIs', 'Supabase']
     },
     {
       title: 'Database',

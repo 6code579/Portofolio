@@ -135,29 +135,30 @@ const CallToAction: React.FC = () => {
             </div>
 
             <p className="text-slate-500 dark:text-slate-400 text-sm mb-6">
-              Quelle version souhaitez-vous télécharger ?
+              {/* Quelle version souhaitez-vous télécharger ? */}
+              La version simple de mon CV est disponible en téléchargement. Pour la version détaillée, veuillez me contacter directement.
             </p>
 
-            <div className="flex flex-col gap-3">
-              <a
-                href="/cv.pdf"
-                download
-                onClick={() => setIsCvModalOpen(false)}
-                className="flex items-center justify-center gap-2 px-4 py-3 bg-blue-700 hover:bg-blue-800 text-white font-semibold rounded-md transition-colors duration-150"
-              >
-                <Download className="w-4 h-4" />
-                Version Simple
-              </a>
-              <a
-                href="/Cv_details.pdf"
-                download
-                onClick={() => setIsCvModalOpen(false)}
-                className="flex items-center justify-center gap-2 px-4 py-3 border border-slate-200 dark:border-slate-600 text-slate-700 dark:text-slate-200 hover:bg-slate-50 dark:hover:bg-slate-700 font-semibold rounded-md transition-colors duration-150"
-              >
-                <Download className="w-4 h-4" />
-                Version Détaillée
-              </a>
-            </div>
+           <div className="flex flex-col gap-3">
+                         <a
+                           href="/cv.pdf"
+                           download
+                           onClick={() => setIsCvModalOpen(false)}
+                           className="flex items-center justify-center gap-2 px-4 py-3 bg-blue-700 hover:bg-blue-800 text-white font-semibold rounded-md transition-colors duration-150"
+                         >
+                           <Download className="w-4 h-4" />
+                           Version Simple
+                         </a>
+                         {/* <a
+                           // href="/Cv_details.pdf"
+                           // download
+                           // onClick={() => setIsCvModalOpen(false)}
+                           className="flex items-center justify-center gap-2 px-4 py-3 border border-slate-200 dark:border-slate-600 text-slate-700 dark:text-slate-200 hover:bg-slate-50 dark:hover:bg-slate-700 font-semibold rounded-md transition-colors duration-150 disabled:opacity-50 disabled:cursor-not-allowed"
+                         >
+                           <Download className="w-4 h-4" />
+                           Version Détaillée
+                         </a> */}
+                       </div>
           </motion.div>
         </div>
       )}
