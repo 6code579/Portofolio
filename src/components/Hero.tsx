@@ -23,7 +23,7 @@ const screens = [
   { slug: 'hermon', pos: 'right-[-8%] bottom-[8%] w-[44%] z-20', depth: 1.3, tilt: 5, bob: 3.8 },
 ];
 
-function MiniScreen({ slug, enabled }: { slug: string; enabled: boolean }) {
+export function MiniScreen({ slug, enabled }: { slug: string; enabled: boolean }) {
   const project = projects.find((p) => p.slug === slug)!;
   return (
     <div className="overflow-hidden rounded-md border border-secondary/25 bg-deep shadow-[0_24px_60px_-20px_rgb(0_0_0/0.85)]">
@@ -99,19 +99,15 @@ export default function Hero() {
         .from(layers, { opacity: 0, scale: 0.7, y: 70, duration: 1.5, ease: 'expo.out', stagger: 0.14 }, '-=1.1')
         .to(details, { opacity: 1, y: 0, duration: 1.1, ease: 'expo.out', stagger: 0.09 }, '-=1.2');
 
-      // Les écrans flottent en continu, chacun à son rythme (bureau seulement).
-      if (hasFinePointer()) {
-        stage.current!.querySelectorAll<HTMLElement>('[data-float]').forEach((el, i) => {
-          gsap.to(el, { y: i % 2 ? 14 : -14, rotation: i % 2 ? 1.2 : -1.2, duration: 3 + i * 0.7, ease: 'sine.inOut', yoyo: true, repeat: -1 });
-        });
-      }
+      // Les écrans flottent en continu, chacun à son rythme.
+      stage.current!.querySelectorAll<HTMLElement>('[data-float]').forEach((el, i) => {
+        gsap.to(el, { y: i % 2 ? 14 : -14, rotation: i % 2 ? 1.2 : -1.2, duration: 3 + i * 0.7, ease: 'sine.inOut', yoyo: true, repeat: -1 });
+      });
 
       // Style « le grand devient petit » : titre et scène rapetissent pendant qu'on quitte le hero.
-      if (hasFinePointer()) {
-        const shrink = { trigger: root.current, start: 'top top', end: 'bottom top', scrub: true };
-        gsap.to(title.current, { scale: 0.55, transformOrigin: 'left top', ease: 'none', scrollTrigger: shrink });
-        gsap.to(stage.current, { scale: 0.7, transformOrigin: 'center top', ease: 'none', scrollTrigger: shrink });
-      }
+      const shrink = { trigger: root.current, start: 'top top', end: 'bottom top', scrub: true };
+      gsap.to(title.current, { scale: 0.55, transformOrigin: 'left top', ease: 'none', scrollTrigger: shrink });
+      gsap.to(stage.current, { scale: 0.7, transformOrigin: 'center top', ease: 'none', scrollTrigger: shrink });
 
       gsap.to(stage.current, {
         yPercent: -8,
@@ -163,6 +159,20 @@ export default function Hero() {
         onUpdate: () => setLight(pos.x, r.height * 0.55),
       });
       window.addEventListener('pointermove', onMove, { passive: true });
+    } else {
+      // Tactile : pas de curseur, la lumière fait des allers-retours sur le titre et le portrait respire.
+      const r = el.getBoundingClientRect();
+      const pos = { x: -200 };
+      sweep = gsap.to(pos, {
+        x: r.width + 200,
+        duration: 3.4,
+        delay: 0.9,
+        ease: 'sine.inOut',
+        repeat: -1,
+        yoyo: true,
+        onUpdate: () => setLight(pos.x, r.height * 0.55),
+      });
+      gsap.to(photo.current, { rotationY: 9, rotationX: -5, duration: 3.6, ease: 'sine.inOut', yoyo: true, repeat: -1 });
     }
 
     return () => {
@@ -181,7 +191,7 @@ export default function Hero() {
             ref={stage}
             className="relative mx-auto mt-4 aspect-[5/5] w-[78%] max-w-[420px] md:absolute md:right-[1%] md:top-[-2vh] md:mx-0 md:mt-0 md:w-[42vw] md:max-w-[620px]"
           >
-            {fine && screens.map((s) => (
+            {(fine ? screens : screens.slice(0, 2)).map((s) => (
               <div key={s.slug} data-layer data-depth={s.depth} className={`absolute ${s.pos}`}>
                 <div data-float style={{ transform: `rotate(${s.tilt}deg)` }}>
                   <MiniScreen slug={s.slug} enabled={screensOn} />

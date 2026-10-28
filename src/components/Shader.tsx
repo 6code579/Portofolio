@@ -170,6 +170,8 @@ export default function Shader({ className = '' }: { className?: string }) {
             'radial-gradient(60% 55% at 70% 40%, rgb(0 121 121 / 0.28), transparent 70%), radial-gradient(40% 40% at 15% 85%, rgb(36 177 177 / 0.10), transparent 70%), var(--bg)',
         }}
       />
+      <div className="blob absolute -left-1/4 -top-1/4 h-[85vmax] w-[85vmax] md:h-[60vmax] md:w-[60vmax]" style={{ background: 'radial-gradient(circle, rgb(0 121 121 / 0.34), transparent 62%)' }} />
+      <div className="blob absolute -bottom-1/3 -right-1/4 h-[70vmax] w-[70vmax] [animation-delay:-5s] [animation-direction:alternate-reverse]" style={{ background: 'radial-gradient(circle, rgb(36 177 177 / 0.18), transparent 62%)' }} />
       <div ref={host} className={`absolute inset-0 transition-opacity duration-1000 ${live ? 'opacity-100' : 'opacity-0'}`} />
     </div>
   );

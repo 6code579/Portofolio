@@ -241,12 +241,11 @@ export function Slide({ children, from = 'left', scaleFrom = 1, className = '' }
   const { ready } = useShell();
 
   useEffect(() => {
-    // Effets liés au scroll : réservés aux appareils à souris (fluidité sur mobile).
-    if (!ready || !ref.current || prefersReducedMotion() || !hasFinePointer()) return;
+    if (!ready || !ref.current || prefersReducedMotion()) return;
     const el = ref.current;
-    const coarse = false;
+    const coarse = !hasFinePointer();
     const dir = from === 'left' ? -1 : from === 'right' ? 1 : 0;
-    const dist = dir * window.innerWidth * (coarse ? 0.1 : 0.16);
+    const dist = dir * window.innerWidth * (coarse ? 0.32 : 0.16);
     const ctx = gsap.context(() => {
       gsap.fromTo(
         el,
@@ -276,7 +275,7 @@ export function Shrink({ children, to = 0.6, className = '' }: { children: React
   const { ready } = useShell();
 
   useEffect(() => {
-    if (!ready || !ref.current || prefersReducedMotion() || !hasFinePointer()) return;
+    if (!ready || !ref.current || prefersReducedMotion()) return;
     const el = ref.current;
     const ctx = gsap.context(() => {
       gsap.to(el, {

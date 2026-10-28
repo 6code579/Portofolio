@@ -1,10 +1,11 @@
 import { useEffect, useRef } from 'react';
 import type { LucideIcon } from 'lucide-react';
 import { approach, education, experiences, mission, story, values } from '../data/content';
-import { gsap, hasFinePointer, prefersReducedMotion } from '../lib/motion';
+import { gsap, prefersReducedMotion } from '../lib/motion';
 import { useShell } from '../contexts/ShellContext';
 import photo from '../images/portrait2.webp';
 import PageHeader from '../components/PageHeader';
+import { AboutStage } from '../components/PageStages';
 import { LightText, Reveal, Slide, SplitReveal } from '../components/Reveal';
 
 /** Photo en arche : révélée par un rideau, qui glisse doucement au scroll. */
@@ -23,7 +24,6 @@ function ArchPhoto() {
         ease: 'expo.inOut',
         scrollTrigger: { trigger: el, start: 'top 85%', once: true },
       });
-      if (!hasFinePointer()) return;
       gsap.fromTo(img, { yPercent: -6, scale: 1.15 }, {
         yPercent: 6,
         scale: 1.15,
@@ -35,7 +35,7 @@ function ArchPhoto() {
   }, [ready]);
 
   return (
-    <div ref={frame} className="mt-10 hidden aspect-[4/5] w-full max-w-[320px] overflow-hidden rounded-md border border-secondary/25 bg-deep md:block">
+    <div ref={frame} className="mt-10 aspect-[4/5] w-full max-w-[320px] overflow-hidden rounded-md border border-secondary/25 bg-deep">
       <img src={photo} alt="Portrait" width={359} height={436} loading="lazy" decoding="async" className="h-full w-full object-cover" />
     </div>
   );
@@ -58,7 +58,7 @@ function Block({ index, title, paragraphs, withPhoto = false }: { index: string;
         </div>
         <Slide from="right" className="space-y-8 md:col-span-8">
           {paragraphs.map((p) => (
-            <LightText key={p} text={p} className="text-2xl leading-[1.25] text-light md:text-4xl" />
+            <LightText key={p} text={p} className="text-lg leading-[1.5] text-light md:text-2xl md:leading-[1.4]" />
           ))}
         </Slide>
       </div>
@@ -169,6 +169,7 @@ export default function About() {
         lead="À"
         accent="Propos"
         subtitle="Découvrez mon parcours, mes compétences et ma passion pour le développement web"
+        stage={<AboutStage />}
       />
       <Block index="01" title="Mon Histoire" paragraphs={story} withPhoto />
       <Block index="02" title="Ma Mission" paragraphs={mission} />

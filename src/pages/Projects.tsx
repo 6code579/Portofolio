@@ -2,6 +2,7 @@ import { useMemo, useState } from 'react';
 import { Search } from 'lucide-react';
 import { projects } from '../data/content';
 import PageHeader from '../components/PageHeader';
+import { ProjectsStage } from '../components/PageStages';
 import ProjectList from '../components/ProjectList';
 import { Reveal } from '../components/Reveal';
 
@@ -21,7 +22,7 @@ export default function Projects() {
 
   return (
     <>
-      <PageHeader lead="Mes" accent="Projets" subtitle="Découvrez une sélection de mes réalisations en développement web" />
+      <PageHeader lead="Mes" accent="Projets" subtitle="Découvrez une sélection de mes réalisations en développement web" stage={<ProjectsStage />} />
 
       <section className="container-x pb-24 md:pb-40">
         <Reveal className="mb-14 flex flex-col gap-8 md:flex-row md:items-end md:justify-between">
