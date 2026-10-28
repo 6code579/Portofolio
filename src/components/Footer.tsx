@@ -18,25 +18,27 @@ export default function Footer() {
           <a
             href="mailto:profrancisco579@gmail.com"
             data-cursor="link"
-            className="block break-words max-md:text-center text-[clamp(1.05rem,6.2vw,6rem)] leading-[1.05] tracking-tight text-secondary transition-colors duration-500 hover:text-primary"
+            className="block break-words text-[clamp(1.9rem,9.6vw,2.6rem)] leading-[1.05] tracking-tight text-secondary transition-colors duration-500 hover:text-primary md:text-[clamp(1.05rem,6.2vw,6rem)]"
           >
-            profrancisco579@gmail.com
+            {/* Sur mobile l'adresse se coupe avant l'@ : deux lignes bien grandes plutôt qu'une seule minuscule. */}
+            <span className="max-md:block">profrancisco579</span>
+            <span className="max-md:block">@gmail.com</span>
           </a>
         </Reveal>
 
-        <div className="mt-16 grid gap-12 max-md:text-center md:mt-24 md:grid-cols-3">
+        <div className="mt-16 grid gap-12 md:mt-24 md:grid-cols-3">
           <Reveal className="space-y-5">
             <h3 className="eyebrow">Contact</h3>
             <ul className="space-y-3 text-light/80">
-              <li className="flex items-center gap-3 max-md:justify-center">
+              <li className="flex items-center gap-3">
                 <Mail className="h-4 w-4 text-primary" />
                 <span>profrancisco579@gmail.com</span>
               </li>
-              <li className="flex items-center gap-3 max-md:justify-center">
+              <li className="flex items-center gap-3">
                 <MapPin className="h-4 w-4 text-primary" />
                 <span>Maroc</span>
               </li>
-              <li className="flex items-center gap-3 max-md:justify-center">
+              <li className="flex items-center gap-3">
                 <Phone className="h-4 w-4 text-primary" />
                 <span>+212 0781343642</span>
               </li>
@@ -58,7 +60,7 @@ export default function Footer() {
 
           <Reveal className="space-y-5" delay={0.16}>
             <h3 className="eyebrow">Suivez-moi</h3>
-            <ul className="flex gap-3 max-md:justify-center">
+            <ul className="flex gap-3">
               {socialLinks.map(({ name, url, icon: Icon }) => (
                 <li key={name}>
                   <a
@@ -76,7 +78,7 @@ export default function Footer() {
           </Reveal>
         </div>
 
-        <p className="mt-20 border-t hairline pt-8 text-center text-sm text-light/60">
+        <p className="mt-20 border-t hairline pt-8 text-sm md:text-center text-light/60">
           &copy; {new Date().getFullYear()} Portfolio. Tous droits réservés.
         </p>
       </div>
