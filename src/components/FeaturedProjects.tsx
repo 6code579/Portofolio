@@ -9,7 +9,7 @@ export default function FeaturedProjects() {
   return (
     <section id="featured-projects" className="relative py-24 md:py-40">
       <div className="container-x">
-        <div className="mb-14 grid gap-8 md:mb-24 md:grid-cols-12 md:items-end">
+        <div className="mb-14 grid gap-8 max-md:text-center md:mb-24 md:grid-cols-12 md:items-end">
           <Slide from="left" scaleFrom={1.2} className="md:col-span-7">
           <h2 className="text-[clamp(3rem,9vw,8.5rem)] leading-[0.92] tracking-[-0.04em]">
             <SplitReveal as="span" text="Projets" className="block" />

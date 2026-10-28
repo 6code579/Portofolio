@@ -25,6 +25,7 @@
   html {
     background: var(--bg);
     -webkit-text-size-adjust: 100%;
+    overflow-x: clip;
   }
 
   html.lenis,
@@ -41,7 +42,7 @@
   body {
     @apply bg-bg font-sans text-light antialiased;
     font-feature-settings: 'ss01', 'kern';
-    overflow-x: hidden;
+    overflow-x: clip;
   }
 
   ::selection {

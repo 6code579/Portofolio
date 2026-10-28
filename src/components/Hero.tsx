@@ -106,7 +106,7 @@ export default function Hero() {
 
       // Style « le grand devient petit » : titre et scène rapetissent pendant qu'on quitte le hero.
       const shrink = { trigger: root.current, start: 'top top', end: 'bottom top', scrub: true };
-      gsap.to(title.current, { scale: 0.55, transformOrigin: 'left top', ease: 'none', scrollTrigger: shrink });
+      gsap.to(title.current, { scale: 0.55, transformOrigin: window.innerWidth < 768 ? 'center top' : 'left top', ease: 'none', scrollTrigger: shrink });
       gsap.to(stage.current, { scale: 0.7, transformOrigin: 'center top', ease: 'none', scrollTrigger: shrink });
 
       gsap.to(stage.current, {
@@ -217,7 +217,7 @@ export default function Hero() {
             </div>
           </div>
 
-          <h1 ref={title} className="relative z-10 -mt-[16vw] md:mt-[clamp(6rem,19vh,11rem)]">
+          <h1 ref={title} className="relative z-10 -mt-[16vw] max-md:text-center md:mt-[clamp(6rem,19vh,11rem)]">
             <span className="sr-only">Développeur Fullstack</span>
             <span className="relative block">
               <TitleLayer />
@@ -227,32 +227,32 @@ export default function Hero() {
         </div>
 
         <div className="mt-14 grid gap-10 md:mt-16 md:grid-cols-12 md:items-end">
-          <div className="md:col-span-6">
+          <div className="max-md:text-center md:col-span-6">
             <p data-hero className="text-xl leading-snug text-light md:text-3xl">
               Passionné par la création de solutions web
               <br />
               <span className="font-serif italic text-primary">performantes et modernes</span>
             </p>
-            <p data-hero className="body-copy mt-5 max-w-xl">
+            <p data-hero className="body-copy mt-5 max-w-xl max-md:mx-auto">
               Spécialisé en Django, React, Python et JavaScript. Je transforme vos idées en applications web robustes et élégantes.
             </p>
           </div>
 
-          <div className="flex flex-col gap-8 md:col-span-6 md:items-end">
-            <div data-hero className="flex flex-wrap gap-4">
-              <Magnetic>
-                <button type="button" onClick={() => setCvOpen(true)} className="btn-primary">
+          <div className="flex flex-col gap-8 max-md:items-center md:col-span-6 md:items-end">
+            <div data-hero className="flex flex-wrap gap-4 max-md:w-full max-md:flex-col">
+              <Magnetic className="max-md:block max-md:w-full">
+                <button type="button" onClick={() => setCvOpen(true)} className="btn-primary max-md:w-full">
                   <Download className="h-4 w-4" />
                   Télécharger mon CV
                 </button>
               </Magnetic>
-              <Magnetic>
-                <TLink to="/contact" className="btn-ghost">
+              <Magnetic className="max-md:block max-md:w-full">
+                <TLink to="/contact" className="btn-ghost max-md:w-full">
                   Me contacter
                 </TLink>
               </Magnetic>
             </div>
-            <ul data-hero className="flex gap-3">
+            <ul data-hero className="flex gap-3 max-md:justify-center">
               {socials.map(({ icon: Icon, href, name }) => (
                 <li key={name}>
                   <a

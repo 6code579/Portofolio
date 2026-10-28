@@ -20,21 +20,21 @@ export default function PageHeader({ lead, accent, subtitle, stage }: PageHeader
           <SplitReveal as="span" text={accent} className="block font-serif font-normal italic text-primary" delay={0.12} />
         </h1>
       </Shrink>
-      <Reveal className="mt-8 max-w-2xl" delay={0.3}>
+      <Reveal className="mt-8 max-w-2xl max-md:mx-auto" delay={0.3}>
         <LightText text={subtitle} className="text-xl leading-snug text-light md:text-2xl" />
       </Reveal>
     </>
   );
 
   if (!stage) {
-    return <header className="container-x pb-14 pt-36 md:pb-24 md:pt-48">{copy}</header>;
+    return <header className="container-x pb-14 pt-36 max-md:text-center md:pb-24 md:pt-48">{copy}</header>;
   }
 
   return (
     <header className="relative overflow-hidden">
       <Shader />
       <div className="container-x relative pb-14 pt-36 md:grid md:grid-cols-12 md:items-center md:gap-10 md:pb-24 md:pt-48">
-        <div className="md:col-span-7">{copy}</div>
+        <div className="max-md:text-center md:col-span-7">{copy}</div>
         <div className="mt-14 md:col-span-5 md:mt-0">{stage}</div>
       </div>
     </header>

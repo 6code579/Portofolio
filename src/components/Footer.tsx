@@ -18,25 +18,25 @@ export default function Footer() {
           <a
             href="mailto:profrancisco579@gmail.com"
             data-cursor="link"
-            className="block break-words text-[clamp(1.8rem,6.2vw,6rem)] leading-[1.05] tracking-tight text-secondary transition-colors duration-500 hover:text-primary"
+            className="block break-words max-md:text-center text-[clamp(1.05rem,6.2vw,6rem)] leading-[1.05] tracking-tight text-secondary transition-colors duration-500 hover:text-primary"
           >
             profrancisco579@gmail.com
           </a>
         </Reveal>
 
-        <div className="mt-16 grid gap-12 md:mt-24 md:grid-cols-3">
+        <div className="mt-16 grid gap-12 max-md:text-center md:mt-24 md:grid-cols-3">
           <Reveal className="space-y-5">
             <h3 className="eyebrow">Contact</h3>
             <ul className="space-y-3 text-light/80">
-              <li className="flex items-center gap-3">
+              <li className="flex items-center gap-3 max-md:justify-center">
                 <Mail className="h-4 w-4 text-primary" />
                 <span>profrancisco579@gmail.com</span>
               </li>
-              <li className="flex items-center gap-3">
+              <li className="flex items-center gap-3 max-md:justify-center">
                 <MapPin className="h-4 w-4 text-primary" />
                 <span>Maroc</span>
               </li>
-              <li className="flex items-center gap-3">
+              <li className="flex items-center gap-3 max-md:justify-center">
                 <Phone className="h-4 w-4 text-primary" />
                 <span>+212 0781343642</span>
               </li>
@@ -58,7 +58,7 @@ export default function Footer() {
 
           <Reveal className="space-y-5" delay={0.16}>
             <h3 className="eyebrow">Suivez-moi</h3>
-            <ul className="flex gap-3">
+            <ul className="flex gap-3 max-md:justify-center">
               {socialLinks.map(({ name, url, icon: Icon }) => (
                 <li key={name}>
                   <a

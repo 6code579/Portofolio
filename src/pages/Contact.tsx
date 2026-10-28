@@ -51,7 +51,7 @@ export default function Contact() {
 
       <section className="container-x pb-24 md:pb-40">
         <div className="grid gap-16 lg:grid-cols-12 lg:gap-20">
-          <Slide from="left" className="space-y-16 lg:col-span-5">
+          <Slide from="left" className="space-y-16 max-lg:text-center lg:col-span-5">
             <Reveal>
               <h2 className="eyebrow mb-6">Informations de Contact</h2>
               <ul>
@@ -81,7 +81,7 @@ export default function Contact() {
                       href={s.href}
                       target="_blank"
                       rel="noopener noreferrer"
-                      className="group flex items-center justify-between gap-4 py-5"
+                      className="group flex items-center justify-between gap-4 py-5 max-lg:justify-center"
                     >
                       <span>
                         <span className="block text-xl text-light transition-colors group-hover:text-primary md:text-2xl">{s.name}</span>
@@ -111,7 +111,7 @@ export default function Contact() {
 
           <Slide from="right" className="lg:col-span-7">
           <Reveal>
-            <h2 className="text-[clamp(2rem,4vw,3.4rem)] leading-none tracking-tight">Envoyez-moi un message</h2>
+            <h2 className="text-[clamp(2rem,4vw,3.4rem)] leading-none tracking-tight max-lg:text-center">Envoyez-moi un message</h2>
 
             <div aria-live="polite">
               {status === 'success' && (
@@ -157,8 +157,8 @@ export default function Contact() {
                 />
               </div>
 
-              <Magnetic>
-                <button type="submit" disabled={submitting} className="btn-primary disabled:opacity-60">
+              <Magnetic className="max-lg:block max-lg:w-full">
+                <button type="submit" disabled={submitting} className="btn-primary disabled:opacity-60 max-lg:w-full">
                   {submitting ? (
                     <>
                       <span className="h-4 w-4 animate-spin rounded-full border-2 border-bg/30 border-t-bg" />
@@ -172,7 +172,7 @@ export default function Contact() {
                   )}
                 </button>
               </Magnetic>
-              <p className="text-sm text-light/60">* Champs obligatoires. Je m'engage à répondre dans les 24h.</p>
+              <p className="text-sm text-light/60 max-lg:text-center">* Champs obligatoires. Je m'engage à répondre dans les 24h.</p>
             </form>
           </Reveal>
           </Slide>

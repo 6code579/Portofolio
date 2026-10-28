@@ -35,7 +35,7 @@ function ArchPhoto() {
   }, [ready]);
 
   return (
-    <div ref={frame} className="mt-10 aspect-[4/5] w-full max-w-[320px] overflow-hidden rounded-md border border-secondary/25 bg-deep">
+    <div ref={frame} className="mt-10 aspect-[4/5] w-full max-w-[320px] max-md:mx-auto overflow-hidden rounded-md border border-secondary/25 bg-deep">
       <img src={photo} alt="Portrait" width={359} height={436} loading="lazy" decoding="async" className="h-full w-full object-cover" />
     </div>
   );
@@ -45,7 +45,7 @@ function Block({ index, title, paragraphs, withPhoto = false }: { index: string;
   return (
     <section className="border-t hairline py-16 md:py-28">
       <div className="container-x grid gap-10 md:grid-cols-12">
-        <div className="md:col-span-4">
+        <div className="max-md:text-center md:col-span-4">
           <div className="md:sticky md:top-32">
             <Slide from="left" scaleFrom={1.2}>
             <span className="eyebrow">{index}</span>
@@ -56,7 +56,7 @@ function Block({ index, title, paragraphs, withPhoto = false }: { index: string;
             {withPhoto && <ArchPhoto />}
           </div>
         </div>
-        <Slide from="right" className="space-y-8 md:col-span-8">
+        <Slide from="right" className="space-y-8 max-md:text-center md:col-span-8">
           {paragraphs.map((p) => (
             <LightText key={p} text={p} className="text-lg leading-[1.5] text-light md:text-2xl md:leading-[1.4]" />
           ))}
@@ -70,7 +70,7 @@ function FeatureList({ index, title, items }: { index: string; title: string; it
   return (
     <section className="border-t hairline bg-deep py-16 md:py-28">
       <div className="container-x grid gap-10 md:grid-cols-12">
-        <div className="md:col-span-4">
+        <div className="max-md:text-center md:col-span-4">
           <Slide from="left" scaleFrom={1.2}>
           <span className="eyebrow">{index}</span>
           <h2 className="mt-4 text-[clamp(2.4rem,5vw,4.4rem)] leading-none tracking-[-0.03em]">
@@ -83,7 +83,7 @@ function FeatureList({ index, title, items }: { index: string; title: string; it
           {items.map(({ icon: Icon, title: t, desc }, i) => (
             <li key={t}>
               <Reveal delay={i * 0.06}>
-                <div className="group flex items-center gap-6 border-t hairline py-7 transition-colors duration-500 hover:bg-primary-deep/10 md:gap-8 md:px-4">
+                <div className="group flex items-center gap-6 border-t hairline py-7 max-md:flex-col max-md:text-center transition-colors duration-500 hover:bg-primary-deep/10 md:gap-8 md:px-4">
                   <span className="flex h-12 w-12 shrink-0 items-center justify-center rounded-md border border-secondary/25 text-primary transition-colors duration-500 group-hover:border-primary group-hover:bg-primary group-hover:text-bg">
                     <Icon className="h-5 w-5" />
                   </span>
@@ -130,7 +130,7 @@ function Timeline({ index, title, items }: { index: string; title: string; items
   return (
     <section className="border-t hairline py-16 md:py-28">
       <div className="container-x grid gap-10 md:grid-cols-12">
-        <div className="md:col-span-4">
+        <div className="max-md:text-center md:col-span-4">
           <div className="md:sticky md:top-32">
             <Slide from="left" scaleFrom={1.2}>
             <span className="eyebrow">{index}</span>
@@ -145,13 +145,13 @@ function Timeline({ index, title, items }: { index: string; title: string; items
           <span aria-hidden className="absolute bottom-0 left-0 top-2 hidden w-px bg-secondary/15 md:block" />
           <span ref={line} aria-hidden className="absolute bottom-0 left-0 top-2 hidden w-px origin-top bg-primary md:block" />
           {items.map((e) => (
-            <li key={`${e.period}-${e.title}`} className="relative pb-14 last:pb-0">
+            <li key={`${e.period}-${e.title}`} className="relative pb-14 last:pb-0 max-md:text-center">
               <Reveal>
                 <span aria-hidden className="absolute -left-[3.2rem] top-2 hidden h-2.5 w-2.5 rounded-full bg-primary shadow-[0_0_14px_3px_rgb(36_177_177/0.6)] md:block" />
                 <span className="font-mono text-xs uppercase tracking-[0.14em] text-primary">{e.period}</span>
                 <h3 className="mt-3 text-2xl leading-tight md:text-4xl">{e.title}</h3>
                 <p className="mt-2 font-serif text-xl italic text-light/80">{e.company}</p>
-                <p className="body-copy mt-4 max-w-2xl">{e.description}</p>
+                <p className="body-copy mt-4 max-w-2xl max-md:mx-auto">{e.description}</p>
               </Reveal>
             </li>
           ))}

@@ -107,14 +107,14 @@ export default function ProjectList({ items }: { items: Project[] }) {
                     </Slide>
                   </div>
 
-                  <div className={`md:col-span-5 ${flip ? 'md:order-1' : ''}`}>
+                  <div className={`max-md:text-center md:col-span-5 ${flip ? 'md:order-1' : ''}`}>
                     <Slide from={flip ? 'left' : 'right'}>
                       <span className="eyebrow">{pad(i + 1)}</span>
                       <h3 className="mt-3 text-[clamp(2.2rem,4.6vw,4.2rem)] leading-[1] tracking-tight">{p.title}</h3>
                       {meta && <p className="mt-4 font-mono text-xs uppercase tracking-[0.14em] text-light/60">{meta}</p>}
                       <p className="body-copy mt-6">{p.description}</p>
                       {p.technologies.length > 0 && (
-                        <ul className="mt-5 flex flex-wrap gap-2">
+                        <ul className="mt-5 flex flex-wrap gap-2 max-md:justify-center">
                           {p.technologies.map((t) => (
                             <li key={t} className="chip">
                               {t}
@@ -122,7 +122,7 @@ export default function ProjectList({ items }: { items: Project[] }) {
                           ))}
                         </ul>
                       )}
-                      <div className="mt-7 flex flex-wrap items-center gap-3">
+                      <div className="mt-7 flex flex-wrap items-center gap-3 max-md:justify-center">
                         {p.liveUrl && (
                           <a href={p.liveUrl} target="_blank" rel="noopener noreferrer" className="btn-primary !px-5 !py-3">
                             Live Demo

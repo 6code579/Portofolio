@@ -81,7 +81,7 @@ export default function Shell({ children }: { children: ReactNode }) {
         {!booted && <Preloader onReveal={reveal} onDone={done} />}
         <Cursor />
         <Header />
-        <main id="main">{children}</main>
+        <main id="main" className="overflow-x-clip">{children}</main>
         <Footer />
         <div
           ref={overlay}

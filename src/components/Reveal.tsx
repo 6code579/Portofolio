@@ -249,7 +249,7 @@ export function Slide({ children, from = 'left', scaleFrom = 1, className = '' }
     const ctx = gsap.context(() => {
       gsap.fromTo(
         el,
-        { x: dist, scale: scaleFrom, opacity: 0, transformOrigin: from === 'right' ? 'right center' : from === 'none' ? 'center center' : 'left center' },
+        { x: dist, scale: scaleFrom, opacity: 0, transformOrigin: window.innerWidth < 768 || from === 'none' ? 'center center' : from === 'right' ? 'right center' : 'left center' },
         {
           x: 0,
           scale: 1,
@@ -282,7 +282,7 @@ export function Shrink({ children, to = 0.6, className = '' }: { children: React
         scale: to,
         xPercent: -4,
         opacity: 0.35,
-        transformOrigin: 'left top',
+        transformOrigin: window.innerWidth < 768 ? 'center top' : 'left top',
         ease: 'none',
         scrollTrigger: { trigger: el, start: 'top 12%', end: 'bottom -20%', scrub: true },
       });
