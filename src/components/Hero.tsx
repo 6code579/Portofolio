@@ -1,512 +1,276 @@
-import React, { useState } from 'react';
-import { motion } from 'framer-motion';
-import { ArrowDown, Download, Github, Linkedin, Sparkles, Instagram, X } from 'lucide-react';
-import Portrait from '../images/francisco.png';
-import { Link } from 'react-router-dom';
+import { useEffect, useRef, useState } from 'react';
+import { ArrowDown, Download, Github, Instagram, Linkedin } from 'lucide-react';
+import portrait from '../images/francisco.webp';
+import { gsap, hasFinePointer, prefersReducedMotion, scrollToTarget } from '../lib/motion';
+import { useShell } from '../contexts/ShellContext';
+import Shader from './Shader';
+import Magnetic from './Magnetic';
+import TLink from './TLink';
+import { CvModal } from './Modals';
+import LivePreview from './LivePreview';
+import { projects } from '../data/content';
 
-const Hero: React.FC = () => {
-  const [isCvModalOpen, setIsCvModalOpen] = useState(false);
+const socials = [
+  { icon: Github, href: 'https://github.com/LucaneTech', name: 'GitHub' },
+  { icon: Linkedin, href: 'https://www.linkedin.com/in/franciscomouanda579', name: 'LinkedIn' },
+  { icon: Instagram, href: 'https://www.instagram.com/lucane.tech/', name: 'Instagram' },
+];
 
-  const scrollToNext = () => {
-    const nextSection = document.getElementById('featured-projects');
-    nextSection?.scrollIntoView({ behavior: 'smooth' });
-  };
+/** Écrans de projets qui flottent autour du portrait, à des profondeurs différentes. */
+const screens = [
+  { slug: 'lucane', pos: 'left-[-10%] top-[12%] w-[46%] z-0', depth: 0.55, tilt: -7, bob: 3.4 },
+  { slug: 'agrobusiness', pos: 'right-[-6%] top-[-2%] w-[36%] z-0', depth: 0.85, tilt: 6, bob: 4.2 },
+  { slug: 'hermon', pos: 'right-[-8%] bottom-[8%] w-[44%] z-20', depth: 1.3, tilt: 5, bob: 3.8 },
+];
 
-  const containerVariants = {
-    hidden: { opacity: 0 },
-    visible: {
-      opacity: 1,
-      transition: {
-        delayChildren: 0.3,
-        staggerChildren: 0.2
-      }
+function MiniScreen({ slug, enabled }: { slug: string; enabled: boolean }) {
+  const project = projects.find((p) => p.slug === slug)!;
+  return (
+    <div className="overflow-hidden rounded-md border border-secondary/25 bg-deep shadow-[0_24px_60px_-20px_rgb(0_0_0/0.85)]">
+      <div className="flex items-center gap-1.5 border-b border-secondary/15 bg-bg px-2.5 py-2">
+        <span className="h-1.5 w-1.5 rounded-full bg-secondary/30" />
+        <span className="h-1.5 w-1.5 rounded-full bg-secondary/30" />
+        <span className="h-1.5 w-1.5 rounded-full bg-primary/70" />
+      </div>
+      <div className="aspect-[16/10] w-full">
+        <LivePreview project={project} enabled={enabled} />
+      </div>
+    </div>
+  );
+}
+
+/** Une couche de titre : deux lignes masquées. `lit` est la version pleine, révélée par le curseur. */
+function TitleLayer({ lit }: { lit?: boolean }) {
+  const first = lit ? 'text-secondary' : 'title-outline';
+  const second = lit ? 'text-primary' : 'title-outline';
+  return (
+    <span
+      aria-hidden
+      className={`block ${lit ? 'title-lit absolute inset-0' : 'title-outline-layer'} text-[clamp(3.2rem,12.4vw,12.5rem)] font-semibold leading-[0.92] tracking-[-0.03em]`}
+    >
+      <span className="block overflow-hidden pb-[0.06em]">
+        <span data-line className={`block ${first}`}>
+          Développeur
+        </span>
+      </span>
+      <span className="block overflow-hidden pb-[0.1em]">
+        <span data-line className={`block font-serif font-normal italic tracking-[-0.03em] ${second}`}>
+          Fullstack
+        </span>
+      </span>
+    </span>
+  );
+}
+
+export default function Hero() {
+  const { ready } = useShell();
+  const root = useRef<HTMLElement>(null);
+  const title = useRef<HTMLHeadingElement>(null);
+  const stage = useRef<HTMLDivElement>(null);
+  const photo = useRef<HTMLDivElement>(null);
+  const [cvOpen, setCvOpen] = useState(false);
+  const fine = hasFinePointer();
+  // Les sites en direct sont chargés un peu après l'affichage du hero, pour ne pas gêner le démarrage.
+  const [screensOn, setScreensOn] = useState(false);
+  useEffect(() => {
+    if (!ready) return;
+    const id = window.setTimeout(() => setScreensOn(true), 3000);
+    return () => window.clearTimeout(id);
+  }, [ready]);
+
+  useEffect(() => {
+    if (!ready || !root.current || !title.current || !stage.current) return;
+    const reduce = prefersReducedMotion();
+    const lines = title.current.querySelectorAll('[data-line]');
+    const details = root.current.querySelectorAll('[data-hero]');
+    const layers = Array.from(stage.current.querySelectorAll<HTMLElement>('[data-layer]'));
+
+    if (reduce) {
+      gsap.set([lines, details, photo.current, layers], { clearProps: 'all', opacity: 1 });
+      return;
     }
-  };
 
-  const itemVariants = {
-    hidden: { y: 20, opacity: 0 },
-    visible: {
-      y: 0,
-      opacity: 1,
-      transition: {
-        duration: 0.6,
-        ease: "easeOut"
+    const ctx = gsap.context(() => {
+      gsap.set(details, { opacity: 0, y: 24 });
+      gsap
+        .timeline()
+        .from(photo.current, { clipPath: 'inset(100% 0% 0% 0%)', scale: 1.2, duration: 1.6, ease: 'expo.inOut' })
+        .from(lines, { yPercent: 115, duration: 1.5, ease: 'expo.out', stagger: 0.12 }, '-=1')
+        .from(layers, { opacity: 0, scale: 0.7, y: 70, duration: 1.5, ease: 'expo.out', stagger: 0.14 }, '-=1.1')
+        .to(details, { opacity: 1, y: 0, duration: 1.1, ease: 'expo.out', stagger: 0.09 }, '-=1.2');
+
+      // Les écrans flottent en continu, chacun à son rythme (bureau seulement).
+      if (hasFinePointer()) {
+        stage.current!.querySelectorAll<HTMLElement>('[data-float]').forEach((el, i) => {
+          gsap.to(el, { y: i % 2 ? 14 : -14, rotation: i % 2 ? 1.2 : -1.2, duration: 3 + i * 0.7, ease: 'sine.inOut', yoyo: true, repeat: -1 });
+        });
       }
-    }
-  };
 
-  // Particules animées
-  const particles = Array.from({ length: 20 }, (_, i) => i);
+      // Style « le grand devient petit » : titre et scène rapetissent pendant qu'on quitte le hero.
+      if (hasFinePointer()) {
+        const shrink = { trigger: root.current, start: 'top top', end: 'bottom top', scrub: true };
+        gsap.to(title.current, { scale: 0.55, transformOrigin: 'left top', ease: 'none', scrollTrigger: shrink });
+        gsap.to(stage.current, { scale: 0.7, transformOrigin: 'center top', ease: 'none', scrollTrigger: shrink });
+      }
+
+      gsap.to(stage.current, {
+        yPercent: -8,
+        ease: 'none',
+        scrollTrigger: { trigger: root.current, start: 'top top', end: 'bottom top', scrub: true },
+      });
+    }, root);
+
+    const el = title.current;
+    let sweep: gsap.core.Tween | null = null;
+    const setLight = (x: number, y: number) => {
+      el.style.setProperty('--hx', `${x}px`);
+      el.style.setProperty('--hy', `${y}px`);
+    };
+
+    // Parallaxe de profondeur + inclinaison 3D du portrait.
+    const movers = layers.map((l) => ({
+      depth: Number(l.dataset.depth ?? 0.5),
+      x: gsap.quickTo(l, 'x', { duration: 0.9, ease: 'power3' }),
+      y: gsap.quickTo(l, 'y', { duration: 0.9, ease: 'power3' }),
+    }));
+    gsap.set(photo.current, { transformPerspective: 900 });
+    const tiltX = gsap.quickTo(photo.current, 'rotationX', { duration: 0.8, ease: 'power3' });
+    const tiltY = gsap.quickTo(photo.current, 'rotationY', { duration: 0.8, ease: 'power3' });
+
+    const onMove = (e: PointerEvent) => {
+      sweep?.kill();
+      sweep = null;
+      const r = el.getBoundingClientRect();
+      setLight(e.clientX - r.left, e.clientY - r.top);
+      const nx = e.clientX / window.innerWidth - 0.5;
+      const ny = e.clientY / window.innerHeight - 0.5;
+      movers.forEach((m) => {
+        m.x(-nx * m.depth * 70);
+        m.y(-ny * m.depth * 50);
+      });
+      tiltY(nx * 16);
+      tiltX(-ny * 12);
+    };
+
+    if (fine) {
+      const r = el.getBoundingClientRect();
+      const pos = { x: -300 };
+      sweep = gsap.to(pos, {
+        x: r.width + 300,
+        duration: 2.8,
+        delay: 0.9,
+        ease: 'power2.inOut',
+        onUpdate: () => setLight(pos.x, r.height * 0.55),
+      });
+      window.addEventListener('pointermove', onMove, { passive: true });
+    }
+
+    return () => {
+      sweep?.kill();
+      window.removeEventListener('pointermove', onMove);
+      ctx.revert();
+    };
+  }, [ready]);
 
   return (
-    <section className="min-h-screen flex items-center justify-center bg-gradient-to-br from-blue-50 via-white to-green-50 dark:from-slate-900 dark:via-slate-800 dark:to-slate-900 relative overflow-hidden">
-      {/* Animated Background Elements */}
-      <div className="absolute inset-0 overflow-hidden">
-        {/* Particules flottantes */}
-        {particles.map((particle) => (
-          <motion.div
-            key={particle}
-            className="absolute w-2 h-2 bg-blue-400/20 dark:bg-blue-300/20 rounded-full"
-            style={{
-              left: `${Math.random() * 100}%`,
-              top: `${Math.random() * 100}%`,
-            }}
-            animate={{
-              y: [0, -30, 0],
-              x: [0, Math.random() * 20 - 10, 0],
-              opacity: [0.2, 0.8, 0.2],
-              scale: [1, 1.5, 1],
-            }}
-            transition={{
-              duration: 3 + Math.random() * 2,
-              repeat: Infinity,
-              ease: "easeInOut",
-              delay: Math.random() * 2,
-            }}
-          />
-        ))}
-
-        {/* Formes géométriques animées */}
-        <motion.div
-          animate={{
-            x: [0, 100, 0],
-            y: [0, -100, 0],
-            rotate: [0, 180, 360],
-            scale: [1, 1.2, 1],
-          }}
-          transition={{
-            duration: 20,
-            repeat: Infinity,
-            ease: "linear"
-          }}
-          className="absolute top-10 left-10 w-20 h-20 bg-gradient-to-br from-blue-500/10 to-purple-500/10 dark:from-blue-400/10 dark:to-purple-400/10 rounded-full blur-sm"
-        />
-
-        <motion.div
-          animate={{
-            x: [0, -50, 0],
-            y: [0, 100, 0],
-            scale: [1, 1.5, 1],
-            rotate: [0, -180, -360],
-          }}
-          transition={{
-            duration: 15,
-            repeat: Infinity,
-            ease: "easeInOut"
-          }}
-          className="absolute top-40 right-20 w-16 h-16 bg-gradient-to-br from-green-500/10 to-blue-500/10 dark:from-green-400/10 dark:to-blue-400/10 rounded-full blur-sm"
-        />
-
-        <motion.div
-          animate={{
-            x: [0, 80, 0],
-            y: [0, -80, 0],
-            rotate: [0, -180, -360],
-            scale: [1, 0.8, 1],
-          }}
-          transition={{
-            duration: 25,
-            repeat: Infinity,
-            ease: "linear"
-          }}
-          className="absolute bottom-40 left-20 w-12 h-12 bg-gradient-to-br from-purple-500/10 to-pink-500/10 dark:from-purple-400/10 dark:to-pink-400/10 rounded-full blur-sm"
-        />
-
-        {/* Lignes animées */}
-        <motion.div
-          animate={{
-            scaleX: [0, 1, 0],
-            opacity: [0, 0.3, 0],
-          }}
-          transition={{
-            duration: 4,
-            repeat: Infinity,
-            ease: "easeInOut",
-            delay: 1,
-          }}
-          className="absolute top-1/4 left-0 w-full h-px bg-gradient-to-r from-transparent via-blue-400/30 to-transparent"
-        />
-
-        <motion.div
-          animate={{
-            scaleY: [0, 1, 0],
-            opacity: [0, 0.3, 0],
-          }}
-          transition={{
-            duration: 4,
-            repeat: Infinity,
-            ease: "easeInOut",
-            delay: 2,
-          }}
-          className="absolute top-0 left-1/4 w-px h-full bg-gradient-to-b from-transparent via-purple-400/30 to-transparent"
-        />
-
-        {/* Grille de points */}
-        <div className="absolute inset-0 opacity-20">
-          {Array.from({ length: 8 }, (_, i) => (
-            <motion.div
-              key={i}
-              className="absolute w-1 h-1 bg-blue-400 dark:bg-blue-300 rounded-full"
-              style={{
-                left: `${(i + 1) * 12.5}%`,
-                top: `${(i + 1) * 12.5}%`,
-              }}
-              animate={{
-                scale: [1, 1.5, 1],
-                opacity: [0.3, 1, 0.3],
-              }}
-              transition={{
-                duration: 2,
-                repeat: Infinity,
-                ease: "easeInOut",
-                delay: i * 0.2,
-              }}
-            />
-          ))}
-        </div>
-
-        {/* Ondes de fond */}
-        <motion.div
-          animate={{
-            scale: [1, 1.5, 1],
-            opacity: [0.1, 0.3, 0.1],
-          }}
-          transition={{
-            duration: 8,
-            repeat: Infinity,
-            ease: "easeInOut",
-          }}
-          className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 w-96 h-96 bg-gradient-to-r from-blue-400/10 to-purple-400/10 dark:from-blue-300/10 dark:to-purple-300/10 rounded-full blur-3xl"
-        />
-
-        <motion.div
-          animate={{
-            scale: [1, 1.3, 1],
-            opacity: [0.05, 0.2, 0.05],
-          }}
-          transition={{
-            duration: 10,
-            repeat: Infinity,
-            ease: "easeInOut",
-            delay: 2,
-          }}
-          className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 w-80 h-80 bg-gradient-to-r from-green-400/10 to-blue-400/10 dark:from-green-300/10 dark:to-blue-300/10 rounded-full blur-3xl"
-        />
-
-        {/* Formes géométriques flottantes */}
-        <motion.div
-          animate={{
-            y: [0, -20, 0],
-            rotate: [0, 360],
-            scale: [1, 1.1, 1],
-          }}
-          transition={{
-            duration: 6,
-            repeat: Infinity,
-            ease: "easeInOut",
-          }}
-          className="absolute top-20 right-10 w-8 h-8 border-2 border-blue-400/30 dark:border-blue-300/30 rounded-lg"
-        />
-
-        <motion.div
-          animate={{
-            y: [0, 20, 0],
-            rotate: [0, -360],
-            scale: [1, 0.9, 1],
-          }}
-          transition={{
-            duration: 7,
-            repeat: Infinity,
-            ease: "easeInOut",
-            delay: 1,
-          }}
-          className="absolute bottom-20 right-20 w-6 h-6 border-2 border-purple-400/30 dark:border-purple-300/30 rounded-full"
-        />
-
-        <motion.div
-          animate={{
-            x: [0, 15, 0],
-            y: [0, -15, 0],
-            rotate: [0, 180, 360],
-          }}
-          transition={{
-            duration: 5,
-            repeat: Infinity,
-            ease: "easeInOut",
-            delay: 2,
-          }}
-          className="absolute top-1/3 left-10 w-4 h-4 bg-gradient-to-br from-green-400/40 to-blue-400/40 dark:from-green-300/40 dark:to-blue-300/40 rounded-sm"
-        />
-
-        {/* Effet de parallaxe sur les étoiles */}
-        {Array.from({ length: 15 }, (_, i) => (
-          <motion.div
-            key={`star-${i}`}
-            className="absolute w-1 h-1 bg-white/60 dark:bg-blue-300/60 rounded-full"
-            style={{
-              left: `${Math.random() * 100}%`,
-              top: `${Math.random() * 100}%`,
-            }}
-            animate={{
-              y: [0, -10, 0],
-              opacity: [0.3, 1, 0.3],
-              scale: [1, 1.2, 1],
-            }}
-            transition={{
-              duration: 2 + Math.random() * 2,
-              repeat: Infinity,
-              ease: "easeInOut",
-              delay: Math.random() * 3,
-            }}
-          />
-        ))}
-
-        {/* Lignes de connexion */}
-        <svg className="absolute inset-0 w-full h-full pointer-events-none">
-          <motion.path
-            d="M 100 200 Q 300 100 500 200 T 900 200"
-            stroke="url(#gradient1)"
-            strokeWidth="1"
-            fill="none"
-            opacity="0.3"
-            animate={{
-              pathLength: [0, 1, 0],
-              opacity: [0, 0.5, 0],
-            }}
-            transition={{
-              duration: 6,
-              repeat: Infinity,
-              ease: "easeInOut",
-            }}
-          />
-          <motion.path
-            d="M 200 300 Q 400 200 600 300 T 1000 300"
-            stroke="url(#gradient2)"
-            strokeWidth="1"
-            fill="none"
-            opacity="0.3"
-            animate={{
-              pathLength: [0, 1, 0],
-              opacity: [0, 0.5, 0],
-            }}
-            transition={{
-              duration: 8,
-              repeat: Infinity,
-              ease: "easeInOut",
-              delay: 2,
-            }}
-          />
-          <defs>
-            <linearGradient id="gradient1" x1="0%" y1="0%" x2="100%" y2="0%">
-              <stop offset="0%" stopColor="#3B82F6" stopOpacity="0.5" />
-              <stop offset="50%" stopColor="#8B5CF6" stopOpacity="0.5" />
-              <stop offset="100%" stopColor="#10B981" stopOpacity="0.5" />
-            </linearGradient>
-            <linearGradient id="gradient2" x1="0%" y1="0%" x2="100%" y2="0%">
-              <stop offset="0%" stopColor="#10B981" stopOpacity="0.5" />
-              <stop offset="50%" stopColor="#3B82F6" stopOpacity="0.5" />
-              <stop offset="100%" stopColor="#8B5CF6" stopOpacity="0.5" />
-            </linearGradient>
-          </defs>
-        </svg>
-      </div>
-
-      <motion.div
-        variants={containerVariants}
-        initial="hidden"
-        animate="visible"
-        className="container mx-auto px-6 text-center relative z-10"
-      >
-        <div className="max-w-4xl mx-auto">
-          {/* Profile Image */}
-          <motion.div
-            variants={itemVariants}
-            className="mb-8 flex justify-center"
-          >
-            <motion.div
-              whileHover={{ scale: 1.05 }}
-              className="relative"
-            >
-              <motion.div
-                animate={{ rotate: 360 }}
-                transition={{ duration: 20, repeat: Infinity, ease: "linear" }}
-                className="absolute -inset-4 bg-gradient-to-r from-blue-600 via-purple-600 to-green-600 rounded-full opacity-20 blur-lg"
-              />
-              <div className="relative w-48 md:w-64 h-auto mt-4 rounded-full overflow-hidden border-4 border-white dark:border-slate-700 shadow-2xl bg-gradient-to-br from-blue-100 to-green-100 dark:from-slate-700 dark:to-slate-600">
-                <img
-                  src={Portrait}
-                  alt="Portrait professionnel"
-                  className="w-full h-full object-cover"
-                />
-              </div>
-              <motion.div
-                animate={{ scale: [1, 1.2, 1] }}
-                transition={{ duration: 2, repeat: Infinity }}
-                className="absolute -bottom-2 -right-2 w-12 h-12 bg-gradient-to-r from-green-500 to-emerald-500 rounded-full flex items-center justify-center border-4 border-white dark:border-slate-700 shadow-lg"
-              >
-                <Sparkles className="w-6 h-6 text-white" />
-              </motion.div>
-            </motion.div>
-          </motion.div>
-
-          {/* Main Content */}
-          <motion.h1
-            variants={itemVariants}
-            className="text-5xl md:text-7xl font-bold text-slate-800 dark:text-white mb-6 leading-tight"
-          >
-            Développeur
-            <motion.span
-              animate={{
-                backgroundPosition: ["0% 50%", "100% 50%", "0% 50%"]
-              }}
-              transition={{ duration: 3, repeat: Infinity }}
-              className="block text-transparent bg-clip-text bg-gradient-to-r from-blue-600 via-purple-600 to-green-600 bg-300% mt-2"
-            >
-              Fullstack
-            </motion.span>
-          </motion.h1>
-
-          <motion.p
-            variants={itemVariants}
-            className="text-xl md:text-2xl text-slate-600 dark:text-slate-300 mb-8 leading-relaxed"
-          >
-            Passionné par la création de solutions web
-            <br />
-            <span className="font-semibold text-blue-800 dark:text-blue-400">performantes et modernes</span>
-          </motion.p>
-
-          <motion.p
-            variants={itemVariants}
-            className="text-lg text-slate-500 dark:text-slate-400 mb-12 max-w-2xl mx-auto leading-relaxed"
-          >
-            Spécialisé en Django, React, Python et JavaScript. Je transforme vos idées en applications web robustes et élégantes.
-          </motion.p>
-
-          {/* Action Buttons */}
-          <motion.div
-            variants={itemVariants}
-            className="flex flex-col sm:flex-row gap-6 justify-center items-center mb-12"
-          >
-            <motion.button
-              whileHover={{ scale: 1.05, y: -2 }}
-              whileTap={{ scale: 0.95 }}
-              onClick={() => setIsCvModalOpen(true)}
-              className="px-8 py-4 bg-blue-700 hover:bg-blue-900 text-white font-semibold rounded-xl shadow-lg hover:shadow-xl transition-all duration-300 flex items-center space-x-2"
-            >
-              <Download className="w-5 h-5" />
-              <span>Télécharger mon CV</span>
-            </motion.button>
-
-
-            <motion.a
-              whileHover={{ scale: 1.05, y: -2 }}
-              whileTap={{ scale: 0.95 }}
-
-              className="px-8 py-4 border-2 border-blue-600 dark:border-blue-400 text-blue-600 dark:text-blue-400 hover:bg-blue-600 hover:text-white dark:hover:bg-blue-400 dark:hover:text-slate-900 font-semibold rounded-xl transition-all duration-300 flex items-center space-x-2"
-            >
-              <Link to="/contact" > <span>Me contacter</span></Link>
-
-
-
-            </motion.a>
-          </motion.div>
-
-          {/* Social Links */}
-          <motion.div
-            variants={itemVariants}
-            className="flex justify-center space-x-6 mb-12"
-          >
-            {[
-              { icon: Github, href: "https://github.com/LucaneTech", color: "hover:text-slate-800 dark:hover:text-gray-400" },
-              { icon: Linkedin, href: "https://www.linkedin.com/in/franciscomouanda579", color: "hover:text-blue-600" },
-              { icon: Instagram, href: "https://www.instagram.com/lucane.tech/", color: "hover:text-red-600" }
-            ].map((social, index) => (
-              <motion.a
-                key={index}
-                whileHover={{ scale: 1.2, y: -5 }}
-                whileTap={{ scale: 0.9 }}
-                href={social.href}
-                target="_blank"
-                rel="noopener noreferrer"
-                className={`p-4 bg-white border border-gray-300 dark:border-slate-700/40 dark:bg-slate-800 rounded-2xl shadow-lg hover:shadow-xl transition-all duration-300 text-slate-600 dark:text-slate-300 `}
-              >
-                <social.icon className={`w-6 h-6 duration-300 ${social.color}`} />
-              </motion.a>
-            ))}
-          </motion.div>
-
-          {/* Scroll indicator */}
-          <motion.button
-            variants={itemVariants}
-            whileHover={{ scale: 1.1 }}
-            animate={{ y: [0, 10, 0] }}
-            transition={{ duration: 2, repeat: Infinity }}
-            onClick={scrollToNext}
-            className="text-slate-400 dark:text-slate-500 hover:text-blue-600 dark:hover:text-blue-400 transition-colors"
-          >
-            <ArrowDown className="w-8 h-8 mx-auto" />
-          </motion.button>
-        </div>
-      </motion.div>
-      {isCvModalOpen && (
-        <div className="fixed inset-0 z-50 flex items-center justify-center p-4">
+    <section ref={root} className="relative min-h-[100svh] overflow-hidden pb-10 pt-28 md:pt-32">
+      <Shader />
+      <div className="container-x relative z-10 flex min-h-[calc(100svh-9rem)] flex-col justify-between">
+        <div className="relative">
           <div
-            className="absolute inset-0 bg-black/50 backdrop-blur-sm"
-            onClick={() => setIsCvModalOpen(false)}
-          />
-          <motion.div
-            initial={{ opacity: 0, scale: 0.95 }}
-            animate={{ opacity: 1, scale: 1 }}
-            exit={{ opacity: 0, scale: 0.95 }}
-            transition={{ duration: 0.2, ease: 'easeOut' }}
-            className="relative bg-white dark:bg-slate-800 rounded-md border border-slate-200 dark:border-slate-700 shadow-xl p-6 w-full max-w-sm z-10"
+            ref={stage}
+            className="relative mx-auto mt-4 aspect-[5/5] w-[78%] max-w-[420px] md:absolute md:right-[1%] md:top-[-2vh] md:mx-0 md:mt-0 md:w-[42vw] md:max-w-[620px]"
           >
-            <button
-              onClick={() => setIsCvModalOpen(false)}
-              className="absolute top-3 right-3 p-1 text-slate-400 hover:text-slate-600 dark:hover:text-slate-200 transition-colors"
-            >
-              <X className="w-5 h-5" />
-            </button>
-
-            <div className="flex items-center gap-3 mb-2">
-              <div className="p-2 bg-blue-700 rounded-md">
-                <Download className="w-5 h-5 text-white" />
+            {fine && screens.map((s) => (
+              <div key={s.slug} data-layer data-depth={s.depth} className={`absolute ${s.pos}`}>
+                <div data-float style={{ transform: `rotate(${s.tilt}deg)` }}>
+                  <MiniScreen slug={s.slug} enabled={screensOn} />
+                </div>
               </div>
-              <h3 className="text-lg font-bold text-slate-800 dark:text-white">
-                Mon CV
-              </h3>
-            </div>
+            ))}
 
-             <p className="text-slate-500 dark:text-slate-400 text-sm mb-6">
-                          {/* Quelle version souhaitez-vous télécharger ? */}
-                          La version simple de mon CV est disponible en téléchargement. Pour la version détaillée, veuillez me contacter directement.
-                        </p>
-            
-                       <div className="flex flex-col gap-3">
-                                     <a
-                                       href="/cv.pdf"
-                                       download
-                                       onClick={() => setIsCvModalOpen(false)}
-                                       className="flex items-center justify-center gap-2 px-4 py-3 bg-blue-700 hover:bg-blue-800 text-white font-semibold rounded-md transition-colors duration-150"
-                                     >
-                                       <Download className="w-4 h-4" />
-                                       Version Simple
-                                     </a>
-                                     {/* <a
-                                       // href="/Cv_details.pdf"
-                                       // download
-                                       // onClick={() => setIsCvModalOpen(false)}
-                                       className="flex items-center justify-center gap-2 px-4 py-3 border border-slate-200 dark:border-slate-600 text-slate-700 dark:text-slate-200 hover:bg-slate-50 dark:hover:bg-slate-700 font-semibold rounded-md transition-colors duration-150 disabled:opacity-50 disabled:cursor-not-allowed"
-                                     >
-                                       <Download className="w-4 h-4" />
-                                       Version Détaillée
-                                     </a> */}
-                                   </div>
-          </motion.div>
+            <div data-layer data-depth="0.25" className="absolute inset-x-[20%] bottom-[2%] top-[4%] z-10">
+              <div
+                ref={photo}
+                className="h-full w-full overflow-hidden rounded-md border border-secondary/25 bg-deep shadow-[0_40px_90px_-30px_rgb(0_0_0/0.9)]"
+              >
+                <img
+                  src={portrait}
+                  alt="Portrait professionnel"
+                  width={1086}
+                  height={1448}
+                  {...{ fetchpriority: 'high' }}
+                  className="h-full w-full object-cover"
+                />
+                <div className="pointer-events-none absolute inset-0 bg-gradient-to-t from-bg/60 via-transparent to-primary-deep/20" />
+              </div>
+            </div>
+          </div>
+
+          <h1 ref={title} className="relative z-10 -mt-[16vw] md:mt-[clamp(6rem,19vh,11rem)]">
+            <span className="sr-only">Développeur Fullstack</span>
+            <span className="relative block">
+              <TitleLayer />
+              <TitleLayer lit />
+            </span>
+          </h1>
         </div>
-      )}
+
+        <div className="mt-14 grid gap-10 md:mt-16 md:grid-cols-12 md:items-end">
+          <div className="md:col-span-6">
+            <p data-hero className="text-xl leading-snug text-light md:text-3xl">
+              Passionné par la création de solutions web
+              <br />
+              <span className="font-serif italic text-primary">performantes et modernes</span>
+            </p>
+            <p data-hero className="body-copy mt-5 max-w-xl">
+              Spécialisé en Django, React, Python et JavaScript. Je transforme vos idées en applications web robustes et élégantes.
+            </p>
+          </div>
+
+          <div className="flex flex-col gap-8 md:col-span-6 md:items-end">
+            <div data-hero className="flex flex-wrap gap-4">
+              <Magnetic>
+                <button type="button" onClick={() => setCvOpen(true)} className="btn-primary">
+                  <Download className="h-4 w-4" />
+                  Télécharger mon CV
+                </button>
+              </Magnetic>
+              <Magnetic>
+                <TLink to="/contact" className="btn-ghost">
+                  Me contacter
+                </TLink>
+              </Magnetic>
+            </div>
+            <ul data-hero className="flex gap-3">
+              {socials.map(({ icon: Icon, href, name }) => (
+                <li key={name}>
+                  <a
+                    href={href}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    aria-label={name}
+                    className="flex h-12 w-12 items-center justify-center rounded-md border border-secondary/25 text-light transition-colors duration-300 hover:border-primary hover:bg-primary hover:text-bg"
+                  >
+                    <Icon className="h-5 w-5" />
+                  </a>
+                </li>
+              ))}
+            </ul>
+          </div>
+        </div>
+
+        <button
+          type="button"
+          data-hero
+          onClick={() => scrollToTarget('#featured-projects')}
+          aria-label="Descendre"
+          className="mx-auto mt-10 flex h-12 w-12 items-center justify-center rounded-md border border-secondary/25 text-light/70 transition-colors hover:border-primary hover:text-primary"
+        >
+          <ArrowDown className="h-5 w-5 animate-bounce" />
+        </button>
+      </div>
+      <CvModal open={cvOpen} onClose={() => setCvOpen(false)} />
     </section>
   );
-};
-
-export default Hero;
+}

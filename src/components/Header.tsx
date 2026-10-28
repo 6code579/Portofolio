@@ -1,191 +1,187 @@
-import React, { useState, useEffect } from 'react';
-import { Link, useLocation } from 'react-router-dom';
-import { motion, AnimatePresence } from 'framer-motion';
-import { Menu, X, Moon, Sun } from 'lucide-react';
-import { useTheme } from '../contexts/ThemeContext';
+import { useEffect, useRef, useState } from 'react';
+import { useLocation } from 'react-router-dom';
+import { Github, Instagram, Linkedin, Mail } from 'lucide-react';
+import { gsap, prefersReducedMotion } from '../lib/motion';
+import { navItems } from '../data/content';
+import { useShell } from '../contexts/ShellContext';
+import TLink from './TLink';
 
-const Header: React.FC = () => {
-  const [isMenuOpen, setIsMenuOpen] = useState(false);
-  const [isScrolled, setIsScrolled] = useState(false);
-  const location = useLocation();
-  const { isDark, toggleTheme } = useTheme();
+const social = [
+  { name: 'GitHub', href: 'https://github.com/LucaneTech', icon: Github },
+  { name: 'LinkedIn', href: 'https://www.linkedin.com/in/franciscomouanda579', icon: Linkedin },
+  { name: 'Instagram', href: 'https://www.instagram.com/lucane.tech/', icon: Instagram },
+  { name: 'Email', href: 'mailto:profrancisco579@gmail.com', icon: Mail },
+];
 
+export default function Header() {
+  const { pathname } = useLocation();
+  const { ready } = useShell();
+  const [open, setOpen] = useState(false);
+  const panel = useRef<HTMLElement>(null);
+  const shade = useRef<HTMLDivElement>(null);
+  const bar = useRef<HTMLElement>(null);
+  const button = useRef<HTMLButtonElement>(null);
+  const tl = useRef<gsap.core.Timeline | null>(null);
+  const mounted = useRef(false);
+
+  const index = Math.max(0, navItems.findIndex((n) => n.path === pathname));
+
+  // Apparition de la barre après le préloader / la transition.
   useEffect(() => {
-    const handleScroll = () => {
-      setIsScrolled(window.scrollY > 20);
+    if (!ready || !bar.current) return;
+    if (prefersReducedMotion()) {
+      gsap.set(bar.current, { opacity: 1 });
+      return;
+    }
+    const tween = gsap.fromTo(bar.current, { opacity: 0, y: -16 }, { opacity: 1, y: 0, duration: 0.9, ease: 'expo.out', delay: 0.2 });
+    return () => {
+      tween.kill();
     };
+  }, [ready]);
 
-    window.addEventListener('scroll', handleScroll);
-    return () => window.removeEventListener('scroll', handleScroll);
+  // Le panneau est une timeline unique : ouvrir la joue, fermer la rejoue à l'envers, même en cours de route.
+  useEffect(() => {
+    const el = panel.current;
+    const dim = shade.current;
+    if (!el || !dim || prefersReducedMotion()) return;
+    const items = el.querySelectorAll('[data-menu-item]');
+    const timeline = gsap
+      .timeline({ paused: true, onReverseComplete: () => void gsap.set([el, dim], { visibility: 'hidden' }) })
+      .set([el, dim], { visibility: 'visible' })
+      .fromTo(dim, { opacity: 0 }, { opacity: 1, duration: 0.6, ease: 'power2.out' })
+      .fromTo(el, { xPercent: 100 }, { xPercent: 0, duration: 0.85, ease: 'expo.out' }, 0)
+      .fromTo(items, { opacity: 0, x: 24 }, { opacity: 1, x: 0, duration: 0.7, ease: 'expo.out', stagger: 0.06 }, 0.15);
+    tl.current = timeline;
+    return () => {
+      timeline.kill();
+      tl.current = null;
+    };
   }, []);
 
-  const navItems = [
-    { path: '/', label: 'Accueil' },
-    { path: '/projects', label: 'Projets' },
-    { path: '/about', label: 'À propos' },
-    { path: '/contact', label: 'Contact' },
-  ];
+  useEffect(() => {
+    const el = panel.current;
+    const dim = shade.current;
+    if (!el || !dim) return;
+    if (prefersReducedMotion()) {
+      el.style.visibility = dim.style.visibility = open ? 'visible' : 'hidden';
+      return;
+    }
+    if (!tl.current) return;
+    if (open) tl.current.timeScale(1).play();
+    else if (mounted.current) tl.current.timeScale(1.7).reverse();
+    mounted.current = true;
+  }, [open]);
+
+  // Fermeture : Échap, clic en dehors, changement de page.
+  useEffect(() => {
+    if (!open) return;
+    const onKey = (e: KeyboardEvent) => {
+      if (e.key === 'Escape') {
+        setOpen(false);
+        button.current?.focus({ preventScroll: true });
+      }
+    };
+    const onDown = (e: PointerEvent) => {
+      const t = e.target as Node;
+      if (panel.current?.contains(t) || button.current?.contains(t)) return;
+      setOpen(false);
+    };
+    window.addEventListener('keydown', onKey);
+    document.addEventListener('pointerdown', onDown);
+    return () => {
+      window.removeEventListener('keydown', onKey);
+      document.removeEventListener('pointerdown', onDown);
+    };
+  }, [open]);
+
+  useEffect(() => {
+    setOpen(false);
+  }, [pathname]);
 
   return (
-    <motion.header
-      initial={{ y: -100 }}
-      animate={{ y: 0 }}
-      transition={{ duration: 0.6, ease: "easeOut" }}
-      className={`fixed top-0 left-0 right-0 z-50 transition-all duration-500 ${
-        isScrolled
-          ? 'bg-white/95 dark:bg-slate-900/95 backdrop-blur-lg shadow-xl border-b border-slate-200/40 dark:border-slate-700/40'
-          : 'bg-transparent'
-      }`}
-    >
-      <nav className="container mx-auto px-6 py-4">
-        <div className="flex items-center md:justify-center">
-         
+    <>
+      <a
+        href="#main"
+        className="fixed left-4 top-4 z-[120] -translate-y-24 rounded-md bg-primary px-5 py-3 text-sm font-medium text-bg focus:translate-y-0"
+      >
+        Aller au contenu
+      </a>
 
-          {/* Desktop Navigation */}
-          <div className="hidden md:flex items-center space-x-8">
-            {navItems.map((item, index) => (
-              <motion.div
-                key={item.path}
-                initial={{ opacity: 0, y: -20 }}
-                animate={{ opacity: 1, y: 0 }}
-                transition={{ delay: index * 0.1 }}
-              >
-                <Link
-                  to={item.path}
-                  className={`relative py-2 px-4 text-sm font-medium transition-all duration-300 rounded-md hover:bg-slate-100 dark:hover:bg-slate-800 ${
-                    location.pathname === item.path
-                      ? 'text-blue-600 dark:text-blue-400'
-                      : 'text-slate-600 dark:text-slate-300 hover:text-blue-600 dark:hover:text-blue-400'
-                  }`}
+      <header ref={bar} className="pointer-events-none fixed inset-x-0 top-0 z-[90] flex items-center justify-between px-5 py-5 opacity-0 md:px-10 md:py-6">
+        <TLink to="/" className="pointer-events-auto group flex items-center gap-3">
+          <span className="h-3 w-3 rounded-full bg-primary shadow-[0_0_18px_4px_rgb(36_177_177/0.55)] transition-transform duration-500 group-hover:scale-150" />
+          <span className="font-mono text-xs uppercase tracking-[0.18em] text-light/70 max-md:sr-only">
+            {String(index + 1).padStart(2, '0')} / {navItems[index].label}
+          </span>
+        </TLink>
+
+        <button
+          ref={button}
+          type="button"
+          aria-expanded={open}
+          aria-controls="menu"
+          onClick={() => setOpen((v) => !v)}
+          className="pointer-events-auto group relative flex items-center gap-3 rounded-md border border-secondary/25 bg-bg/50 px-4 py-2 text-sm text-light backdrop-blur-md transition-colors duration-300 hover:border-primary"
+        >
+          <span>{open ? 'Fermer' : 'Menu'}</span>
+          <span className="relative block h-2 w-4">
+            <span className={`absolute left-0 top-0 h-px w-full bg-secondary transition-transform duration-500 ease-out ${open ? 'translate-y-[3.5px] rotate-45' : ''}`} />
+            <span className={`absolute bottom-0 left-0 h-px w-full bg-secondary transition-transform duration-500 ease-out ${open ? '-translate-y-[3.5px] -rotate-45' : ''}`} />
+          </span>
+        </button>
+      </header>
+
+      <div ref={shade} aria-hidden className="invisible fixed inset-0 z-[84] bg-black/55 backdrop-blur-[2px]" />
+
+      <nav
+        id="menu"
+        ref={panel}
+        aria-label="Navigation principale"
+        className="invisible fixed right-0 top-0 z-[85] flex h-[100dvh] w-[min(21rem,88vw)] flex-col border-l border-secondary/20 bg-deep px-6 pb-8 pt-24 shadow-[-30px_0_80px_-20px_rgb(0_0_0/0.9)]"
+      >
+        <ul>
+          {navItems.map((item, i) => {
+            const active = item.path === pathname;
+            return (
+              <li key={item.path}>
+                <div data-menu-item>
+                  <TLink
+                    to={item.path}
+                    aria-current={active ? 'page' : undefined}
+                    className={`group flex items-center justify-between rounded-md px-3 py-3 text-base transition-colors duration-300 hover:bg-secondary/10 ${
+                      active ? 'text-primary' : 'text-secondary'
+                    }`}
+                  >
+                    <span>{item.label}</span>
+                    <span className="font-mono text-[10px] text-light/50 transition-colors group-hover:text-primary">{String(i + 1).padStart(2, '0')}</span>
+                  </TLink>
+                </div>
+              </li>
+            );
+          })}
+        </ul>
+
+        <div data-menu-item className="mt-auto space-y-4 border-t hairline px-3 pt-5">
+          <a href="mailto:profrancisco579@gmail.com" className="block text-xs text-light/70 transition-colors hover:text-primary">
+            profrancisco579@gmail.com
+          </a>
+          <ul className="flex gap-1.5">
+            {social.map(({ name, href, icon: Icon }) => (
+              <li key={name}>
+                <a
+                  href={href}
+                  target={href.startsWith('http') ? '_blank' : undefined}
+                  rel="noopener noreferrer"
+                  aria-label={name}
+                  className="flex h-9 w-9 items-center justify-center rounded-md border border-secondary/20 text-light/70 transition-colors duration-300 hover:bg-primary hover:text-bg"
                 >
-                  {item.label}
-                  {location.pathname === item.path && (
-                    <motion.span
-                      layoutId="activeTab"
-                      className="absolute bottom-0 left-0 right-0 h-0.5 bg-blue-600 dark:bg-blue-400 rounded-sm"
-                    />
-                  )}
-                </Link>
-              </motion.div>
+                  <Icon className="h-4 w-4" />
+                </a>
+              </li>
             ))}
-
-            {/* Theme Toggle */}
-            <motion.button
-              whileHover={{ scale: 1.1 }}
-              whileTap={{ scale: 0.95 }}
-              onClick={toggleTheme}
-              className="p-2 rounded-md bg-slate-100 dark:bg-slate-800 text-slate-600 dark:text-slate-300 hover:bg-slate-200 dark:hover:bg-slate-700 transition-all duration-300"
-            >
-              <AnimatePresence mode="wait">
-                {isDark ? (
-                  <motion.div
-                    key="sun"
-                    initial={{ rotate: -90, opacity: 0 }}
-                    animate={{ rotate: 0, opacity: 1 }}
-                    exit={{ rotate: 90, opacity: 0 }}
-                    transition={{ duration: 0.3 }}
-                  >
-                    <Sun className="w-5 h-5" />
-                  </motion.div>
-                ) : (
-                  <motion.div
-                    key="moon"
-                    initial={{ rotate: 90, opacity: 0 }}
-                    animate={{ rotate: 0, opacity: 1 }}
-                    exit={{ rotate: -90, opacity: 0 }}
-                    transition={{ duration: 0.3 }}
-                  >
-                    <Moon className="w-5 h-5" />
-                  </motion.div>
-                )}
-              </AnimatePresence>
-            </motion.button>
-          </div>
-
-          {/* Mobile Menu Button */}
-          <div className="md:hidden flex items-center space-x-4">
-            
-
-            <motion.button
-              whileHover={{ scale: 1.1 }}
-              whileTap={{ scale: 0.95 }}
-              onClick={() => setIsMenuOpen(!isMenuOpen)}
-              className="p-2 text-slate-600 dark:text-slate-300 hover:text-blue-600 dark:hover:text-blue-400 transition-colors"
-            >
-              <AnimatePresence mode="wait">
-                {isMenuOpen ? (
-                  <motion.div
-                    key="close"
-                    initial={{ rotate: -90 }}
-                    animate={{ rotate: 0 }}
-                    exit={{ rotate: 90 }}
-                    transition={{ duration: 0.2 }}
-                  >
-                    <X className="w-6 h-6" />
-                  </motion.div>
-                ) : (
-                  <motion.div
-                    key="menu"
-                    initial={{ rotate: 90 }}
-                    animate={{ rotate: 0 }}
-                    exit={{ rotate: -90 }}
-                    transition={{ duration: 0.2 }}
-                  >
-                    <Menu className="w-6 h-6" />
-                  </motion.div>
-                )}
-              </AnimatePresence>
-            </motion.button>
-
-            <motion.button
-              whileHover={{ scale: 1.1 }}
-              whileTap={{ scale: 0.95 }}
-              onClick={toggleTheme}
-              className="p-2 rounded-md bg-slate-100 dark:bg-slate-800 text-slate-600 dark:text-slate-300"
-            >
-              {isDark ? <Sun className="w-5 h-5" /> : <Moon className="w-5 h-5" />}
-            </motion.button>
-          </div>
+          </ul>
         </div>
-
-        {/* Mobile Navigation */}
-        <AnimatePresence>
-          {isMenuOpen && (
-            <motion.div
-              initial={{ opacity: 0, height: 0 }}
-              animate={{ opacity: 1, height: 'auto' }}
-              exit={{ opacity: 0, height: 0 }}
-              transition={{ duration: 0.3 }}
-              className="md:hidden mt-4 py-4 border-t border-slate-200 dark:border-slate-700 bg-white/95 dark:bg-slate-900/95 backdrop-blur-lg shadow-xl rounded-md"
-            >
-              <div className="flex flex-col space-y-3">
-                {navItems.map((item, index) => (
-                  <motion.div
-                    key={item.path}
-                    initial={{ opacity: 0, x: -20 }}
-                    animate={{ opacity: 1, x: 0 }}
-                    transition={{ delay: index * 0.1 }}
-                  >
-                    <Link
-                      to={item.path}
-                      onClick={() => setIsMenuOpen(false)}
-                      className={`block py-3 px-4 rounded-md text-sm font-medium transition-all duration-300 ${
-                        location.pathname === item.path
-                          ? 'bg-blue-50 dark:bg-blue-900/30 text-blue-600 dark:text-blue-400'
-                          : 'text-slate-600 dark:text-slate-300 hover:text-blue-600 dark:hover:text-blue-400 hover:bg-slate-50 dark:hover:bg-slate-800'
-                      }`}
-                    >
-                      {item.label}
-                    </Link>
-                  </motion.div>
-                ))}
-              </div>
-            </motion.div>
-          )}
-        </AnimatePresence>
       </nav>
-    </motion.header>
+    </>
   );
-};
-
-export default Header;
+}

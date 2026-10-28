@@ -1,18 +1,17 @@
-import React from 'react';
 import Hero from '../components/Hero';
 import FeaturedProjects from '../components/FeaturedProjects';
 import Skills from '../components/Skills';
 import CallToAction from '../components/CallToAction';
+import ScrollBand from '../components/ScrollBand';
 
-const Home: React.FC = () => {
+export default function Home() {
   return (
-    <div className="pt-20">
+    <>
       <Hero />
+      <ScrollBand />
       <FeaturedProjects />
       <Skills />
       <CallToAction />
-    </div>
+    </>
   );
-};
-
-export default Home;
+}
