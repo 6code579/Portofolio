@@ -1,145 +1,85 @@
-import React from 'react';
-import { Github, Linkedin, Mail, MapPin, Phone, Instagram } from 'lucide-react';
-import { motion } from 'framer-motion';
+import { Github, Instagram, Linkedin, Mail, MapPin, Phone } from 'lucide-react';
+import { navItems } from '../data/content';
+import { Reveal } from './Reveal';
+import TLink from './TLink';
 
+const socialLinks = [
+  { name: 'GitHub', url: 'https://github.com/LucaneTech', icon: Github },
+  { name: 'LinkedIn', url: 'https://www.linkedin.com/in/franciscomouanda579', icon: Linkedin },
+  { name: 'Instagram', url: 'https://www.instagram.com/lucane.tech/', icon: Instagram },
+  { name: 'Email', url: 'mailto:profrancisco579@gmail.com', icon: Mail },
+];
 
-const Footer: React.FC = () => {
-  const socialLinks = [
-    {
-      name: 'GitHub',
-      url: 'https://github.com/LucaneTech',
-      icon: Github,
-      color: 'hover:text-gray-400'
-    },
-    {
-      name: 'LinkedIn',
-      url: 'https://www.linkedin.com/in/franciscomouanda579',
-      icon: Linkedin,
-      color: 'hover:text-blue-400'
-    },
-    // {
-    //   name: 'Facebook',
-    //   url: 'https://web.facebook.com/profile.php?id=61574184786834',
-    //   icon: Facebook,
-    //   color: 'hover:text-blue-400'
-    // },
-     {
-      name: 'Instagram',
-      url: 'https://www.instagram.com/lucane.tech/',
-      icon: Instagram,
-      color: 'hover:text-red-400'
-    },
-    {
-      name: 'Email',
-      url: 'mailto:profrancisco579@gmail.com',
-      icon: Mail,
-      color: 'hover:text-indigo-400'
-    }
-  ];
-
-  // Animation variants
-  const containerVariants = {
-    hidden: { opacity: 0 },
-    visible: {
-      opacity: 1,
-      transition: {
-        staggerChildren: 0.1,
-        delayChildren: 0.2
-      }
-    }
-  };
-
-  const itemVariants = {
-    hidden: { y: 20, opacity: 0 },
-    visible: {
-      y: 0,
-      opacity: 1,
-      transition: {
-        duration: 0.6,
-        ease: "easeOut"
-      }
-    }
-  };
-
+export default function Footer() {
   return (
-    <footer className="bg-slate-900 text-white py-16">
-      <motion.div
-        variants={containerVariants}
-        initial="hidden"
-        whileInView="visible"
-        viewport={{ once: true, amount: 0.3 }}
-        className="container mx-auto px-6"
-      >
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-         
+    <footer className="relative border-t hairline bg-deep pb-8 pt-20 md:pt-28">
+      <div className="container-x">
+        <Reveal>
+          <a
+            href="mailto:profrancisco579@gmail.com"
+            data-cursor="link"
+            className="block break-words text-[clamp(1.8rem,6.2vw,6rem)] leading-[1.05] tracking-tight text-secondary transition-colors duration-500 hover:text-primary"
+          >
+            profrancisco579@gmail.com
+          </a>
+        </Reveal>
 
-          {/* Contact */}
-          <motion.div variants={itemVariants} className="space-y-4">
-            <h3 className="text-lg font-semibold">Contact</h3>
-            <div className="space-y-2">
-              <div className="flex items-center space-x-2">
-                <Mail className="w-4 h-4 text-slate-400" />
-                <span className="text-slate-400">profrancisco579@gmail.com</span>
-              </div>
-              <div className="flex items-center space-x-2">
-                <MapPin className="w-4 h-4 text-slate-400" />
-                <span className="text-slate-400">Maroc</span>
-              </div>
-              <div className="flex items-center space-x-2">
-                <Phone className="w-4 h-4 text-slate-400" />
-                <span className="text-slate-400">+212 0781343642</span>
-              </div>
-            </div>
-          </motion.div>
+        <div className="mt-16 grid gap-12 md:mt-24 md:grid-cols-3">
+          <Reveal className="space-y-5">
+            <h3 className="eyebrow">Contact</h3>
+            <ul className="space-y-3 text-light/80">
+              <li className="flex items-center gap-3">
+                <Mail className="h-4 w-4 text-primary" />
+                <span>profrancisco579@gmail.com</span>
+              </li>
+              <li className="flex items-center gap-3">
+                <MapPin className="h-4 w-4 text-primary" />
+                <span>Maroc</span>
+              </li>
+              <li className="flex items-center gap-3">
+                <Phone className="h-4 w-4 text-primary" />
+                <span>+212 0781343642</span>
+              </li>
+            </ul>
+          </Reveal>
 
-          {/* Navigation */}
-          <motion.div variants={itemVariants} className="space-y-4">
-            <h3 className="text-lg font-semibold">Navigation</h3>
-            <div className="space-y-2">
-              <a href="/" className="block text-slate-400 hover:text-white transition-colors">
-                Accueil
-              </a>
-              <a href="/projects" className="block text-slate-400 hover:text-white transition-colors">
-                Projets
-              </a>
-              <a href="/about" className="block text-slate-400 hover:text-white transition-colors">
-                À propos
-              </a>
-              <a href="/contact" className="block text-slate-400 hover:text-white transition-colors">
-                Contact
-              </a>
-            </div>
-          </motion.div>
-
-          {/* Social Links */}
-          <motion.div variants={itemVariants} className="space-y-4">
-            <h3 className="text-lg font-semibold">Suivez-moi</h3>
-            <div className="flex space-x-4">
-              {socialLinks.map((social) => (
-                <a
-                  key={social.name}
-                  href={social.url}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className={`p-3 bg-slate-800 rounded-lg text-slate-400 transition-all duration-200 hover:bg-slate-700 ${social.color} hover:scale-105`}
-                  aria-label={social.name}
-                >
-                  <social.icon className="w-5 h-5" />
-                </a>
+          <Reveal className="space-y-5" delay={0.08}>
+            <h3 className="eyebrow">Navigation</h3>
+            <ul className="space-y-3">
+              {navItems.map((item) => (
+                <li key={item.path}>
+                  <TLink to={item.path} className="text-light/80 transition-colors hover:text-primary">
+                    {item.label}
+                  </TLink>
+                </li>
               ))}
-            </div>
-          </motion.div>
+            </ul>
+          </Reveal>
+
+          <Reveal className="space-y-5" delay={0.16}>
+            <h3 className="eyebrow">Suivez-moi</h3>
+            <ul className="flex gap-3">
+              {socialLinks.map(({ name, url, icon: Icon }) => (
+                <li key={name}>
+                  <a
+                    href={url}
+                    target={url.startsWith('http') ? '_blank' : undefined}
+                    rel="noopener noreferrer"
+                    aria-label={name}
+                    className="flex h-12 w-12 items-center justify-center rounded-md border border-secondary/25 text-light transition-colors duration-300 hover:border-primary hover:bg-primary hover:text-bg"
+                  >
+                    <Icon className="h-5 w-5" />
+                  </a>
+                </li>
+              ))}
+            </ul>
+          </Reveal>
         </div>
 
-        <motion.div
-          variants={itemVariants}
-          className="border-t border-slate-800 mt-8 pt-8 text-center text-slate-400"
-        >
-          <p>&copy; {new Date().getFullYear()} Portfolio. Tous droits réservés.</p>
-        </motion.div>
-      </motion.div>
+        <p className="mt-20 border-t hairline pt-8 text-center text-sm text-light/60">
+          &copy; {new Date().getFullYear()} Portfolio. Tous droits réservés.
+        </p>
+      </div>
     </footer>
   );
-};
-
-export default Footer;
+}

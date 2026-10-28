@@ -1,45 +1,37 @@
-import React, { useEffect } from 'react';
-import { Routes, Route, useLocation } from 'react-router-dom';
-import { ThemeProvider } from './contexts/ThemeContext';
-import Header from './components/Header';
-import Footer from './components/Footer';
+import { lazy, Suspense, useEffect } from 'react';
+import { Routes, Route } from 'react-router-dom';
+import Shell from './components/Shell';
 import Home from './pages/Home';
-import Projects from './pages/Projects';
-import About from './pages/About';
-import Contact from './pages/Contact';
-import ScrollToTop from './components/ScrollToTop';
-import PageTransition from './components/PageTransition';
-import { useLoader } from './contexts/LoaderContext';
-import LoadingScreen from './components/LoadingScreen';
 
-const App: React.FC = () => {
-  const { loading, setLoading } = useLoader();
-  const location = useLocation();
+const loadProjects = () => import('./pages/Projects');
+const loadAbout = () => import('./pages/About');
+const loadContact = () => import('./pages/Contact');
+const Projects = lazy(loadProjects);
+const About = lazy(loadAbout);
+const Contact = lazy(loadContact);
 
+export default function App() {
+  // Les autres pages se chargent en tâche de fond une fois l'accueil affiché.
   useEffect(() => {
-    setLoading(true);
-    const timer = setTimeout(() => setLoading(false), 800);
-    return () => clearTimeout(timer);
-  }, [location]);
+    const prefetch = () => {
+      void loadProjects();
+      void loadAbout();
+      void loadContact();
+    };
+    const id = window.setTimeout(prefetch, 2500);
+    return () => window.clearTimeout(id);
+  }, []);
 
   return (
-    <ThemeProvider>
-      <div className="min-h-screen bg-slate-50 dark:bg-slate-900 font-inter transition-colors duration-300">
-        <ScrollToTop />
-        <Header />
-        <main>
-          {loading && <LoadingScreen />}
-          <Routes>
-            <Route path="/" element={<PageTransition><Home /></PageTransition>} />
-            <Route path="/projects" element={<PageTransition><Projects /></PageTransition>} />
-            <Route path="/about" element={<PageTransition><About /></PageTransition>} />
-            <Route path="/contact" element={<PageTransition><Contact /></PageTransition>} />
-          </Routes>
-        </main>
-        <Footer />
-      </div>
-    </ThemeProvider>
+    <Shell>
+      <Suspense fallback={null}>
+        <Routes>
+          <Route path="/" element={<Home />} />
+          <Route path="/projects" element={<Projects />} />
+          <Route path="/about" element={<About />} />
+          <Route path="/contact" element={<Contact />} />
+        </Routes>
+      </Suspense>
+    </Shell>
   );
-};
-
-export default App;
+}
