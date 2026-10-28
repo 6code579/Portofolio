@@ -1,5 +1,5 @@
 import { useEffect, useRef } from 'react';
-import { gsap, hasFinePointer, prefersReducedMotion } from '../lib/motion';
+import { gsap, prefersReducedMotion } from '../lib/motion';
 import { useShell } from '../contexts/ShellContext';
 
 /**
@@ -13,7 +13,7 @@ export default function ScrollBand() {
   const { ready } = useShell();
 
   useEffect(() => {
-    if (!ready || !root.current || prefersReducedMotion() || !hasFinePointer()) return;
+    if (!ready || !root.current || prefersReducedMotion()) return;
     const ctx = gsap.context(() => {
       const trigger = { trigger: root.current, start: 'top bottom', end: 'bottom top', scrub: 0.8 };
       gsap.fromTo(top.current, { xPercent: 22 }, { xPercent: -38, ease: 'none', scrollTrigger: trigger });
@@ -23,11 +23,11 @@ export default function ScrollBand() {
   }, [ready]);
 
   return (
-    <section ref={root} aria-hidden className="relative overflow-hidden border-y hairline bg-deep px-5 py-14 md:px-0 md:py-24">
-      <div ref={top} className="w-max whitespace-nowrap [@media(hover:none)]:w-auto [@media(hover:none)]:whitespace-normal text-[clamp(2.6rem,13vw,13rem)] font-semibold leading-[0.95] tracking-[-0.03em] text-secondary">
+    <section ref={root} aria-hidden className="relative overflow-hidden border-y hairline bg-deep py-14 md:py-24">
+      <div ref={top} className="w-max whitespace-nowrap text-[clamp(3rem,13vw,13rem)] font-semibold leading-[0.95] tracking-[-0.03em] text-secondary">
         Passionné par la création de solutions web
       </div>
-      <div ref={bottom} className="mt-2 w-max whitespace-nowrap [@media(hover:none)]:w-auto [@media(hover:none)]:whitespace-normal font-serif text-[clamp(2.6rem,13vw,13rem)] italic leading-[0.95] text-primary md:mt-4">
+      <div ref={bottom} className="mt-2 w-max whitespace-nowrap font-serif text-[clamp(3rem,13vw,13rem)] italic leading-[0.95] text-primary md:mt-4">
         performantes et modernes
       </div>
     </section>
