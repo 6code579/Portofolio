@@ -1,6 +1,7 @@
 import { useEffect, useRef, useState } from 'react';
 import { Play } from 'lucide-react';
 import type { Project } from '../data/content';
+import ProjectArt from './ProjectArt';
 
 const VIEW_W = 1440;
 const VIEW_H = 900;
@@ -86,9 +87,13 @@ export default function LivePreview({ project, className = '', enabled = true }:
       )}
 
       {showCard && (
-        <div className="absolute inset-0 flex flex-col items-center justify-center gap-3 bg-deep p-6 text-center">
-          <span className="font-serif text-3xl italic text-secondary md:text-5xl">{project.title}</span>
-          {project.videoUrl && <Play className="h-6 w-6 text-primary" fill="currentColor" />}
+        <div className="absolute inset-0">
+          <ProjectArt project={project} />
+          {project.videoUrl && (
+            <span aria-hidden className="absolute right-[4%] top-[6%] flex h-[13%] min-h-6 aspect-square items-center justify-center rounded-full bg-secondary text-bg shadow-[0_10px_30px_-8px_rgb(0_0_0/0.8)]">
+              <Play className="h-[42%] w-[42%] translate-x-[6%]" fill="currentColor" />
+            </span>
+          )}
         </div>
       )}
     </div>

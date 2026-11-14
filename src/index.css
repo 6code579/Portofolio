@@ -180,3 +180,17 @@
   background: rgb(var(--primary-deep-rgb));
   border-radius: 4px;
 }
+
+/* Illustrations de projets : les éléments flottent doucement. */
+@keyframes art-float {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(-7px); }
+}
+.art-float {
+  animation: art-float 5.5s ease-in-out infinite;
+}
+@media (prefers-reduced-motion: reduce) {
+  .art-float {
+    animation: none;
+  }
+}
