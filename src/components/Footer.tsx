@@ -40,7 +40,7 @@ export default function Footer() {
               </li>
               <li className="flex items-center gap-3">
                 <Phone className="h-4 w-4 text-primary" />
-                <span>+212 0781343642</span>
+                <span>+212 7 81 34 36 42</span>
               </li>
             </ul>
           </Reveal>

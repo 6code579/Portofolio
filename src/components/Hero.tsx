@@ -229,12 +229,12 @@ export default function Hero() {
         <div className="mt-14 grid gap-10 md:mt-16 md:grid-cols-12 md:items-end">
           <div className="max-md:text-center md:col-span-6">
             <p data-hero className="text-xl leading-snug text-light md:text-3xl">
-              Passionné par la création de solutions web
+              Je conçois des applications web et mobiles
               <br />
-              <span className="font-serif italic text-primary">performantes et modernes</span>
+              <span className="font-serif italic text-primary">avec Django, React et React Native</span>
             </p>
             <p data-hero className="body-copy mt-5 max-w-xl max-md:mx-auto">
-              Spécialisé en Django, React, Python et JavaScript. Je transforme vos idées en applications web robustes et élégantes.
+              Développeur full stack junior, freelance depuis janvier 2025 sous le nom Lucane Tech. Disponible immédiatement pour un CDI ou un stage pré-embauche.
             </p>
           </div>
 

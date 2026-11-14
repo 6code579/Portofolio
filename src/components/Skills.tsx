@@ -1,5 +1,5 @@
-import { skillCategories, otherSkills, expertise } from '../data/content';
-import { Counter, LightText, Reveal, Slide, SplitReveal } from './Reveal';
+import { skillCategories, otherSkills } from '../data/content';
+import { LightText, Reveal, Slide, SplitReveal } from './Reveal';
 import SkillMarquee from './SkillMarquee';
 
 const all = skillCategories.flatMap((c) => c.skills);
@@ -19,7 +19,7 @@ export default function Skills() {
           <Slide from="right" className="md:col-span-5">
           <LightText
             className="text-lg leading-snug text-light md:text-xl"
-            text="Une expertise technique complète pour développer des solutions web de bout en bout, de la conception à la mise en production."
+            text="Les outils que j'utilise sur mes projets clients, mes stages et mes applications personnelles, de la maquette à la mise en ligne."
           />
           </Slide>
         </div>
@@ -57,7 +57,7 @@ export default function Skills() {
         <div className="mt-24 md:mt-36">
           <Slide from="left" scaleFrom={1.15}>
             <Reveal>
-              <h3 className="text-[clamp(2rem,5vw,4rem)] leading-none tracking-tight max-md:text-center">Autres Compétences</h3>
+              <h3 className="text-[clamp(2rem,5vw,4rem)] leading-none tracking-tight max-md:text-center">Ce que je fais</h3>
             </Reveal>
           </Slide>
           <ul className="mt-12 grid gap-px overflow-hidden rounded-md border hairline bg-secondary/10 sm:grid-cols-2 lg:grid-cols-4">
@@ -67,24 +67,6 @@ export default function Skills() {
                   <Icon className="h-7 w-7 text-primary max-md:mx-auto" />
                   <h4 className="mt-8 text-xl">{title}</h4>
                   <p className="mt-2 text-sm leading-relaxed text-light/70">{desc}</p>
-                </Reveal>
-              </li>
-            ))}
-          </ul>
-        </div>
-
-        <div className="mt-24 md:mt-36">
-          <Slide from="right" scaleFrom={1.15}>
-            <Reveal>
-              <h3 className="text-[clamp(2rem,5vw,4rem)] leading-none tracking-tight max-md:text-center">Niveau d'Expertise</h3>
-            </Reveal>
-          </Slide>
-          <ul className="mt-12 grid grid-cols-2 gap-x-6 gap-y-12 lg:grid-cols-4">
-            {expertise.map((item, i) => (
-              <li key={item.skill}>
-                <Reveal delay={i * 0.08} className="border-t hairline pt-6 max-md:text-center">
-                  <Counter end={item.level} suffix="%" className="block text-[clamp(3rem,8vw,7rem)] font-light leading-none tracking-tighter text-primary" />
-                  <span className="mt-4 block text-lg text-light">{item.skill}</span>
                 </Reveal>
               </li>
             ))}

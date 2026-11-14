@@ -20,8 +20,8 @@ export const projects: Project[] = [
     slug: 'lucane-crm',
     title: 'Lucane CRM',
     description:
-      "Application web CRM de téléprospection qui permet aux équipes d'appeler, qualifier et suivre leurs prospects au même endroit, vers les pays de leur choix, grâce à un softphone intégré. La plateforme propose plus de 200 pays joignables choisis par l'administrateur, un journal d'appels automatique à 100 % et des données hébergées en Europe.",
-    technologies: [],
+      "CRM de téléprospection que j'ai conçu et développé seul. Un softphone intégré permet aux équipes d'appeler, de qualifier et de suivre leurs prospects au même endroit, vers plus de 200 pays choisis par l'administrateur. Chaque appel est enregistré automatiquement dans le journal, et les données sont hébergées en Europe.",
+    technologies: ['React', 'Supabase', 'Vercel'],
     liveUrl: 'https://lucane-crm.vercel.app/',
     noEmbed: true,
     category: 'Web App',
@@ -85,7 +85,7 @@ export const projects: Project[] = [
     slug: 'folio-francisco',
     title: 'Folio Francisco',
     description:
-      "Portfolio professionnel de Francisco Mouanda, développeur web full-stack spécialisé dans des technologies modernes telles que Django, Laravel, Python et JavaScript. Le site met en valeur ses projets, ses compétences techniques et son parcours, à destination d'entreprises à la recherche d'un développeur web expérimenté.",
+      "Ce portfolio : mes projets, mes compétences et mon parcours de développeur full stack junior, avec des animations au scroll et une version mobile soignée.",
     technologies: ['React', 'TypeScript', 'Tailwind CSS', 'Vite', 'Daisyui'],
     githubUrl: 'https://github.com/LucaneTech/Portofolio',
     liveUrl: 'https://franciscomouanda.netlify.app/',
@@ -114,6 +114,16 @@ export const projects: Project[] = [
       'https://res.cloudinary.com/dvjwcal8e/video/upload/v1779129908/Trip_app_zuwcpj.mp4',
     category: 'Web App',
     date: 'Mai 2026',
+  },
+  {
+    slug: 'yabisso',
+    title: 'YABISSO',
+    description:
+      "Prototype d'application mobile de marketplace pour les communautés étrangères au Maroc. Une dizaine d'écrans : création de boutique, suivi des clients, panier, commandes, notifications et paiement à la livraison. Conçue et développée seul.",
+    technologies: ['React Native', 'Expo', 'Supabase', 'TypeScript'],
+    githubUrl: 'https://github.com/LucaneTech/Yabisso',
+    category: 'Mobile',
+    date: 'Juillet 2026',
   },
   {
     slug: 'kone-shop',
@@ -157,65 +167,59 @@ export interface SkillCategory {
 
 export const skillCategories: SkillCategory[] = [
   {
-    title: 'Frontend',
-    skills: ['HTML5', 'CSS3', 'JavaScript', 'React.js', 'React Native', 'TypeScript', 'Next.js', 'Tailwind CSS', 'Bootstrap', 'Material UI'],
+    title: 'Front-end et mobile',
+    skills: ['HTML', 'CSS', 'JavaScript', 'TypeScript', 'React', 'Tailwind CSS', 'React Native', 'Expo'],
   },
   {
-    title: 'Backend',
-    skills: ['Python', 'Django', 'NodeJS', 'Express', 'FastAPI', 'RESTful APIs', 'Supabase'],
+    title: 'Back-end et API',
+    skills: ['Python', 'Django', 'Django REST Framework', 'Django Ninja', 'Celery', 'Node.js', 'Express', 'API REST', 'JWT'],
   },
-  { title: 'Database', skills: ['MySQL', 'MongoDB', 'SQLite', 'Firebase'] },
-  { title: 'Tools & DevOps', skills: ['Git', 'Docker', 'Linux', 'VS Code'] },
+  { title: 'Données', skills: ['PostgreSQL', 'MySQL', 'SQLite', 'Supabase', 'Pandas'] },
+  { title: 'Tests et déploiement', skills: ['pytest', 'Docker', 'Git', 'GitHub', 'Vercel', 'Netlify', 'Render', 'Linux'] },
 ];
 
 export const otherSkills: { icon: LucideIcon; title: string; desc: string }[] = [
-  { icon: Code, title: 'Développement', desc: 'Architecture, Tests, Code Review' },
-  { icon: Globe, title: 'Design UX/UI', desc: 'Responsive, Accessibilité, Performance' },
-  { icon: Smartphone, title: 'Mobile', desc: 'React Native, PWA, Responsive' },
-  { icon: Zap, title: 'DevOps', desc: 'Déploiement, Monitoring, Sécurité' },
+  { icon: Code, title: 'Back-end', desc: 'API REST Django, authentification JWT, tâches de fond avec Celery' },
+  { icon: Globe, title: 'Front-end', desc: 'Interfaces React responsives, intégration de maquettes Figma' },
+  { icon: Smartphone, title: 'Mobile', desc: 'Applications React Native avec Expo et Supabase' },
+  { icon: Zap, title: 'Mise en ligne', desc: 'Déploiement sur Vercel, Netlify et Render, conteneurs Docker' },
 ];
 
-export const expertise = [
-  { skill: 'Frontend', level: 90 },
-  { skill: 'Backend', level: 80 },
-  { skill: 'Database', level: 70 },
-  { skill: 'DevOps', level: 45 },
-];
-
+/** Chiffres réels, alignés sur le CV. */
 export const stats = [
-  { end: 3, decimals: 0, suffix: '+', label: "Années d'expérience" },
-  { end: 30, decimals: 0, suffix: '+', label: 'Projets réalisés' },
-  { end: 99.99, decimals: 2, suffix: '%', label: 'Clients satisfaits' },
+  { end: 8, decimals: 0, suffix: '+', label: 'Sites livrés à des clients' },
+  { end: 3, decimals: 0, suffix: '', label: 'Stages en entreprise' },
+  { end: 2025, decimals: 0, suffix: '', label: 'Début du freelance (Lucane Tech)' },
 ];
 
 export const experiences = [
   {
-    period: 'Jan 2025 - Présent',
-    title: 'Développeur Full-stack Freelance',
-    company: 'Freelance',
+    period: 'Janvier 2025 - Aujourd’hui',
+    title: 'Développeur Full Stack Freelance',
+    company: 'Lucane Tech',
     description:
-      'Développement de sites web et applications pour divers clients. Gestion complète du cycle de vie des projets, de la conception à la mise en production. Utilisation de technologies modernes telles que React, Django, Laravel et Tailwind CSS pour créer des solutions performantes et adaptées aux besoins des clients.',
+      'Plus de 8 sites vitrines livrés à des clients du conseil, de l’agrobusiness, de la conciergerie, du marketing et de l’éducation (React, TypeScript, Tailwind CSS, Netlify). Applications internes sur mesure, dont Lucane Filter : outil Django de tri et de filtrage des fichiers de contacts d’un centre d’appels (Docker, Celery, Pandas).',
   },
   {
     period: 'Juillet 2026 - Septembre 2026',
-    title: 'Développeur Frontend & E-commerce : Stagiaire',
+    title: 'Développeur Front-end et E-commerce · Stage',
     company: 'BLAZE & Co',
     description:
-      'Conception de pages dans Figma puis intégration en code sur plusieurs boutiques Shopify.Amélioration de l’UX et des parcours d’achat dans une logique CRO.Contribution aux opérations e-commerce avec Klaviyo, Microsoft Clarity et Intelligems. ',
+      'Intégration de maquettes Figma sur 7 boutiques Shopify et optimisation SEO des fiches produits. Tests A/B de contenus et de landing pages avec Intelligems, analyse des parcours d’achat sur Microsoft Clarity, campagnes e-mail sur Klaviyo.',
   },
   {
     period: 'Avril 2025 - Juillet 2025',
-    title: 'Stage Développeur Web',
-    company: 'WebConsulting',
+    title: 'Développeur Full Stack · Stage',
+    company: 'Web Consulting',
     description:
-      'Développement en équipe d’une plateforme de réservation intégrant l’authentification JWT, un dashboard administratif et paiement. Conception et intégration d’APIs REST sécurisées avec Django. Participation à l’architecture technique, aux tests et à l’amélioration continue des fonctionnalités. ',
+      'Plateforme de réservation destinée au marché africain, développée en équipe de 5 : authentification JWT, tableau de bord d’administration, paiement mobile via PawaPay. Conception et intégration des API REST en Django ; participation aux tests et aux choix d’architecture.',
   },
   {
-    period: 'Avril 2024- Juillet 2024',
-    title: 'Développeur Web – Stagiaire',
-    company: "L'Atélier",
+    period: 'Avril 2024 - Juillet 2024',
+    title: 'Développeur Web · Stage de BTS',
+    company: "L'Atelier, centre de formation en langues",
     description:
-      "Réalisation de projets web dans le cadre de ma formation BTS. Développement d'applications avec Python/Django, création d'APIs REST et projets frontend avec React.",
+      'Site web du centre et application interne de gestion des enseignants, des élèves et de l’administration (Django, tests pytest, déploiement sur Render).',
   },
 ];
 
@@ -223,22 +227,23 @@ export const education = [
   {
     period: '2025 - 2026',
     title: 'Bachelor : Développement Web et Applications Mobiles',
-    company: 'EEMCI',
+    company: 'EEMCI · École européenne de management et de commerce international',
     description:
-      'Établissement supérieur privé spécialisé dans les métiers du numérique. Formation approfondie en développement web et mobile, incluant la maîtrise des frameworks modernes, la gestion de bases de données et le déploiement d’applications.',
+      'Formation en développement web et mobile : frameworks modernes, bases de données et déploiement d’applications. Validé en 2026, diplôme remis en janvier 2027.',
   },
   {
     period: '2023 - 2025',
     title: 'BTS : Développement Web et Applications Mobiles',
-    company: 'EEMCI',
+    company: 'EEMCI · École européenne de management et de commerce international',
     description:
-      "Formation en développement web et applications. Spécialisation en solutions d'infrastructure, systèmes et réseaux. Projets pratiques en développement web.",
+      'Bases du développement web et mobile, avec des projets pratiques, dont un stage chez L’Atelier.',
   },
   {
-    period: 'Après Bac',
-    title: 'Formation Autodidacte',
+    period: 'Depuis 2023',
+    title: 'Autoformation',
     company: 'Parcours personnel',
-    description: `Auto-formation continue en développement web full-stack, en complément de la formation suivie à l'EEMCI. Approfondissement des technologies comme Laravel, Django, React, Tailwind CSS, GitHub et le web scraping (LinkedIn, Facebook). Réalisation de projets personnels et d'expérimentation, avec une forte autonomie dans l'apprentissage, la résolution de problèmes et l'adaptation aux nouvelles technologies.`,
+    description:
+      'En parallèle de l’EEMCI, j’approfondis Django, React, React Native et Tailwind CSS à travers des projets personnels publiés sur GitHub.',
   },
   {
     period: '2022 - 2023',
@@ -250,14 +255,14 @@ export const education = [
 ];
 
 export const story = [
-  "Passionné par la technologie depuis mon plus jeune âge, j'ai découvert le développement web comme une façon de créer et d'innover. Mon parcours m'a conduit à maîtriser les technologies modernes du web.",
-  "Aujourd'hui, je combine créativité et expertise technique pour développer des applications web performantes et user-friendly. Chaque projet est une opportunité d'apprendre et de repousser mes limites.",
-  "Je crois en l'importance de créer des solutions qui non seulement fonctionnent parfaitement, mais qui offrent également une expérience utilisateur exceptionnelle.",
+  "Après un Bac professionnel technique, j'ai choisi le développement web : un BTS puis un Bachelor en développement web et applications mobiles à l'EEMCI.",
+  "Depuis janvier 2025, je travaille aussi en freelance sous le nom Lucane Tech : des sites pour des clients, des outils internes et des applications que je conçois et mets en ligne seul.",
+  "Mes stages m'ont appris à travailler en équipe sur une vraie plateforme de réservation, puis à intégrer des boutiques Shopify pensées pour vendre.",
 ];
 
 export const mission = [
-  "Transformer vos idées en applications web robustes et élégantes. Je m'engage à livrer des solutions qui dépassent vos attentes tout en respectant les meilleures pratiques du développement.",
-  "Mon approche combine innovation technique et design centré utilisateur pour créer des expériences digitales mémorables et efficaces.",
+  "Je cherche aujourd'hui un premier poste, en CDI ou en stage pré-embauche, dans une équipe où je pourrai progresser auprès de développeurs plus expérimentés.",
+  "Je reste disponible pour des projets freelance : sites vitrines, outils internes et applications web ou mobiles.",
 ];
 
 export const values: { icon: LucideIcon; title: string; desc: string }[] = [
@@ -276,7 +281,7 @@ export const approach: { icon: LucideIcon; title: string; desc: string }[] = [
 
 export const contactInfo = [
   { title: 'Email', value: 'profrancisco579@gmail.com', href: 'mailto:profrancisco579@gmail.com', description: 'Réponse rapide garantie' },
-  { title: 'Téléphone', value: '+212 0781343642', href: 'tel:+2120781343642', description: 'Appel ou WhatsApp' },
+  { title: 'Téléphone', value: '+212 7 81 34 36 42', href: 'tel:+212781343642', description: 'Appel ou WhatsApp' },
   { title: 'Localisation', value: 'Meknès, Maroc', href: null, description: 'Disponible en remote' },
   { title: 'Disponibilité', value: 'Lun-Ven, 9h-18h', href: null, description: 'GMT+1' },
 ];
@@ -284,12 +289,12 @@ export const contactInfo = [
 export const socials = [
   { name: 'GitHub', href: 'https://github.com/LucaneTech', description: 'Mes projets open source' },
   { name: 'LinkedIn', href: 'https://www.linkedin.com/in/franciscomouanda579', description: 'Profil professionnel' },
-  { name: 'Instagram', href: 'https://www.instagram.com/lucane.tech/', description: 'Contact personnel' },
+  { name: 'Instagram', href: 'https://www.instagram.com/lucane.tech/', description: 'Lucane Tech' },
 ];
 
 export const availability = [
+  { label: 'Emploi', value: 'CDI ou stage pré-embauche, disponible immédiatement' },
   { label: 'Projets freelance', value: 'Disponible' },
-  { label: 'Collaboration', value: 'Ouvert aux opportunités' },
   { label: 'Réponse', value: 'Sous 24h' },
 ];
 
