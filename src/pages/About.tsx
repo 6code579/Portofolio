@@ -190,7 +190,7 @@ export default function About() {
         stage={<AboutStage />}
       />
       <Block index="01" title="Mon Histoire" paragraphs={story} withPhoto />
-      <Block index="02" title="Ma Mission" paragraphs={mission} />
+      <Block index="02" title="Ce que je cherche" paragraphs={mission} />
       <FeatureList index="03" title="Mes Valeurs" items={values} />
       <FeatureList index="04" title="Mon Approche" items={approach} />
       <Timeline index="05" title="Expérience Professionnelle" items={experiences} />

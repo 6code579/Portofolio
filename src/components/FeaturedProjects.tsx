@@ -19,7 +19,7 @@ export default function FeaturedProjects() {
           <Slide from="right" className="md:col-span-5">
           <LightText
             className="text-lg leading-snug text-light md:text-xl"
-            text="Découvrez une sélection de mes derniers projets, alliant innovation technique et design moderne pour créer des expériences utilisateur exceptionnelles."
+            text="Quelques sites livrés à des clients, en ligne sur leur propre domaine. Les applications Django et React Native sont sur la page Projets."
           />
           </Slide>
         </div>

@@ -26,7 +26,7 @@ export default function CallToAction() {
 
         <LightText
           className="mx-auto mt-10 max-w-2xl text-lg leading-snug text-light md:text-2xl"
-          text="Collaborons ensemble pour créer une solution sur mesure qui répond parfaitement à vos besoins et dépasse vos attentes."
+          text="Vous recrutez un développeur junior ou vous avez un site, un outil interne ou une application à faire ? Parlons-en."
         />
 
         <Reveal className="mt-12 flex flex-wrap justify-center gap-4">

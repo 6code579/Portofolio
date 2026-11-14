@@ -22,7 +22,7 @@ export default function Projects() {
 
   return (
     <>
-      <PageHeader lead="Mes" accent="Projets" subtitle="Découvrez une sélection de mes réalisations en développement web" stage={<ProjectsStage />} />
+      <PageHeader lead="Mes" accent="Projets" subtitle="Sites clients, outils internes et applications web et mobiles" stage={<ProjectsStage />} />
 
       <section className="container-x pb-24 md:pb-40">
         <Reveal className="mb-14 flex flex-col gap-8 md:flex-row md:items-end md:justify-between">

@@ -25,10 +25,10 @@ export default function ScrollBand() {
   return (
     <section ref={root} aria-hidden className="relative overflow-hidden border-y hairline bg-deep py-14 md:py-24">
       <div ref={top} className="w-max whitespace-nowrap text-[clamp(3rem,13vw,13rem)] font-semibold leading-[0.95] tracking-[-0.03em] text-secondary">
-        Passionné par la création de solutions web
+        Je conçois des applications web et mobiles
       </div>
       <div ref={bottom} className="mt-2 w-max whitespace-nowrap font-serif text-[clamp(3rem,13vw,13rem)] italic leading-[0.95] text-primary md:mt-4">
-        performantes et modernes
+        avec Django, React et React Native
       </div>
     </section>
   );

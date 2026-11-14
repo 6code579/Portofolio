@@ -1,4 +1,4 @@
 User-agent: *
 Allow: /
 
-Sitemap: https://francisco.lucane.tech/sitemap.xml
+Sitemap: https://ceo.lucanetech.com/sitemap.xml
