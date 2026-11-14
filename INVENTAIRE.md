@@ -25,12 +25,12 @@ Titre « Mes Projets » ; « Découvrez une sélection de mes réalisations en d
 
 | Projet | Date | Catégorie | Stack | Live | GitHub |
 |---|---|---|---|---|---|
-| Lucane | Octobre 2025 | Frontend | React, TypeScript, Tailwind CSS, Vite, Daisyui | lucanetech.netlify.app | LucaneTech/Lucane |
+| Lucane | Octobre 2025 | Frontend | React, TypeScript, Tailwind CSS, Vite, Daisyui | lucanetech.com | LucaneTech/Lucane |
 | Agrobusiness | Mai 2026 | Frontend | React, TypeScript, Tailwind CSS, Vite | kfkagrobusiness.com | LucaneTech/agrobusiness |
 | Panval | Avril 2026 | Frontend | React, TypeScript, Tailwind CSS, Vite | panvalconsiliuminter.com | LucaneTech/Panval |
-| Active Rise | Mai 2026 | Frontend | React, TypeScript, Tailwind CSS, Vite | activerise.netlify.app | LucaneTech/Active_rise |
+| Active Rise | Mai 2026 | Frontend | React, TypeScript, Tailwind CSS, Vite | activerise.pro | LucaneTech/Active_rise |
 | Hermon | Avril 2026 | Frontend | React, TypeScript, Tailwind CSS, Vite | hermon-eximia.com | LucaneTech/hermon |
-| Folio Francisco | Avril 2025 | Frontend | React, TypeScript, Tailwind CSS, Vite, Daisyui | franciscomouanda.netlify.app | LucaneTech/Portofolio |
+| Folio Francisco | Avril 2025 | Frontend | React, TypeScript, Tailwind CSS, Vite, Daisyui | francisco.lucanetech.com | LucaneTech/Portofolio |
 | Oralise | Mai 2026 | Frontend | React, TypeScript, Tailwind CSS, Vite | oralise.netlify.app | LucaneTech/Oralise |
 | Trip Manager | Mai 2026 | Web App | Django, React TS, Tailwindcss, JwT, Axios | — (vidéo démo Cloudinary) | LucaneTech/trip_management |
 | Kone Shop | Septembre 2025 | E-commerce | React, TypeScript, Tailwind CSS, Vite | koneshop.netlify.app | LucaneTech/Kone-Shop |
